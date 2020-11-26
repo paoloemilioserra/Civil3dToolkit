@@ -1,0 +1,723 @@
+{
+  "Uuid": "ef120701-c437-4efc-8b6e-66d16e395ad8",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Parcels to Feature Lines",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.Site.GetParcels",
+      "Id": "5aa0a9cddd914ba3ab9dd2e28b5eb5f5",
+      "Inputs": [
+        {
+          "Id": "8362196aa2af497f9c1206377c8db229",
+          "Name": "site",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.Site",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "69f089c1da3e4617a306751a96529ac4",
+          "Name": "Parcel[]",
+          "Description": "Parcel[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the Sites Parcels\n\nSite.GetParcels ( ): Parcel[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.Site.GetSites@Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "8f9faa582a3e4944a223a8d4c71240e5",
+      "Inputs": [
+        {
+          "Id": "49013bd947cb457785ee56a50a5a3246",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f24be14bc921467e821868193e7146bf",
+          "Name": "Site[]",
+          "Description": "Site[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Site.GetSites (document: Document): Site[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "bc58a6b069214121a8b2d09816dbe35e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2a4998e5b7f64d9684d9bcab5f68c70a",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.Parcel.Geometry",
+      "Id": "d59393c6e9504a52b52f21feb1039400",
+      "Inputs": [
+        {
+          "Id": "71ec38ada440458cbb1c99d116b250c2",
+          "Name": "parcel",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.Parcel",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f8dfa06f57b6418eb6385408418f043e",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Parcel geometry\n\nParcel.Geometry: Geometry[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.ByPolyCurve@string,Autodesk.DesignScript.Geometry.PolyCurve,Autodesk.Civil.DynamoNodes.LandDevelopment.Site,string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "92c427d78db447fd8ae0c95a232ece23",
+      "Inputs": [
+        {
+          "Id": "968d82fcd04444ab8bcc6bd33712816a",
+          "Name": "name",
+          "Description": "The FeatureLine name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e9e2f944f90f41c2be0ab89bd3bcdbdb",
+          "Name": "curve",
+          "Description": "The PolyCurve\n\nPolyCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cb12e5b55f8247f69f24977036d06cf8",
+          "Name": "site",
+          "Description": "The site of the FeatureLine\n\nSite\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3ee5ce9467574f8685ab2f2be913916c",
+          "Name": "layer",
+          "Description": "The layer of the FeatureLine\n\nstring\nDefault value : \"0\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0dbaf6a8a5d04c878e961621c7cf1e87",
+          "Name": "block",
+          "Description": "The target block\n\nBlock\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b6fb7bb98ecc43a7aee8af1fa131bbe9",
+          "Name": "FeatureLine",
+          "Description": "A FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a FeatureLine via a Dynamo PolyCurve\n\nFeatureLine.ByPolyCurve (name: string, curve: PolyCurve, site: Site = null, layer: string = \"0\", block: Block = null): FeatureLine"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.Parcel.Number",
+      "Id": "0b17b4a53a374cc58983da8768632469",
+      "Inputs": [
+        {
+          "Id": "3d4fbe380020435895a8fced1a935742",
+          "Name": "parcel",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.Parcel",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "40603cb7022d488f8dd22ed7349f40cf",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Parcel number\n\nParcel.Number: int"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.FromObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "a0d0d8bb647c476a80db21c6def5617d",
+      "Inputs": [
+        {
+          "Id": "d8885328f7544858ac484239ae4f1410",
+          "Name": "obj",
+          "Description": "Object to be serialized",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fd89f7cc133f47d88a4dd352a64a3e10",
+          "Name": "str",
+          "Description": "Result of math computation",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Convert an object to a string representation."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.Parcel.Area",
+      "Id": "24d67d5f1d234f8990f41ff8c98a523b",
+      "Inputs": [
+        {
+          "Id": "8996c8c552ae4d8aa469ec85c6b5294d",
+          "Name": "parcel",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.Parcel",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "59af669eda9d4848b2c4a3b9044cfca2",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Parcel area\n\nParcel.Area: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.SortByKey@var[]..[],var[]..[]",
+      "Id": "857c491d0d57431582f0b73c1922f683",
+      "Inputs": [
+        {
+          "Id": "14a3138ec91f4c96945aead33c34438c",
+          "Name": "list",
+          "Description": "list to be sorted\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "650418c1bb4e4dd08c77eb50e23431de",
+          "Name": "keys",
+          "Description": "list of keys\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e7cfec68fd34e6abac32a7edc3171ec",
+          "Name": "sorted list",
+          "Description": "sorted list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "38924008100844a39bf1288cdd4b389c",
+          "Name": "sorted keys",
+          "Description": "sorted keys",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sort list based on its keys\n\nList.SortByKey (list: var[]..[], keys: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.DropItems@var[]..[],int",
+      "Id": "d6c785123c1f41fa9570fa5eb3d1d34a",
+      "Inputs": [
+        {
+          "Id": "a53c11e1d55d4644b8914c8c3903ed29",
+          "Name": "list",
+          "Description": "List to remove items from.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2677dab8ba1f49a9a48a020fd19d1e52",
+          "Name": "amount",
+          "Description": "Amount of items to remove. If negative, items are removed from the end of the list.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3d23dfc3768f4fcda6d6f59c1b25e964",
+          "Name": "list",
+          "Description": "List of remaining items.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Removes an amount of items from the start of the list. If the amount is a negative value, items are removed from the end of the list.\n\nList.DropItems (list: var[]..[], amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "22;",
+      "Id": "bb4908468eca4c3c83b8c991f02bfa40",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "37d2314d83c84e4981606fd2fec2cd9f",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "bb98632d58784532bfe79f55f1940493",
+      "Inputs": [
+        {
+          "Id": "e0848aad197f448c971e6f4690a46963",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "49f440b310e246e187399a0fe830bd86",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1e379052c5074eca9075f6a107bf7b69",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "5b1cf99491e04ba2bf79e7e897cea99b",
+      "Inputs": [
+        {
+          "Id": "c1ea9394ae5945ecb00fcc26bad253c9",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8a8ef5fe48b742d88ba9ea535f013949",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7ab84c1ab23747ef90b99672c5411daa",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "69f089c1da3e4617a306751a96529ac4",
+      "End": "8996c8c552ae4d8aa469ec85c6b5294d",
+      "Id": "80a60c682bd744ddb6154027a1d5330f"
+    },
+    {
+      "Start": "69f089c1da3e4617a306751a96529ac4",
+      "End": "14a3138ec91f4c96945aead33c34438c",
+      "Id": "1a9dd9f4629349c7afd7972bd52786d0"
+    },
+    {
+      "Start": "f24be14bc921467e821868193e7146bf",
+      "End": "8362196aa2af497f9c1206377c8db229",
+      "Id": "546759e7a07a4dd5aa2bfcfb5bab2db7"
+    },
+    {
+      "Start": "2a4998e5b7f64d9684d9bcab5f68c70a",
+      "End": "49013bd947cb457785ee56a50a5a3246",
+      "Id": "a39f7c44b9a84dbd8e3f2e4e2c07def4"
+    },
+    {
+      "Start": "f8dfa06f57b6418eb6385408418f043e",
+      "End": "e0848aad197f448c971e6f4690a46963",
+      "Id": "ab18df2d7a0844babd9f3936fbc85b3b"
+    },
+    {
+      "Start": "40603cb7022d488f8dd22ed7349f40cf",
+      "End": "d8885328f7544858ac484239ae4f1410",
+      "Id": "66062f153fae406cab12754ce1ad4dc1"
+    },
+    {
+      "Start": "fd89f7cc133f47d88a4dd352a64a3e10",
+      "End": "c1ea9394ae5945ecb00fcc26bad253c9",
+      "Id": "9d30d94bc7494a4fa6b341f64f650789"
+    },
+    {
+      "Start": "59af669eda9d4848b2c4a3b9044cfca2",
+      "End": "650418c1bb4e4dd08c77eb50e23431de",
+      "Id": "52fbf3d4f3e84f0a894ad7f85e4b4bee"
+    },
+    {
+      "Start": "3e7cfec68fd34e6abac32a7edc3171ec",
+      "End": "a53c11e1d55d4644b8914c8c3903ed29",
+      "Id": "8333249a18094cb0815d87785fde91a2"
+    },
+    {
+      "Start": "3d23dfc3768f4fcda6d6f59c1b25e964",
+      "End": "3d4fbe380020435895a8fced1a935742",
+      "Id": "29303d9a5ccf49dfabc4d56fc69a8972"
+    },
+    {
+      "Start": "3d23dfc3768f4fcda6d6f59c1b25e964",
+      "End": "71ec38ada440458cbb1c99d116b250c2",
+      "Id": "5af72ba8939048c1bda3fe43c43fbcc4"
+    },
+    {
+      "Start": "37d2314d83c84e4981606fd2fec2cd9f",
+      "End": "2677dab8ba1f49a9a48a020fd19d1e52",
+      "Id": "dc590e0a98804e9195eeb339ff847f62"
+    },
+    {
+      "Start": "1e379052c5074eca9075f6a107bf7b69",
+      "End": "e9e2f944f90f41c2be0ab89bd3bcdbdb",
+      "Id": "2a431fd4107549fd8808e15eaa725f67"
+    },
+    {
+      "Start": "7ab84c1ab23747ef90b99672c5411daa",
+      "End": "968d82fcd04444ab8bcc6bd33712816a",
+      "Id": "76bede56df134366af3877e671b11b29"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.14",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "5aa0a9cddd914ba3ab9dd2e28b5eb5f5",
+        "8f9faa582a3e4944a223a8d4c71240e5",
+        "d59393c6e9504a52b52f21feb1039400",
+        "92c427d78db447fd8ae0c95a232ece23",
+        "0b17b4a53a374cc58983da8768632469",
+        "24d67d5f1d234f8990f41ff8c98a523b"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "5aa0a9cd-dd91-4ba3-ab9d-d2e28b5eb5f5",
+      "Binding": {
+        "GetParcels_InClassDecl-1_InFunctionScope-1_Instance0_5aa0a9cd-dd91-4ba3-ab9d-d2e28b5eb5f5": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPmZhbHNlPC9CYXNlLTBfSGFzRGF0YT4NCjxCYXNlLTBfSGFzTmVzdGVkRGF0YT50cnVlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTBfTmVzdGVkRGF0YUNvdW50PjE8L0Jhc2UtMF9OZXN0ZWREYXRhQ291bnQ+DQo8QmFzZS0wLTBfSGFzRGF0YT50cnVlPC9CYXNlLTAtMF9IYXNEYXRhPg0KPEJhc2UtMC0wX0RhdGEgaWQ9InJlZi0zIj5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBUWlhKcFlXeHBlbUZpYkdWSVlXNWtiR1VnYVdROUluSmxaaTB4SWlCNGJXeHVjenBoTVQwaWFIUjBjRG92TDNOamFHVnRZWE11YldsamNtOXpiMlowTG1OdmJTOWpiSEl2Ym5OaGMzTmxiUzlCZFhSdlpHVnpheTVCZFhSdlEwRkVMa1I1Ym1GdGIwRndjQzVUWlhKMmFXTmxjeTlCWTBSNWJtRnRiMU5sY25acFkyVnpKVEpESlRJd1ZtVnljMmx2YmlVelJERXpMakl1TWpFMk1TNHdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrTmtVeE5qd3ZjM1J5YVc1blNVUStEUW84TDJFeE9sTmxjbWxoYkdsNllXSnNaVWhoYm1Sc1pUNE5Dand2VTA5QlVDMUZUbFk2UW05a2VUNE5Dand2VTA5QlVDMUZUbFk2Ulc1MlpXeHZjR1UrRFFvPTwvQmFzZS0wLTBfRGF0YT4NCjxCYXNlLTAtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMF9IYXNOZXN0ZWREYXRhPg0KPC9hMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXI+DQo8L1NPQVAtRU5WOkJvZHk+DQo8L1NPQVAtRU5WOkVudmVsb3BlPg0K"
+      }
+    },
+    {
+      "NodeId": "8f9faa58-2a3e-4944-a223-a8d4c71240e5",
+      "Binding": {
+        "GetSites_InClassDecl-1_InFunctionScope-1_Instance0_8f9faa58-2a3e-4944-a223-a8d4c71240e5": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK05rUkNNend2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 304427.32150704286,
+      "EyeY": 145.48412219768912,
+      "EyeZ": -6170943.4048025487,
+      "LookX": -0.04025704285595566,
+      "LookY": -145.48412219768912,
+      "LookZ": -2.8451974513009191,
+      "UpX": -0.013756802688886547,
+      "UpY": 0.2334453638559052,
+      "UpZ": -0.97227260193526155
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Site.GetParcels",
+        "Id": "5aa0a9cddd914ba3ab9dd2e28b5eb5f5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -143.81558395019522,
+        "Y": 365.98621189484811
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Site.GetSites",
+        "Id": "8f9faa582a3e4944a223a8d4c71240e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -455.81558395019522,
+        "Y": 365.98621189484811
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "bc58a6b069214121a8b2d09816dbe35e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -683.81558395019522,
+        "Y": 365.98621189484811
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Parcel.Geometry",
+        "Id": "d59393c6e9504a52b52f21feb1039400",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 994.88539259289882,
+        "Y": 476.19418985493894
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "FeatureLine.ByPolyCurve",
+        "Id": "92c427d78db447fd8ae0c95a232ece23",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1726.91487113821,
+        "Y": 445.6333430242621
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Parcel.Number",
+        "Id": "0b17b4a53a374cc58983da8768632469",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1039.1844160498049,
+        "Y": 350.98621189484811
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String from Object",
+        "Id": "a0d0d8bb647c476a80db21c6def5617d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1275.9490326077143,
+        "Y": 350.166784372939
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Parcel.Area",
+        "Id": "24d67d5f1d234f8990f41ff8c98a523b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 142.18441604980478,
+        "Y": 378.98621189484811
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.SortByKey",
+        "Id": "857c491d0d57431582f0b73c1922f683",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 440.18441604980478,
+        "Y": 352.98621189484811
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.DropItems",
+        "Id": "d6c785123c1f41fa9570fa5eb3d1d34a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 755.18441604980478,
+        "Y": 405.48338827681789
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "bb4908468eca4c3c83b8c991f02bfa40",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 573.42768641770863,
+        "Y": 474.77013567893664
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "bb98632d58784532bfe79f55f1940493",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1337.1915058844845,
+        "Y": 466.34891825559544
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "5b1cf99491e04ba2bf79e7e897cea99b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1440.2111023072141,
+        "Y": 332.05429776070952
+      }
+    ],
+    "Annotations": [],
+    "X": -1757.809342089098,
+    "Y": -501.99988428124618,
+    "Zoom": 1.628397167969478
+  }
+}

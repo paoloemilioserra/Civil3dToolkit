@@ -1,0 +1,798 @@
+{
+  "Uuid": "70bfa692-9c89-4aaa-85c6-e798c123657e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Drop Downs",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [
+    {
+      "Id": "8f667895671a43feb3255755376fade5",
+      "Name": "NrOfPoints",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "abe6a95be279449ab5781aa7fa8914ad",
+      "Name": "NrOfTriangles",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "08aa83168d214422aa1dfeca66f729dc",
+      "Name": "Area 2D",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "7654a87ce23542cd8a63723d91a17936",
+      "Name": "Area 3D",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "f35c3e56e3374304984cefe53a8ac2e4",
+      "Name": "Max Elevation",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "569deeccced149b68b4a80237dd1248f",
+      "Name": "Min Elevation",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "96f247f2644a47b0a9c0b74916925600",
+      "Name": "Max Grade",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "Id": "b03166214f134562952522784780ce73",
+      "Name": "Min Grade",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the output of node."
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "e9e882eb2bce467e954c99fe1d76b2c4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d86b786ceb684f80babda2e35e3a8466",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Selection.SurfaceByName@string,Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "1759fe8f220f478cac8f724a359ae6f1",
+      "Inputs": [
+        {
+          "Id": "e1baa22f9a8e4a03b112cd0cd4425827",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f4318dad869e46dcb052dce4faa96102",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "77376cd578b348fca871e23cd4460978",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Select a surface by a specified surface name.\n\nSelection.SurfaceByName (name: string, document: Document): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Surface.TerrainStatistics",
+      "Id": "8a6b9e484b934aefb7297c6c6e85d13e",
+      "Inputs": [
+        {
+          "Id": "392c0f51db2b439d90627894fe6580de",
+          "Name": "surface",
+          "Description": "Autodesk.Civil.DynamoNodes.Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "01d3fb2d4a1e45ea92729f3f031077fb",
+          "Name": "NumberOfPoints",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "76adf9e5b75c4d49a4ac6338b811ca59",
+          "Name": "NumberOfTriangles",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0efc347eab34416294483a17d4139d3d",
+          "Name": "Area2D",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "576e7575f781491cb2219ccbd717202f",
+          "Name": "Area3D",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9ea0fbcebf8149d1b2cada53a73a0af4",
+          "Name": "MaxElevation",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9ec1e0fa2b2448308ff2ef08f91083fc",
+          "Name": "MinElevation",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9cb370c77e0a43b288e1f47e791759ec",
+          "Name": "MaxGrade",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "60fd7ea3e4a143018197f253891af06c",
+          "Name": "MinGrade",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the terrain statics of the surface.\n\nSurface.TerrainStatistics ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "8f667895671a43feb3255755376fade5",
+      "Inputs": [
+        {
+          "Id": "5fa0c078e4784bc6b65fb5db0e58e1db",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a15055fb43a9418688ddf0917dfb0380",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "abe6a95be279449ab5781aa7fa8914ad",
+      "Inputs": [
+        {
+          "Id": "b4815818cbdf4c64bd28fedd6b9cf0db",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2e0203778c674808985a3664bf05b1f6",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "08aa83168d214422aa1dfeca66f729dc",
+      "Inputs": [
+        {
+          "Id": "b5de7eb7795e4d969a5b1c443eef2de8",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9114a8d0f98d4c8996041d2c3ee87d70",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "7654a87ce23542cd8a63723d91a17936",
+      "Inputs": [
+        {
+          "Id": "0601f1e0a3154bb3aab887a70dd8b6cf",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1b2112d209344856a78f86037dc902f8",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "f35c3e56e3374304984cefe53a8ac2e4",
+      "Inputs": [
+        {
+          "Id": "b78c38a704b34fd08277c60e5762e65a",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "341f0388449742ba9f15614c39339b4e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "569deeccced149b68b4a80237dd1248f",
+      "Inputs": [
+        {
+          "Id": "92f3a39d9dd94c668bc7d4718fcd29ec",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "46850fa5db494b8dadf41aa7323b254d",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "96f247f2644a47b0a9c0b74916925600",
+      "Inputs": [
+        {
+          "Id": "493901f9c974400a9ca1fb0977d466a5",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "287fd7f0a2b94170bda930b3f787e403",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "b03166214f134562952522784780ce73",
+      "Inputs": [
+        {
+          "Id": "009699b8b7d2499a9034e8e893f3c51c",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "863ea5e902934295b4fb6152f9a6c752",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.SurfacesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "Corridor - (1) Surface",
+      "NodeType": "ExtensionNode",
+      "Id": "fc8959b1837542c5ba593df9593d71e5",
+      "Inputs": [
+        {
+          "Id": "ae40a893077643a5a9c7cc9aa531ba8b",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cfe54b22353146a59ea8cdc169f6d088",
+          "Name": "Surface",
+          "Description": "The selected Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns the Surfaces in the document"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.AlignmentNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "ROAD1",
+      "NodeType": "ExtensionNode",
+      "Id": "7e535080a351407790037d43d0239ea0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d25e04b08dd848fb9730f6c24ef77b12",
+          "Name": "Alignment",
+          "Description": "The selected Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns the Alignments in the document"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.CorridorNameDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "Corridor - (1)",
+      "NodeType": "ExtensionNode",
+      "Id": "f18bd9825cf94e54b71ce7cc77fab405",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ffb2849f91db4af79708bf156eed40b4",
+          "Name": "Corridor",
+          "Description": "The selected Corridor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns the Corridors in the document"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.SurfaceNamesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 1,
+      "SelectedString": "EG",
+      "NodeType": "ExtensionNode",
+      "Id": "9cf8613ee522456bb496e0ceb2ba2b6e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1336bd13c5f048aeaa7aa40ccea4983a",
+          "Name": "Surface",
+          "Description": "The selected Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns the Surfaces in the document"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "d86b786ceb684f80babda2e35e3a8466",
+      "End": "f4318dad869e46dcb052dce4faa96102",
+      "Id": "b613d44b6e6842d6a7fdce8e8f981cc5"
+    },
+    {
+      "Start": "d86b786ceb684f80babda2e35e3a8466",
+      "End": "ae40a893077643a5a9c7cc9aa531ba8b",
+      "Id": "1d2f77d274a644d09dda7b726d441e84"
+    },
+    {
+      "Start": "77376cd578b348fca871e23cd4460978",
+      "End": "392c0f51db2b439d90627894fe6580de",
+      "Id": "380f76f133c8409f8429c2261cceed5a"
+    },
+    {
+      "Start": "01d3fb2d4a1e45ea92729f3f031077fb",
+      "End": "5fa0c078e4784bc6b65fb5db0e58e1db",
+      "Id": "8eaddb61e469441a87c7d1b0133c80ae"
+    },
+    {
+      "Start": "76adf9e5b75c4d49a4ac6338b811ca59",
+      "End": "b4815818cbdf4c64bd28fedd6b9cf0db",
+      "Id": "413251dd3b0647d7a9522563b6f7ad08"
+    },
+    {
+      "Start": "0efc347eab34416294483a17d4139d3d",
+      "End": "b5de7eb7795e4d969a5b1c443eef2de8",
+      "Id": "883d3a503bf64fc485a6141af72fc06a"
+    },
+    {
+      "Start": "576e7575f781491cb2219ccbd717202f",
+      "End": "0601f1e0a3154bb3aab887a70dd8b6cf",
+      "Id": "32b701adeb20445cbf8f6ad275736d7c"
+    },
+    {
+      "Start": "9ea0fbcebf8149d1b2cada53a73a0af4",
+      "End": "b78c38a704b34fd08277c60e5762e65a",
+      "Id": "44b596f7a1924ce288b6345d89020597"
+    },
+    {
+      "Start": "9ec1e0fa2b2448308ff2ef08f91083fc",
+      "End": "92f3a39d9dd94c668bc7d4718fcd29ec",
+      "Id": "a5b5df4e61814f8d8dd5c6dc254e3d68"
+    },
+    {
+      "Start": "9cb370c77e0a43b288e1f47e791759ec",
+      "End": "493901f9c974400a9ca1fb0977d466a5",
+      "Id": "39c70e0c86f84cc08b98ab4c53b42125"
+    },
+    {
+      "Start": "60fd7ea3e4a143018197f253891af06c",
+      "End": "009699b8b7d2499a9034e8e893f3c51c",
+      "Id": "94a0562242dd49789e6990eec95972b9"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.10",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "fc8959b1837542c5ba593df9593d71e5",
+        "7e535080a351407790037d43d0239ea0",
+        "f18bd9825cf94e54b71ce7cc77fab405",
+        "9cf8613ee522456bb496e0ceb2ba2b6e"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "e9e882eb2bce467e954c99fe1d76b2c4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 77.455218906887751,
+        "Y": 68.241760416642364
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Selection.SurfaceByName",
+        "Id": "1759fe8f220f478cac8f724a359ae6f1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 262.57658408966586,
+        "Y": 48.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.TerrainStatistics",
+        "Id": "8a6b9e484b934aefb7297c6c6e85d13e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 589.57658408966586,
+        "Y": 48.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NrOfPoints",
+        "Id": "8f667895671a43feb3255755376fade5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": -294.4738108182637
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NrOfTriangles",
+        "Id": "abe6a95be279449ab5781aa7fa8914ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": -170.4738108182637
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Area 2D",
+        "Id": "08aa83168d214422aa1dfeca66f729dc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": -46.4738108182637
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Area 3D",
+        "Id": "7654a87ce23542cd8a63723d91a17936",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": 77.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Max Elevation",
+        "Id": "f35c3e56e3374304984cefe53a8ac2e4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": 201.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Min Elevation",
+        "Id": "569deeccced149b68b4a80237dd1248f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": 325.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Max Grade",
+        "Id": "96f247f2644a47b0a9c0b74916925600",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": 449.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Min Grade",
+        "Id": "b03166214f134562952522784780ce73",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 973.57658408966586,
+        "Y": 573.5261891817363
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "SurfacesDD",
+        "Id": "fc8959b1837542c5ba593df9593d71e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 252.34350290109217,
+        "Y": 301.54211275658082
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignments",
+        "Id": "7e535080a351407790037d43d0239ea0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -197.11580390173009,
+        "Y": -303.86773971761528
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Corridors",
+        "Id": "f18bd9825cf94e54b71ce7cc77fab405",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -185.24997538750728,
+        "Y": -162.58483543010016
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surfaces",
+        "Id": "9cf8613ee522456bb496e0ceb2ba2b6e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -186.67354900418434,
+        "Y": -13.532505218793801
+      }
+    ],
+    "Annotations": [],
+    "X": 416.37480284893775,
+    "Y": 346.04072985261837,
+    "Zoom": 0.98827795159989962
+  }
+}

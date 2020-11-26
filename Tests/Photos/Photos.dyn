@@ -1,0 +1,895 @@
+{
+  "Uuid": "b6298bd6-ba20-402a-bdfd-5bdc4c122064",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Photos",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "D:\\OneDrive - autodesk\\Dynamo for Civil 3D\\Civil 3D Toolkit\\Photos\\No file selected",
+      "InputValue": "No file selected.",
+      "NodeType": "ExtensionNode",
+      "Id": "926db84f2d8d4462b2ff48618702049c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "42742c50ea8340e4be177434520457d4",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a directory on the system to get its path"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Photo.Photo.ByFilePath@string",
+      "Id": "8f151a51e2b9456fa3248dbe9ed83d6d",
+      "Inputs": [
+        {
+          "Id": "d52877b9ff6d48c485c89db5ca6287b0",
+          "Name": "path",
+          "Description": "The path to the image file\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3734b62ea3de46a782d898e18a88b697",
+          "Name": "Photo",
+          "Description": "Photo",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a Photo by file path\n\nPhoto.ByFilePath (path: string): Photo"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Photo.Photo.Location@Collaboration.Photo.Photo,string",
+      "Id": "2d0b61d7df8e4deb9c1ac57839ae4837",
+      "Inputs": [
+        {
+          "Id": "96294defa1554660a1785fe87410c0c5",
+          "Name": "photo",
+          "Description": "The Photo\n\nPhoto",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fd686677b3554893936ce61f0d4b2a7b",
+          "Name": "CurrentSytemCode",
+          "Description": "The System code\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1a70a531c2614af8b4b3202cd6184cc3",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Location\n\nPhoto.Location (photo: Photo, CurrentSytemCode: string): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Photo.Photo.Direction@Collaboration.Photo.Photo",
+      "Id": "e2f22946dc8f4433bc71e61a507de666",
+      "Inputs": [
+        {
+          "Id": "cdc2cc3b785142089e9f18588aa0abd8",
+          "Name": "photo",
+          "Description": "The Photo\n\nPhoto",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6bde4b7b08cf483c8dabfc69e00c0f03",
+          "Name": "Vector",
+          "Description": "Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Direction\n\nPhoto.Direction (photo: Photo): Vector"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Photo.Photo.Angle@Collaboration.Photo.Photo",
+      "Id": "b71e3535829b43c6b61834ede438b3bb",
+      "Inputs": [
+        {
+          "Id": "bdb168ec73e84570afc825ce08b16f89",
+          "Name": "photo",
+          "Description": "The Photo\n\nPhoto",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9430e1a9f4af4f3f8552a227ed89539c",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Angle\n\nPhoto.Angle (photo: Photo): double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.GetCoordinateSystemCode@Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "72e5aaa345e7488cbc2dad96f523dc23",
+      "Inputs": [
+        {
+          "Id": "ba28474ff3934781bd825e091129faf0",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6bf95ce31b9b451fbd2dc30d9e8c953c",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Return the current Coordinate System code\n\nDocumentExtensions.GetCoordinateSystemCode (document: Document): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "a310cae258c745cdae1c93eb385533f4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e63f84a42f5243ac82c91b9ceca0f5f8",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-a;",
+      "Id": "1635c86fff0d48a99ebae0fa205d1ab5",
+      "Inputs": [
+        {
+          "Id": "db374a346e1f4cde8bf4295e410a579f",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "adfcf1fbf1b6416dbcc2ed311fa3c5d8",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.BlockByName@string",
+      "Id": "39418f49bc584a9dbf379bb6576e916c",
+      "Inputs": [
+        {
+          "Id": "43bd262e5e304f378103c43c743af7fe",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6bc7282818e846b3b9488cd51375a646",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "17d747a1513c460fba2a2d6ccd775ac8",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get a block table record by a specified name.\n\nDocument.BlockByName (name: string): Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.ModelSpace",
+      "Id": "c03bd20f7e1146c09e7cbe547ff00409",
+      "Inputs": [
+        {
+          "Id": "bc0b4774b9ef45d192768f5b9379f178",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "45b30a55a68841b99a19748dfda0f105",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the model space block table record.\n\nDocument.ModelSpace: Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Photo\";",
+      "Id": "db01b5c33b5242e78abbb179ba33932a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8fd63ea770d040859959eef16aba47e4",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.BlockReference.ByCoordinateSystem@Autodesk.AutoCAD.DynamoNodes.Block,Autodesk.DesignScript.Geometry.CoordinateSystem,string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "ce67118eb19f49389f10f121f1b5ba1d",
+      "Inputs": [
+        {
+          "Id": "fbe0769c09aa4f41a2d2d483b7c07ea5",
+          "Name": "sourceBlock",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "32cd303b04d343f3b268a49c6d2841c7",
+          "Name": "coordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "732d60c67a81477895944620a3cced56",
+          "Name": "layer",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "101105603ca8432e85ab2f341013963a",
+          "Name": "block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c1a7b9b87fad482791a8e6490a8a9507",
+          "Name": "BlockReference",
+          "Description": "BlockReference",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a block reference by coordinate system.\n\nBlockReference.ByCoordinateSystem (sourceBlock: Block, coordinateSystem: CoordinateSystem, layer: string, block: Block): BlockReference"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.FileHasExtension@string",
+      "Id": "37c284a39f7f4d4e887a9e1f58dfe9c7",
+      "Inputs": [
+        {
+          "Id": "c18dcafd6e3e4d96be85443b0e8328f2",
+          "Name": "path",
+          "Description": "Path to check for an extension.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "56a2aaa64ce14c7a9cfc25678ad72e04",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Determines whether or not a file path contains an extension.\n\nFileSystem.FileHasExtension (path: string): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.GetDirectoryContents@var,string,bool",
+      "Id": "7adc2ff726bb4d6281c33d740624ee8e",
+      "Inputs": [
+        {
+          "Id": "9a266229795d45978b204dbd66a518ef",
+          "Name": "directory",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "972b00ab2a2f4fbf8c59ff678ebeb4a6",
+          "Name": "searchString",
+          "Description": "string\nDefault value : \"*.*\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0e580ffb3e124c9abdbc9bbf7765db97",
+          "Name": "includeSubdirectories",
+          "Description": "bool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a031239969c2409dbf0cbf5875cc3ccf",
+          "Name": "files",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "00c8e6d72b2f4dfc8d3b5ec6eb4465ec",
+          "Name": "directories",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "FileSystem.GetDirectoryContents (directory: var, searchString: string = \"*.*\", includeSubdirectories: bool = false): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "9842c63e19c1479f9d3efe8d4803f7a4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "33c6f3f7bca24d1baccf62d178ba9bdf",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"*.jpg\";",
+      "Id": "fc9ca8939f094f9dace62a2a193b7368",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3f1a10619d59431c879d37a6523208f9",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.CoordinateSystem.Rotate@Autodesk.DesignScript.Geometry.Plane,double",
+      "Id": "3b3d449defdb4bc98537b1a9538aa2d6",
+      "Inputs": [
+        {
+          "Id": "efac983033064ae4bc12b9a0bd4b5807",
+          "Name": "coordinateSystem",
+          "Description": "Autodesk.DesignScript.Geometry.CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "30051df0f8424e7aa5ab50a83a6fb265",
+          "Name": "plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a159ae30c2a844b7a98e69a46d99fccf",
+          "Name": "degrees",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8d9e6690831b45e8b71da59c498564a8",
+          "Name": "CoordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "///\n\nCoordinateSystem.Rotate (plane: Plane, degrees: double = 0): CoordinateSystem"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin@Autodesk.DesignScript.Geometry.Point",
+      "Id": "e18d1da950b54121a27c5b368e45867a",
+      "Inputs": [
+        {
+          "Id": "f8f8ada52663422895d47f8c021df983",
+          "Name": "origin",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f78ce126903a473c9f0a7ae83f8540b4",
+          "Name": "CoordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a CoordinateSystem with origin at input Point, with X and Y Axes set as WCS X and Y Axes.\n\nCoordinateSystem.ByOrigin (origin: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)): CoordinateSystem"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "42742c50ea8340e4be177434520457d4",
+      "End": "9a266229795d45978b204dbd66a518ef",
+      "Id": "501c461b7a4a42a7bfae9e2752b1531f"
+    },
+    {
+      "Start": "3734b62ea3de46a782d898e18a88b697",
+      "End": "96294defa1554660a1785fe87410c0c5",
+      "Id": "c263b8c5a4854395883a01eadba6a718"
+    },
+    {
+      "Start": "1a70a531c2614af8b4b3202cd6184cc3",
+      "End": "f8f8ada52663422895d47f8c021df983",
+      "Id": "03ca1704e66a49378d04afa79ae0da65"
+    },
+    {
+      "Start": "9430e1a9f4af4f3f8552a227ed89539c",
+      "End": "db374a346e1f4cde8bf4295e410a579f",
+      "Id": "5bf7c1a88dd041edb8a26f170de49916"
+    },
+    {
+      "Start": "6bf95ce31b9b451fbd2dc30d9e8c953c",
+      "End": "fd686677b3554893936ce61f0d4b2a7b",
+      "Id": "5160c29df4824ba1aa73b2f587ec3a62"
+    },
+    {
+      "Start": "e63f84a42f5243ac82c91b9ceca0f5f8",
+      "End": "ba28474ff3934781bd825e091129faf0",
+      "Id": "981abb0a10324d56967e6f90f97f2177"
+    },
+    {
+      "Start": "e63f84a42f5243ac82c91b9ceca0f5f8",
+      "End": "43bd262e5e304f378103c43c743af7fe",
+      "Id": "fe26be74c0664e01860431d048bf8820"
+    },
+    {
+      "Start": "e63f84a42f5243ac82c91b9ceca0f5f8",
+      "End": "bc0b4774b9ef45d192768f5b9379f178",
+      "Id": "1c583bd30447475083fc1d4acd24c97d"
+    },
+    {
+      "Start": "adfcf1fbf1b6416dbcc2ed311fa3c5d8",
+      "End": "a159ae30c2a844b7a98e69a46d99fccf",
+      "Id": "99032fc069ea40cdbbf63cc910048bf9"
+    },
+    {
+      "Start": "17d747a1513c460fba2a2d6ccd775ac8",
+      "End": "fbe0769c09aa4f41a2d2d483b7c07ea5",
+      "Id": "b832f8a5ae59485fb1033eda2bf6f6d8"
+    },
+    {
+      "Start": "45b30a55a68841b99a19748dfda0f105",
+      "End": "101105603ca8432e85ab2f341013963a",
+      "Id": "b03fd317953341df957cdf3337d18da4"
+    },
+    {
+      "Start": "8fd63ea770d040859959eef16aba47e4",
+      "End": "732d60c67a81477895944620a3cced56",
+      "Id": "42adeab7f91c4e428ec434284f0690ad"
+    },
+    {
+      "Start": "a031239969c2409dbf0cbf5875cc3ccf",
+      "End": "d52877b9ff6d48c485c89db5ca6287b0",
+      "Id": "4af9f07e791544cd9747aca17ae64912"
+    },
+    {
+      "Start": "33c6f3f7bca24d1baccf62d178ba9bdf",
+      "End": "0e580ffb3e124c9abdbc9bbf7765db97",
+      "Id": "30a48e6ca25840e3b913f1670455c1e4"
+    },
+    {
+      "Start": "3f1a10619d59431c879d37a6523208f9",
+      "End": "972b00ab2a2f4fbf8c59ff678ebeb4a6",
+      "Id": "3790574ecb364d9eafac8b41093a133c"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.11",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "8f151a51e2b9456fa3248dbe9ed83d6d",
+        "2d0b61d7df8e4deb9c1ac57839ae4837",
+        "e2f22946dc8f4433bc71e61a507de666",
+        "b71e3535829b43c6b61834ede438b3bb",
+        "72e5aaa345e7488cbc2dad96f523dc23"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "926db84f2d8d4462b2ff48618702049c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Directory Path",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -79.371985587161817,
+        "Y": 176.54381338899162
+      },
+      {
+        "Id": "8f151a51e2b9456fa3248dbe9ed83d6d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Photo.ByFilePath",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 473.60824881467784,
+        "Y": 266.73968898165276
+      },
+      {
+        "Id": "2d0b61d7df8e4deb9c1ac57839ae4837",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Photo.Location",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 696.0,
+        "Y": 405.0
+      },
+      {
+        "Id": "e2f22946dc8f4433bc71e61a507de666",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Photo.Direction",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 703.0,
+        "Y": 546.0
+      },
+      {
+        "Id": "b71e3535829b43c6b61834ede438b3bb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Photo.Angle",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 697.0,
+        "Y": 646.0
+      },
+      {
+        "Id": "72e5aaa345e7488cbc2dad96f523dc23",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "DocumentExtensions.GetCoordinateSystemCode",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 250.65120576513527,
+        "Y": 469.69673203119527
+      },
+      {
+        "Id": "a310cae258c745cdae1c93eb385533f4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.Current",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -2.7852152477127561,
+        "Y": 574.09190897065446
+      },
+      {
+        "Id": "1635c86fff0d48a99ebae0fa205d1ab5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 932.0,
+        "Y": 652.0
+      },
+      {
+        "Id": "39418f49bc584a9dbf379bb6576e916c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.BlockByName",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 303.0,
+        "Y": 612.0
+      },
+      {
+        "Id": "c03bd20f7e1146c09e7cbe547ff00409",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.ModelSpace",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 316.0,
+        "Y": 765.0
+      },
+      {
+        "Id": "db01b5c33b5242e78abbb179ba33932a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 30.0,
+        "Y": 661.0
+      },
+      {
+        "Id": "ce67118eb19f49389f10f121f1b5ba1d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "BlockReference.ByCoordinateSystem",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 837.91433231164956,
+        "Y": 860.72906068249983
+      },
+      {
+        "Id": "37c284a39f7f4d4e887a9e1f58dfe9c7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FileSystem.FileHasExtension",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 489.0,
+        "Y": 79.0
+      },
+      {
+        "Id": "7adc2ff726bb4d6281c33d740624ee8e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FileSystem.GetDirectoryContents",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 106.0,
+        "Y": 269.0
+      },
+      {
+        "Id": "9842c63e19c1479f9d3efe8d4803f7a4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Boolean",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -86.0,
+        "Y": 378.0
+      },
+      {
+        "Id": "fc9ca8939f094f9dace62a2a193b7368",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -70.0,
+        "Y": 287.0
+      },
+      {
+        "Id": "3b3d449defdb4bc98537b1a9538aa2d6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CoordinateSystem.Rotate",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1221.017534111111,
+        "Y": 581.25125280212626
+      },
+      {
+        "Id": "e18d1da950b54121a27c5b368e45867a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "CoordinateSystem.ByOrigin",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1053.449930499547,
+        "Y": 450.47758145526711
+      }
+    ],
+    "Annotations": [],
+    "X": -176.29659018489531,
+    "Y": -213.79044742905262,
+    "Zoom": 0.982642311367965
+  }
+}

@@ -1,0 +1,1318 @@
+{
+  "Uuid": "382848a7-383b-4fcd-8e1b-25d39fc7fc65",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Create Solids",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "05ea691635d840a396407d60fb31a4ab",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "155d324b45b9475c8a5b804be197eba3",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.Surfaces, Civil3DNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "2954c0c32dbd41d4b1c908074899f16d",
+      "Inputs": [
+        {
+          "Id": "5d20aee80e8b4abe9a0e8bfd9e457656",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f5ddd41a5df145ddb6bf03a1caa2a20c",
+          "Name": "Surface[]",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all surfaces in the drawing."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.TinSurfaceExtensions.CreateSolids@Autodesk.Civil.DynamoNodes.TinSurface,double,string,string",
+      "Id": "a4765fc261084c0ea3453b36b02e2b24",
+      "Inputs": [
+        {
+          "Id": "6bcfbe4a09b94fcd87c9acc97fa183b4",
+          "Name": "surface",
+          "Description": "The surface\n\nTinSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "34c776f58eb847d085b26044e97a56a7",
+          "Name": "depth",
+          "Description": "The depth of the solids\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4cf15a2af6644e48b93b048c206f4f60",
+          "Name": "layer",
+          "Description": "The layer of the solids\n\nstring\nDefault value : \"0\" (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4249ab23bfb844d8ae5d704e4ff70353",
+          "Name": "path",
+          "Description": "The path to the file, if there are multiple surfaces, the solids are NOT appended to the same file. If empty it will add the solids to the current drawing.\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cc7cc3d800614a1ca8333050ab32eb7c",
+          "Name": "Object[]",
+          "Description": "The Solids",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extracts the solids at constant depth from the TinSurface.\n\nTinSurfaceExtensions.CreateSolids (surface: TinSurface, depth: double, layer: string = \"0\", path: string = \"\"): Object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1;\n\"0\";",
+      "Id": "93bd7d820529474f87b7cf94d7068fd3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "906f96a9e63f483ca8dcd17238af81bd",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "42ba6bf951594b1b83bd51320801e039",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "D:\\_Test\\2020\\Civil 3D\\Tin Surface\\TinSurfaceSolids.dwg",
+      "InputValue": ".\\TinSurfaceSolids.dwg",
+      "NodeType": "ExtensionNode",
+      "Id": "63cef1a19e7b4273950bc4a8f3f5611c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e93ad1ec543e4b54a8fa2cbd28ffbfd8",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.TinSurfaceExtensions.CreateSolidsAtFixedElevation@Autodesk.Civil.DynamoNodes.TinSurface,double,string,string",
+      "Id": "826c65474a8f4db58187eb00560c9210",
+      "Inputs": [
+        {
+          "Id": "5e338ee70e4c497986db2256f4a2f208",
+          "Name": "surface",
+          "Description": "The surface\n\nTinSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5940d46e33d54507b69aa240d626df23",
+          "Name": "elevation",
+          "Description": "The fixed elevation of the solids\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8916b8b89830423589a22fe90b2b6f3c",
+          "Name": "layer",
+          "Description": "The layer of the solids\n\nstring\nDefault value : \"0\" (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7dc6600c912a463ebca96144a1d4e95f",
+          "Name": "path",
+          "Description": "The path to the file, if there are multiple surfaces, the solids are NOT appended to the same file. If empty it will add the solids to the current drawing.\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c600f8c32d8a45d1bc94801016144dfe",
+          "Name": "Object[]",
+          "Description": "The Solids",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extracts the solids at fixed elevation from the TinSurface.\n\nTinSurfaceExtensions.CreateSolidsAtFixedElevation (surface: TinSurface, elevation: double, layer: string = \"0\", path: string = \"\"): Object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "300;",
+      "Id": "9a61d87084a74c55b5840cbed03e5e80",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "80701e57a7cb40548d2e3ddcfac9d40d",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.TinSurfaceExtensions.CreateSolidsAtSurface@Autodesk.Civil.DynamoNodes.TinSurface,Autodesk.Civil.DynamoNodes.TinSurface,string,string",
+      "Id": "e622d1353b134e36865de8cef01c0dbf",
+      "Inputs": [
+        {
+          "Id": "a9c1c04147ec444490a9029773037010",
+          "Name": "surface",
+          "Description": "The surface\n\nTinSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f425093b2bbf44c6b4a889ea3f2d5760",
+          "Name": "bottomSurface",
+          "Description": "The doeth of the solids\n\nTinSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d51b55e9c6b5469a85cdaeb328c91c50",
+          "Name": "layer",
+          "Description": "The layer of the solids\n\nstring\nDefault value : \"0\" (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e53a160f72a54e628d21d5d23e98690a",
+          "Name": "path",
+          "Description": "The path to the file, if there are multiple surfaces, the solids are NOT appended to the same file. If empty it will add the solids to the current drawing.\n\nstring\nDefault value : \"\" (disabled)",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b34f2ef9b74241748d73dc3ff2a9b508",
+          "Name": "Object[]",
+          "Description": "The Solids",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extracts the solids at constant depth from the TinSurface.\n\nTinSurfaceExtensions.CreateSolidsAtSurface (surface: TinSurface, bottomSurface: TinSurface, layer: string = \"0\", path: string = \"\"): Object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0];\na[1];",
+      "Id": "46b89c994e7c47f8a6e2e732b0f39f85",
+      "Inputs": [
+        {
+          "Id": "0e7cc9ee8bbe4d7a8fccb5976c0a28ce",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "428f21b9da1a422da142671f03188ed7",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2788c88bad194d4bbf53f1f2caa809f1",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.ByName@Autodesk.AutoCAD.DynamoNodes.Document,string,string",
+      "Id": "0e9ccd93de004a108232a2db49beaee9",
+      "Inputs": [
+        {
+          "Id": "42286530b68e46d5899ea642bab711be",
+          "Name": "document",
+          "Description": "The Document\n\nDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3c8953bf6dd84a68b4a4664b5e5b06e0",
+          "Name": "featurelineName",
+          "Description": "The name of the FeatureLine\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1df47c436341438f9d6130b35bb86d0e",
+          "Name": "siteName",
+          "Description": "The Name of the site, if empty will lookf for siteless FeatureLines\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf91bb8cf81a4b7597e7d9333c640875",
+          "Name": "FeatureLine",
+          "Description": "FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns a FeatureLine with the given name if it exists, otherwise null.\n\nFeatureLine.ByName (document: Document, featurelineName: string, siteName: string = \"\"): FeatureLine"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Feature 1\";",
+      "Id": "00d3c6b2633048ef843bf159731f1d51",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bc6d1b242ee640c395dc900b06a24819",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.PolyCurve",
+      "Id": "12bd1c1aa4f645f8b32efbdac473f939",
+      "Inputs": [
+        {
+          "Id": "38752439e0444dfe87db715ca0b6a7d1",
+          "Name": "featureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ded8ef58412345a9b55c2b14ab3e955e",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The FeatureLine PolyCurve\n\nFeatureLine.PolyCurve: Geometry"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectSelection, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "A744"
+      ],
+      "Id": "b8a6807ec89140c5bc4a55d33811ad3a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ad81f8a7196c4083b1a1f06ec777542f",
+          "Name": "Object",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.ByPolyCurve@string,Autodesk.DesignScript.Geometry.PolyCurve,Autodesk.Civil.DynamoNodes.LandDevelopment.Site,string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "f0d3d13b3e104fc3b87b115252519287",
+      "Inputs": [
+        {
+          "Id": "0a3f6949b8f840b4ab7177213622fbbe",
+          "Name": "name",
+          "Description": "The FeatureLine name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a083aeb3c884bd1bc025f7db7802ef1",
+          "Name": "curve",
+          "Description": "The PolyCurve\n\nPolyCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f3e4fb57e9146628371d652636a02cb",
+          "Name": "site",
+          "Description": "The site of the FeatureLine\n\nSite\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "addfb0a62cc24ce189fc96dc36d1d377",
+          "Name": "layer",
+          "Description": "The layer of the FeatureLine\n\nstring\nDefault value : \"0\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4edd31c47f654e78b7facfd9d9e92e50",
+          "Name": "block",
+          "Description": "The target block\n\nBlock\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a3cc7472d407423ead139144562115b5",
+          "Name": "FeatureLine",
+          "Description": "A FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a FeatureLine via a Dynamo PolyCurve\n\nFeatureLine.ByPolyCurve (name: string, curve: PolyCurve, site: Site = null, layer: string = \"0\", block: Block = null): FeatureLine"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "2de2e8823aea4edcb91e394f6509fe1b",
+      "Inputs": [
+        {
+          "Id": "5545df94df194fa2aa192a2d7a319908",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0ba633c6e4dd41a4ac86b652e6ca2fc2",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectSelection, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "A744"
+      ],
+      "Id": "cdd8cf78a6df4122a82fe775425fbd7e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "925e5cd729304f8ca5a3175852c4e86c",
+          "Name": "Object",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "167b8cd8445f4f0dacb809abca1da9af",
+      "Inputs": [
+        {
+          "Id": "a2cd72694522477b915e8f8b3c9505d1",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2139ce433e9e4606b95de85ac722a296",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"F2\";",
+      "Id": "947eec03c2744f2e9308d32924f6b036",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f6b05d0717bd46f49074377bbc276031",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.SetElevationFromSurface@Autodesk.Civil.DynamoNodes.Surface,bool,double",
+      "Id": "09e5373a725f455db56aca7b979a84b2",
+      "Inputs": [
+        {
+          "Id": "69aa21becdc6487396ca40ae12dbf7e9",
+          "Name": "featureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c1a045456cea4f2da15f1157f38b36cd",
+          "Name": "surface",
+          "Description": "The surface\n\nSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2d236e1b8ff547c6b3e1de2f29d1611b",
+          "Name": "includeIntermediate",
+          "Description": "If true calculates the intermediate points on the Surface\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1fc27a0f2d5d4a1cb0524b325362d927",
+          "Name": "relElevation",
+          "Description": "The relative elevation from the Surface\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "56fd447ab6e546468498dfdc8db615b7",
+          "Name": "FeatureLine",
+          "Description": "FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the FeatureLine Elevation from a Surface\n\nFeatureLine.SetElevationFromSurface (surface: Surface, includeIntermediate: bool, relElevation: double = 0): FeatureLine"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "true;",
+      "Id": "7f18593ae43e42de89b5b9f6cc07ca77",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8b2ebd191b1f4ca4afd404188d857999",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.PolyCurve",
+      "Id": "520ea8d9aeb24047b078e64a94758ca9",
+      "Inputs": [
+        {
+          "Id": "2476972aca6a4bda966cb27387dc29ba",
+          "Name": "featureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "24aab4432e7242b2a760575e4d32e586",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The FeatureLine PolyCurve\n\nFeatureLine.PolyCurve: Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Polyline3D.ByPoints@Autodesk.DesignScript.Geometry.Point[],string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "a25d1ae07cbe482b9edc3f480dd7675c",
+      "Inputs": [
+        {
+          "Id": "0e4b0bad87224eab80b48ea1e14cf448",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "db0e4b94b0bb49458dceb35688c53cd6",
+          "Name": "layer",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9d56d217f9e341daabc8374eaa51b52c",
+          "Name": "block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0bd73228bf69486b85e476d67ea3d6a0",
+          "Name": "Polyline3D",
+          "Description": "Polyline3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create an AutoCAD 3D polyline from a point list.\n\nPolyline3D.ByPoints (points: Point[], layer: string, block: Block): Polyline3D"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine.GetAllPoints",
+      "Id": "0cffba03c1814d31a39d542a1d768a2e",
+      "Inputs": [
+        {
+          "Id": "4f0f7f4c245e43089e91f83a6e2717dd",
+          "Name": "featureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.LandDevelopment.FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "080738ed72da4077b6e0b52f62358631",
+          "Name": "Point[]",
+          "Description": "A list of Points",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Gets all the Points in the FeatureLine\n\nFeatureLine.GetAllPoints ( ): Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"0\";",
+      "Id": "fad6df233b6b4b9eb3fed4c438b79ed9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ccfe8991361f4a5d93e972440031fa63",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.ModelSpace",
+      "Id": "af748a7ee52d46dca2f0134f90bff407",
+      "Inputs": [
+        {
+          "Id": "ab75acb230f04c9c929d9042b884222f",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5cfc1bad230a4554be2d86338e97744c",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the model space block table record.\n\nDocument.ModelSpace: Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "fe014f49b4fe490d9a317c0ecbedd332",
+      "Inputs": [
+        {
+          "Id": "fcd35eac1d4a40df837e83365efa0007",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8cc1e634bd654850bdb493736427637a",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "155d324b45b9475c8a5b804be197eba3",
+      "End": "5d20aee80e8b4abe9a0e8bfd9e457656",
+      "Id": "536a5b74a6794d00a746e2ccfa585ed5"
+    },
+    {
+      "Start": "155d324b45b9475c8a5b804be197eba3",
+      "End": "42286530b68e46d5899ea642bab711be",
+      "Id": "24bb744f213d426baeb0cab6f7db7e95"
+    },
+    {
+      "Start": "155d324b45b9475c8a5b804be197eba3",
+      "End": "ab75acb230f04c9c929d9042b884222f",
+      "Id": "b0f062910fb64c6e8414a1bcdb956fc2"
+    },
+    {
+      "Start": "f5ddd41a5df145ddb6bf03a1caa2a20c",
+      "End": "6bcfbe4a09b94fcd87c9acc97fa183b4",
+      "Id": "bed652d233ec4d248d2d355499dd8312"
+    },
+    {
+      "Start": "f5ddd41a5df145ddb6bf03a1caa2a20c",
+      "End": "5e338ee70e4c497986db2256f4a2f208",
+      "Id": "744fe984888c45948d8f018197b463f4"
+    },
+    {
+      "Start": "f5ddd41a5df145ddb6bf03a1caa2a20c",
+      "End": "0e7cc9ee8bbe4d7a8fccb5976c0a28ce",
+      "Id": "5f84e2eebf8044bebf3bab339a6c42a4"
+    },
+    {
+      "Start": "906f96a9e63f483ca8dcd17238af81bd",
+      "End": "34c776f58eb847d085b26044e97a56a7",
+      "Id": "ccbf308084744e00af3a06632295389c"
+    },
+    {
+      "Start": "42ba6bf951594b1b83bd51320801e039",
+      "End": "8916b8b89830423589a22fe90b2b6f3c",
+      "Id": "f2195a59c6c842d7b3c693e2085cfc8a"
+    },
+    {
+      "Start": "42ba6bf951594b1b83bd51320801e039",
+      "End": "d51b55e9c6b5469a85cdaeb328c91c50",
+      "Id": "692f358ba4914d1faa3bc77eb9a40b9c"
+    },
+    {
+      "Start": "428f21b9da1a422da142671f03188ed7",
+      "End": "a9c1c04147ec444490a9029773037010",
+      "Id": "24476782997e46399a878d32e12e184b"
+    },
+    {
+      "Start": "428f21b9da1a422da142671f03188ed7",
+      "End": "c1a045456cea4f2da15f1157f38b36cd",
+      "Id": "008d187a6e924009b3dc5378760c7f16"
+    },
+    {
+      "Start": "2788c88bad194d4bbf53f1f2caa809f1",
+      "End": "f425093b2bbf44c6b4a889ea3f2d5760",
+      "Id": "23bff501f48041afb1b4351bbbe1a79b"
+    },
+    {
+      "Start": "bc6d1b242ee640c395dc900b06a24819",
+      "End": "0a3f6949b8f840b4ab7177213622fbbe",
+      "Id": "aa665123054946f9a469eeedec4cbfed"
+    },
+    {
+      "Start": "ad81f8a7196c4083b1a1f06ec777542f",
+      "End": "5545df94df194fa2aa192a2d7a319908",
+      "Id": "a8ea3b0c3e4e47949c6b6d2548eb85b7"
+    },
+    {
+      "Start": "0ba633c6e4dd41a4ac86b652e6ca2fc2",
+      "End": "6a083aeb3c884bd1bc025f7db7802ef1",
+      "Id": "7fb16411e48e4fd99c82ddca96626855"
+    },
+    {
+      "Start": "925e5cd729304f8ca5a3175852c4e86c",
+      "End": "a2cd72694522477b915e8f8b3c9505d1",
+      "Id": "2c83df0e0ff34bc8abf5faeec64fdd95"
+    },
+    {
+      "Start": "56fd447ab6e546468498dfdc8db615b7",
+      "End": "2476972aca6a4bda966cb27387dc29ba",
+      "Id": "6c0cfdf10e774e3084fe196abb372430"
+    },
+    {
+      "Start": "56fd447ab6e546468498dfdc8db615b7",
+      "End": "4f0f7f4c245e43089e91f83a6e2717dd",
+      "Id": "899cdaf60e2143fa86e9ec2522cbd41c"
+    },
+    {
+      "Start": "8b2ebd191b1f4ca4afd404188d857999",
+      "End": "2d236e1b8ff547c6b3e1de2f29d1611b",
+      "Id": "3e66d5c4fe694e4794187a18fa69cbd0"
+    },
+    {
+      "Start": "0bd73228bf69486b85e476d67ea3d6a0",
+      "End": "fcd35eac1d4a40df837e83365efa0007",
+      "Id": "f15b8579b9b3471288668d1721e3fe8c"
+    },
+    {
+      "Start": "080738ed72da4077b6e0b52f62358631",
+      "End": "0e4b0bad87224eab80b48ea1e14cf448",
+      "Id": "9e3580e28a7e4732bc5cf97b2bb35d16"
+    },
+    {
+      "Start": "ccfe8991361f4a5d93e972440031fa63",
+      "End": "db0e4b94b0bb49458dceb35688c53cd6",
+      "Id": "0cc587590e9d4696afdfe5cd20b98970"
+    },
+    {
+      "Start": "5cfc1bad230a4554be2d86338e97744c",
+      "End": "9d56d217f9e341daabc8374eaa51b52c",
+      "Id": "900fe240b51c4016b0f6a8a66d77bfc8"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.7",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a4765fc261084c0ea3453b36b02e2b24",
+        "826c65474a8f4db58187eb00560c9210",
+        "e622d1353b134e36865de8cef01c0dbf",
+        "0e9ccd93de004a108232a2db49beaee9",
+        "12bd1c1aa4f645f8b32efbdac473f939",
+        "f0d3d13b3e104fc3b87b115252519287",
+        "09e5373a725f455db56aca7b979a84b2",
+        "520ea8d9aeb24047b078e64a94758ca9",
+        "0cffba03c1814d31a39d542a1d768a2e"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 5952.6880468280178,
+      "EyeY": 266.64554722190576,
+      "EyeZ": -3490.1759106019476,
+      "LookX": -279.52496089051783,
+      "LookY": 84.356604267352054,
+      "LookZ": -1137.1109546324274,
+      "UpX": 0.067798336901590275,
+      "UpY": 0.95881973486819616,
+      "UpZ": 0.27580446251042867
+    },
+    "NodeViews": [
+      {
+        "Id": "05ea691635d840a396407d60fb31a4ab",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.Current",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 554.5,
+        "Y": 265.5
+      },
+      {
+        "Id": "2954c0c32dbd41d4b1c908074899f16d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Surfaces",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 710.5,
+        "Y": 268.5
+      },
+      {
+        "Id": "a4765fc261084c0ea3453b36b02e2b24",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "TinSurfaceExtensions.CreateSolids",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1022.2741975899653,
+        "Y": 128.14741545675417
+      },
+      {
+        "Id": "93bd7d820529474f87b7cf94d7068fd3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 810.0,
+        "Y": 354.0
+      },
+      {
+        "Id": "63cef1a19e7b4273950bc4a8f3f5611c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "File Path",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 668.5,
+        "Y": 903.5
+      },
+      {
+        "Id": "826c65474a8f4db58187eb00560c9210",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "TinSurfaceExtensions.CreateSolidsAtFixedElevation",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 988.5,
+        "Y": 595.5
+      },
+      {
+        "Id": "9a61d87084a74c55b5840cbed03e5e80",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 773.0,
+        "Y": 632.0
+      },
+      {
+        "Id": "e622d1353b134e36865de8cef01c0dbf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "TinSurfaceExtensions.CreateSolidsAtSurface",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1022.5,
+        "Y": 813.5
+      },
+      {
+        "Id": "46b89c994e7c47f8a6e2e732b0f39f85",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 830.0,
+        "Y": 790.0
+      },
+      {
+        "Id": "0e9ccd93de004a108232a2db49beaee9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FeatureLine.ByName",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1338.0664987683531,
+        "Y": 236.43954291691068
+      },
+      {
+        "Id": "00d3c6b2633048ef843bf159731f1d51",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1081.8587694860842,
+        "Y": 429.24963833524248
+      },
+      {
+        "Id": "12bd1c1aa4f645f8b32efbdac473f939",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FeatureLine.PolyCurve",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1864.4683958611656,
+        "Y": 214.96980389542244
+      },
+      {
+        "Id": "b8a6807ec89140c5bc4a55d33811ad3a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Select Object",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1379.8978652076264,
+        "Y": 539.71265631516962
+      },
+      {
+        "Id": "f0d3d13b3e104fc3b87b115252519287",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FeatureLine.ByPolyCurve",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1881.7043123877957,
+        "Y": 428.87140854111868
+      },
+      {
+        "Id": "2de2e8823aea4edcb91e394f6509fe1b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Object.Geometry",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1597.1558500162832,
+        "Y": 537.19249209970428
+      },
+      {
+        "Id": "cdd8cf78a6df4122a82fe775425fbd7e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Select Object",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1338.1703050926151,
+        "Y": 830.67191864606048
+      },
+      {
+        "Id": "167b8cd8445f4f0dacb809abca1da9af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Object.Geometry",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1549.8740010879449,
+        "Y": 827.05395111088751
+      },
+      {
+        "Id": "947eec03c2744f2e9308d32924f6b036",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1628.0,
+        "Y": 710.0
+      },
+      {
+        "Id": "09e5373a725f455db56aca7b979a84b2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FeatureLine.SetElevationFromSurface",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2186.0234447209978,
+        "Y": 729.13448903918129
+      },
+      {
+        "Id": "7f18593ae43e42de89b5b9f6cc07ca77",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1985.0,
+        "Y": 814.0
+      },
+      {
+        "Id": "520ea8d9aeb24047b078e64a94758ca9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FeatureLine.PolyCurve",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2581.6486520218277,
+        "Y": 722.25697622345081
+      },
+      {
+        "Id": "a25d1ae07cbe482b9edc3f480dd7675c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Polyline3D.ByPoints",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 3075.8613934172754,
+        "Y": 828.71979643099974
+      },
+      {
+        "Id": "0cffba03c1814d31a39d542a1d768a2e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "FeatureLine.GetAllPoints",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2580.665404626759,
+        "Y": 877.60213886409281
+      },
+      {
+        "Id": "fad6df233b6b4b9eb3fed4c438b79ed9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2822.0,
+        "Y": 911.0
+      },
+      {
+        "Id": "af748a7ee52d46dca2f0134f90bff407",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.ModelSpace",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 2756.9999630313687,
+        "Y": 1049.5828575794694
+      },
+      {
+        "Id": "fe014f49b4fe490d9a317c0ecbedd332",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Object.Geometry",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 3379.5626652004639,
+        "Y": 832.24437876849345
+      }
+    ],
+    "Annotations": [],
+    "X": -1041.0810373681595,
+    "Y": -275.51628203183407,
+    "Zoom": 0.91090998000154277
+  }
+}

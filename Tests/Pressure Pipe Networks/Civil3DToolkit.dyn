@@ -1,0 +1,2478 @@
+{
+  "Uuid": "23d6b98f-ddb4-4eb6-a5ff-fc31cef4f43c",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Civil3DToolkit",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipeNetworks, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "Id": "395cbffbe89a4da5af31d037abb10625",
+      "Inputs": [
+        {
+          "Id": "cb98a84824cb4b17ac20e78c0f1b2426",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fe491be7832e48f2a3ab5dd993bec587",
+          "Name": "PressurePipeNetwork[]",
+          "Description": "PressurePipeNetwork[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns the Pressure Pipe Networks in the document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "9aed4e8240c54e5099e7d7ceb1a8f3af",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "26581b93091c47a28ba91758d5b1151b",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipeNetwork.GetPipesFittings",
+      "Id": "d73d7385f1c6413d9cf1cd24623608c9",
+      "Inputs": [
+        {
+          "Id": "de422cb7524840a4a3ce81dac0c9c7fd",
+          "Name": "pressurePipeNetwork",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipeNetwork",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5ce89d36ed22471f8224ca3ebca4d376",
+          "Name": "PressurePipes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+          "Name": "Fittings",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ee1af7c4cdfe43999508564fdd50fb64",
+          "Name": "Appurtenances",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the list of pipes and structures in the pipe network.\n\nPressurePipeNetwork.GetPipesFittings ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.FittingByName, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "Id": "b4c99950b5564845b009118daaea5a64",
+      "Inputs": [
+        {
+          "Id": "4b6aeb965088453aa518c9f1e9338369",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ec870a28aa61490dae1770f4385a8521",
+          "Name": "name",
+          "Description": "PressureFitting name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5eb5a85150c8400b909e289e68c9bfcd",
+          "Name": "PressureFitting",
+          "Description": "PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a pressure fitting by Name"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PipeByName, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "Id": "eb44b3c917994334a38623847790fc5b",
+      "Inputs": [
+        {
+          "Id": "d22de07a3f6b4018aeed4d997e283d1c",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e65d509ad7fd4681b0c74f7b6e3601a5",
+          "Name": "name",
+          "Description": "Pipe name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6bfa61aeb40640ab82696698e092018a",
+          "Name": "PressurePipe",
+          "Description": "PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a pressure pipe by Name"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Pressure Pipe - (12)",
+      "Id": "7eef00a79116476fb062994e4b027330",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f44e4600483a4acfb82b0e4f1716f3ee",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Fitting - (9)",
+      "Id": "0af701181e86443a9d76c870218c2d4f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a4266c66e1be45c580099645df538e18",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipeNetwork.Name",
+      "Id": "16970ab49b8046deb4dfc57ea0b70988",
+      "Inputs": [
+        {
+          "Id": "b9d1b2a2e6984e66ae5200b877fd1f3a",
+          "Name": "pressurePipeNetwork",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipeNetwork",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bf9f968634994259bb4aad236b4d92fc",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Network Name\n\nPressurePipeNetwork.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.Solid",
+      "Id": "dc6d15289e31487b9b82d816f448e03b",
+      "Inputs": [
+        {
+          "Id": "bfd5863a9a584128bdac192113c127d7",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4c8ba3cb65e04c8f94135f81e2a38c29",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.Solid: Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Curve",
+      "Id": "d3b5784bb1e44645aa21382e743073af",
+      "Inputs": [
+        {
+          "Id": "a745f1e06acf4180acbdf07a5268f48e",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4876b1ab9f43474aad7e0f4e929d9764",
+          "Name": "Curve",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The center curve of the Pipe\n\nPressurePipe.Curve: Curve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Solid",
+      "Id": "fe4dbf99654a4546ba3326453eb09343",
+      "Inputs": [
+        {
+          "Id": "5a04ee828ad14a06991b1384b045996a",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c812a7e0eb374b529b4e2c44aa29bea4",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Solid associated to the Pipe\n\nPressurePipe.Solid: Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.Material",
+      "Id": "55e853ff51e149a6b4979095e835a9d9",
+      "Inputs": [
+        {
+          "Id": "1490167e851a4705931c2d4f2caeb228",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6012cd235fbf4c4c99275ba2e46a15c6",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.Material: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.PartDescription",
+      "Id": "b758ad3f48ef489a987772aa67ac06ea",
+      "Inputs": [
+        {
+          "Id": "f98c7bb6604c428fbbc450e6ccb0c328",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "48333613f46442a2959ae6b5115f05df",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.PartDescription: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.StartPoint",
+      "Id": "7773d0788c8643f498bc76f55789f9be",
+      "Inputs": [
+        {
+          "Id": "822acd44415d4248a609613bc4514065",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e877b2dfbbc4fb6958d5a730741bd42",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.StartPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.EndPoint",
+      "Id": "f9d4f79a7b3e410db81a241846616191",
+      "Inputs": [
+        {
+          "Id": "03a2ee5158fa42a4a547ca96f67020b2",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d1ff6d9a240d4ec79f8c96dc6df4a660",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.EndPoint: Point"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Appurtenance - (1)",
+      "Id": "ec978def4a1a4c9dad50d0e9534a7b93",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e5af613821a94f38b724005cf556e195",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.AppurteananceByName, Autodesk.Civil3DToolkitUI",
+      "NodeType": "ExtensionNode",
+      "Id": "94a1830edc1f41d0a4f8891591b2f6b5",
+      "Inputs": [
+        {
+          "Id": "996e8fff66834dd594e181054ddc7686",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "40edcaee0ac148a598b3a7f3b2912e1d",
+          "Name": "name",
+          "Description": "PressureAppurtenance name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0a80a078dd744c858c34d3a76d9cbc80",
+          "Name": "PressureAppurtenance",
+          "Description": "PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a pressure appurtenance by Name"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.EndPoint",
+      "Id": "3901dced738e49c98892cd433253f706",
+      "Inputs": [
+        {
+          "Id": "c7ac05e19fa44f3389961df486f4ed4f",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "68d3fcc6d5e64347b567ec69cb28907a",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.EndPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.Material",
+      "Id": "c69ded2949cb45388a3243e9ee3edc84",
+      "Inputs": [
+        {
+          "Id": "fa89901d422b45a5afafa92c5e1b45fa",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e696c5ca4e04e48b5a6e908f3884f3b",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.Material: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.Name",
+      "Id": "4cb62daddd0242c5b6d75d95df2eee9a",
+      "Inputs": [
+        {
+          "Id": "eca34464fc6c43b08d6eb789bd19a0d7",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1f27e5939109479c8e486bc566ba8b90",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.PipeNetworkName",
+      "Id": "9719b0b3aedd4532a9dac71db0784dff",
+      "Inputs": [
+        {
+          "Id": "bc99795fef7342c18ec9448f88c1264e",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "228241c3f63149089bed59e9c7090228",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.PipeNetworkName: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.PartDescription",
+      "Id": "97993b1f3eed4392abf8fec7e5e169c1",
+      "Inputs": [
+        {
+          "Id": "fa7ca8c75cf445c0978848983cea9e76",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8db676bde7854b4a9e996841a83ad7e1",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.PartDescription: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.Solid",
+      "Id": "42f038ab12bf4050b352cb9498c9e3da",
+      "Inputs": [
+        {
+          "Id": "4a67524159094ad0a75d0c20058648d2",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "af00ff08b79e45e283d175928b3c5e75",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.Solid: Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.StartPoint",
+      "Id": "cca9600944a847d7b8905ee73b7d249e",
+      "Inputs": [
+        {
+          "Id": "e1e37f6e71694c13916547e06156000e",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "980a182ddcd64516bbb7a5fa6747f687",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.StartPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.Name",
+      "Id": "00acb236d3f34b579c3b6ee3f2aa4280",
+      "Inputs": [
+        {
+          "Id": "4110ed3680394db5bb3a4def84e78382",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ce56b92d72f8421e863fa5a62d782487",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.PipeNetworkName",
+      "Id": "5aa6f31b16ca4685b360269942548dea",
+      "Inputs": [
+        {
+          "Id": "f74f29072e8949ee9f0b49d6385e1dc7",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f9a7c3be539141588bc84e7b56486d85",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.PipeNetworkName: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.EndElevation",
+      "Id": "75f245dd8f234ff6a0b3593dd6fd094d",
+      "Inputs": [
+        {
+          "Id": "779adf521ede4d91862dd82cdb67d6d4",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f4431a35c33b453ab71e60c06af1ef03",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.EndElevation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.EndFitting",
+      "Id": "bb2d44e4ee9341028a8cb08d4ce1a825",
+      "Inputs": [
+        {
+          "Id": "e9cbedee9e20496282f2657037a69c39",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aae155f4c6e14fe5afe40b45fba571f8",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.EndFitting: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.EndInvert",
+      "Id": "c842dd5d8ed14b68b2eb4c39ea9e1ca4",
+      "Inputs": [
+        {
+          "Id": "e93cd51f48384d2f936480e3f04ec3e8",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4f87a50ba4c54094beccb37a4c9b13f6",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.EndInvert: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.EndObvert",
+      "Id": "1cbceb93a6c24b218058da5513bad31f",
+      "Inputs": [
+        {
+          "Id": "f1d436651964420b971718afdc09796b",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "af4faf820cdc431faedf42ec6ef166b5",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.EndObvert: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.EndPoint",
+      "Id": "42e69c413b8e40f78b7aa7052a0e6725",
+      "Inputs": [
+        {
+          "Id": "eb50b2b234ea48699ab0b227a5c1b008",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "33efdf503e3241ebaa1005c4221c1a5a",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.EndPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.InnerDiameter",
+      "Id": "7f7c6aa73c734eeba9022d18cfa8a07c",
+      "Inputs": [
+        {
+          "Id": "02853733d22d4268bdfbc3696ecd2ea6",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "41f3488778ea4373aeb9675dab59a06a",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.InnerDiameter: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Length2DCenterToCenter",
+      "Id": "418b1afe5a264a84a046e8633b60e531",
+      "Inputs": [
+        {
+          "Id": "8a039c760d5f444d9ce5d69c7e2bc5f1",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "597e90a7c71045689492d2606d28c07f",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.Length2DCenterToCenter: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Length3DCenterToCenter",
+      "Id": "fee76a784f064d3f9245a158c6358ee3",
+      "Inputs": [
+        {
+          "Id": "8c52b79617b245e19049becd9066838f",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0f5960481bf34660a1ed074fb53efb77",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.Length3DCenterToCenter: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Material",
+      "Id": "f543801ff65e45beacc0ec87a6759fe1",
+      "Inputs": [
+        {
+          "Id": "36276389dfd14125a6a5e739f04287ff",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eb376a89b4e24ee59ef89d20098f4ec4",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.Material: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.MidPoint",
+      "Id": "29ab81cf29d9433caa8dd5c875ae9007",
+      "Inputs": [
+        {
+          "Id": "e5f3febd51eb48098228ad6f8f8aa233",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "15c15099ca06442080aeb1e77d0e0d61",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.MidPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Name",
+      "Id": "c658a882005e4146ac140389a7f0224a",
+      "Inputs": [
+        {
+          "Id": "bbce6c6a5c904ff48683b030b292f4d0",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a97d2fa125eb4215b061452d316d7908",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.OuterDiameter",
+      "Id": "eca0ebb1021f4c18afee9cf1238ce542",
+      "Inputs": [
+        {
+          "Id": "198508942e3c48b280add7c67cf38509",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fa24fd27955e454d9e680de454bc6c8b",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.OuterDiameter: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.PartDescription",
+      "Id": "fe17835b4beb461e96221d96293509ac",
+      "Inputs": [
+        {
+          "Id": "152f26ee308c433dbd1b5c21ac8dc766",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "75b1fccf325c4c0699ad4e40c1ec6c83",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.PartDescription: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.PipeNetworkName",
+      "Id": "6f62516f3bd04d21bf14c4d2dfd1b865",
+      "Inputs": [
+        {
+          "Id": "514057199e924b43a150446d21aa4ba2",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "753516d92b814ee2b7fcc632f5532855",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.PipeNetworkName: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Radius",
+      "Id": "e65c9e1be72f484cab54d4ba7fc54040",
+      "Inputs": [
+        {
+          "Id": "001630386b0b415a86d1493a9b9b7385",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5bc13a06104d4f268f164b027bc06fa1",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.Radius: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.Slope",
+      "Id": "74c8b89968b5417eb70961020fecf571",
+      "Inputs": [
+        {
+          "Id": "7297e8be01f54c7e82a886aa328a9116",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7e1fb51b61854af38f0f80882e2d1d28",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.Slope: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.StartElevation",
+      "Id": "0cfa9a2c6eda4561aa34134990cdd1ea",
+      "Inputs": [
+        {
+          "Id": "f3fb6fe5e9514226b15becc4a2ad07d7",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "562a788462624309b7d1c6b7e8a33837",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.StartElevation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.StartFitting",
+      "Id": "0b6b70023b194e14b4c257ca7fe24144",
+      "Inputs": [
+        {
+          "Id": "6dbfc163244947419d9b1c2540781a06",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "80bf3fa8d53b47a5986477d7a08f3226",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.StartFitting: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.StartInvert",
+      "Id": "6f7af7906e0b44409bcb8dd25c4faf29",
+      "Inputs": [
+        {
+          "Id": "1be5148a63b74605a848e17a61247548",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8f58ccd645264a88af5d0efd5f994052",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.StartInvert: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.StartObvert",
+      "Id": "e8e228ecf595438398fdec5035c7a4c9",
+      "Inputs": [
+        {
+          "Id": "7f4acd1df26547438907d2cd3008fed0",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ea68eafe49274c3db93a8c7cf27f04d0",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.StartObvert: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.StartPoint",
+      "Id": "58c11f4a091e45da9512214c0e8e8ed7",
+      "Inputs": [
+        {
+          "Id": "14d04eb8d7c940c599d4334e33dc8bbf",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "755343ad34bb4685ab22207dfc4737b0",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.StartPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe.WallThickness",
+      "Id": "ce8d5a790dbe4bea81ec9ca2acdeb58a",
+      "Inputs": [
+        {
+          "Id": "675c509a837a4eff8d634bd2d0ad6afd",
+          "Name": "pressurePipe",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressurePipe",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "045b31632200446a95896d96271f484f",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressurePipe.WallThickness: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting.Curves",
+      "Id": "b79d43ce13c24d669ee46540a18c612e",
+      "Inputs": [
+        {
+          "Id": "01128b3ea4864623822cab403afa4f5c",
+          "Name": "pressureFitting",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureFitting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1a18d183cc564a0ca75999bbc09c1ae7",
+          "Name": "Curve[]",
+          "Description": "Curve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureFitting.Curves: Curve[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance.Curves",
+      "Id": "08fae8aba1934f85bd5a9c43f1dbfdd8",
+      "Inputs": [
+        {
+          "Id": "7d1a29519a1548a58f6c96692114f4ae",
+          "Name": "pressureAppurtenance",
+          "Description": "Autodesk.Civil.DynamoNodes.PressurePipeNetworks.PressureAppurtenance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "792aace55b2c49bf894bb45264ab4ada",
+          "Name": "Curve[]",
+          "Description": "Curve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "PressureAppurtenance.Curves: Curve[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "fe491be7832e48f2a3ab5dd993bec587",
+      "End": "b9d1b2a2e6984e66ae5200b877fd1f3a",
+      "Id": "db2cbe3ab65648c6aac8b96481dc3c39"
+    },
+    {
+      "Start": "fe491be7832e48f2a3ab5dd993bec587",
+      "End": "de422cb7524840a4a3ce81dac0c9c7fd",
+      "Id": "95894040402d4dffb4a391ae2e38cd8c"
+    },
+    {
+      "Start": "26581b93091c47a28ba91758d5b1151b",
+      "End": "4b6aeb965088453aa518c9f1e9338369",
+      "Id": "232157d833924ba086801a784eaad658"
+    },
+    {
+      "Start": "26581b93091c47a28ba91758d5b1151b",
+      "End": "d22de07a3f6b4018aeed4d997e283d1c",
+      "Id": "5dda88d5ad054808917a67bfc0f8c946"
+    },
+    {
+      "Start": "26581b93091c47a28ba91758d5b1151b",
+      "End": "cb98a84824cb4b17ac20e78c0f1b2426",
+      "Id": "d1038dd8f4f743eeadebab067e2b33ac"
+    },
+    {
+      "Start": "26581b93091c47a28ba91758d5b1151b",
+      "End": "996e8fff66834dd594e181054ddc7686",
+      "Id": "6344a9f5c1694527b8072a28ba5edff4"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "5a04ee828ad14a06991b1384b045996a",
+      "Id": "8c91630cb6cb42f68310eb459a7103f6"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "a745f1e06acf4180acbdf07a5268f48e",
+      "Id": "ed918cb648ef4ffb87106a65a2c103cb"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "779adf521ede4d91862dd82cdb67d6d4",
+      "Id": "a7730d28ee104488b6547d14ddad9793"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "e9cbedee9e20496282f2657037a69c39",
+      "Id": "971759c2a8f94becbe2d78b4e5a78432"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "e93cd51f48384d2f936480e3f04ec3e8",
+      "Id": "ac5bba8d6bec4de2bc076b403b6e35e2"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "f1d436651964420b971718afdc09796b",
+      "Id": "a27937354e934cda81bc41beb05f4059"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "eb50b2b234ea48699ab0b227a5c1b008",
+      "Id": "3c27b8d926a74b5e95b3b23b608670b9"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "02853733d22d4268bdfbc3696ecd2ea6",
+      "Id": "7a72f9bb413448f684a3f00e51b1242c"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "8a039c760d5f444d9ce5d69c7e2bc5f1",
+      "Id": "7bcbd80355fd4fe99f5be568aa9c6a9d"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "8c52b79617b245e19049becd9066838f",
+      "Id": "9d4e8e2629da4d7f84300eef70bb9a3a"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "36276389dfd14125a6a5e739f04287ff",
+      "Id": "7ccf6513f87c47179ed777b8ddd9a75c"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "e5f3febd51eb48098228ad6f8f8aa233",
+      "Id": "5a3feefbabb04f23bf3796b1b56e6e79"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "bbce6c6a5c904ff48683b030b292f4d0",
+      "Id": "e16292d5236f431ba42d1ae93eb084bd"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "1be5148a63b74605a848e17a61247548",
+      "Id": "0d85e22a45ff43639a237a22f8248eb5"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "7f4acd1df26547438907d2cd3008fed0",
+      "Id": "3c36fc8b9e9f4121adfca791cf5287dc"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "198508942e3c48b280add7c67cf38509",
+      "Id": "be1d6f03085a4a6d99f7d946803382e6"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "514057199e924b43a150446d21aa4ba2",
+      "Id": "5a9961b106484c09ad1ee01978bccdd0"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "152f26ee308c433dbd1b5c21ac8dc766",
+      "Id": "a3b43b5003674eeba1e869dc0d832459"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "001630386b0b415a86d1493a9b9b7385",
+      "Id": "1d4a155a81ca4870b3bfe64901a9f537"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "7297e8be01f54c7e82a886aa328a9116",
+      "Id": "96d7f089594647fa8fa5b0aa06122cea"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "f3fb6fe5e9514226b15becc4a2ad07d7",
+      "Id": "0dc7da6b826e49608ad00d056e0bfaed"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "6dbfc163244947419d9b1c2540781a06",
+      "Id": "1d94d3ea7e2b4309866eeb65b7cdf054"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "14d04eb8d7c940c599d4334e33dc8bbf",
+      "Id": "25d3340723f143d5bfd5435ff1a7b69a"
+    },
+    {
+      "Start": "5ce89d36ed22471f8224ca3ebca4d376",
+      "End": "675c509a837a4eff8d634bd2d0ad6afd",
+      "Id": "d01910feed954544999522f06d96aed3"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "bfd5863a9a584128bdac192113c127d7",
+      "Id": "737b29a013384ff49f2e115f14d679bc"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "1490167e851a4705931c2d4f2caeb228",
+      "Id": "faf35125a0724db1bf9e241187ae8d5a"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "f98c7bb6604c428fbbc450e6ccb0c328",
+      "Id": "a5f1c8bc3eb0491681b0e18f8d24a29c"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "822acd44415d4248a609613bc4514065",
+      "Id": "2e7f9fae088c4106b3fd34bafd80b69b"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "03a2ee5158fa42a4a547ca96f67020b2",
+      "Id": "f2651c3f804343ff9a2a3d8b02ca4ada"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "4110ed3680394db5bb3a4def84e78382",
+      "Id": "644326a85be54bf892e843ebd97e84d7"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "f74f29072e8949ee9f0b49d6385e1dc7",
+      "Id": "c589a19113f04a4dbe935d1cdc2142b8"
+    },
+    {
+      "Start": "7410cd06af1444ccb0ec9edd4ac6b6b0",
+      "End": "01128b3ea4864623822cab403afa4f5c",
+      "Id": "49548cd56a214297a3496da5b34e1151"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "c7ac05e19fa44f3389961df486f4ed4f",
+      "Id": "552ecc657f164134aa7b63c334754680"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "fa89901d422b45a5afafa92c5e1b45fa",
+      "Id": "7daa3aa4d03e4527bd37ee01d07c83a6"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "eca34464fc6c43b08d6eb789bd19a0d7",
+      "Id": "e973565eafb84d718b3f7cb4dd702c0d"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "bc99795fef7342c18ec9448f88c1264e",
+      "Id": "09be85d2eb3e4658ba28219e499907e7"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "fa7ca8c75cf445c0978848983cea9e76",
+      "Id": "cea7a583012a4e5f91fd9138778d8df5"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "4a67524159094ad0a75d0c20058648d2",
+      "Id": "b9cde50c246741a0ae2dc91f9f2674d3"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "e1e37f6e71694c13916547e06156000e",
+      "Id": "57f4d7a695b14e6d81f5c11e75a074ca"
+    },
+    {
+      "Start": "ee1af7c4cdfe43999508564fdd50fb64",
+      "End": "7d1a29519a1548a58f6c96692114f4ae",
+      "Id": "c30f0a719cb64b5385da0c9d0a071ae8"
+    },
+    {
+      "Start": "f44e4600483a4acfb82b0e4f1716f3ee",
+      "End": "e65d509ad7fd4681b0c74f7b6e3601a5",
+      "Id": "10576b40777c408e82cca56cee94d949"
+    },
+    {
+      "Start": "a4266c66e1be45c580099645df538e18",
+      "End": "ec870a28aa61490dae1770f4385a8521",
+      "Id": "90e2b39dc79b4c40baa4ff1024d11f8c"
+    },
+    {
+      "Start": "e5af613821a94f38b724005cf556e195",
+      "End": "40edcaee0ac148a598b3a7f3b2912e1d",
+      "Id": "db60cbdec7ea45fd91118cc4025c5b1f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.0.17",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "395cbffbe89a4da5af31d037abb10625",
+        "d73d7385f1c6413d9cf1cd24623608c9",
+        "b4c99950b5564845b009118daaea5a64",
+        "eb44b3c917994334a38623847790fc5b",
+        "16970ab49b8046deb4dfc57ea0b70988",
+        "dc6d15289e31487b9b82d816f448e03b",
+        "d3b5784bb1e44645aa21382e743073af",
+        "fe4dbf99654a4546ba3326453eb09343",
+        "55e853ff51e149a6b4979095e835a9d9",
+        "b758ad3f48ef489a987772aa67ac06ea",
+        "7773d0788c8643f498bc76f55789f9be",
+        "f9d4f79a7b3e410db81a241846616191",
+        "94a1830edc1f41d0a4f8891591b2f6b5",
+        "3901dced738e49c98892cd433253f706",
+        "c69ded2949cb45388a3243e9ee3edc84",
+        "4cb62daddd0242c5b6d75d95df2eee9a",
+        "9719b0b3aedd4532a9dac71db0784dff",
+        "97993b1f3eed4392abf8fec7e5e169c1",
+        "42f038ab12bf4050b352cb9498c9e3da",
+        "cca9600944a847d7b8905ee73b7d249e",
+        "00acb236d3f34b579c3b6ee3f2aa4280",
+        "5aa6f31b16ca4685b360269942548dea",
+        "75f245dd8f234ff6a0b3593dd6fd094d",
+        "bb2d44e4ee9341028a8cb08d4ce1a825",
+        "c842dd5d8ed14b68b2eb4c39ea9e1ca4",
+        "1cbceb93a6c24b218058da5513bad31f",
+        "42e69c413b8e40f78b7aa7052a0e6725",
+        "7f7c6aa73c734eeba9022d18cfa8a07c",
+        "418b1afe5a264a84a046e8633b60e531",
+        "fee76a784f064d3f9245a158c6358ee3",
+        "f543801ff65e45beacc0ec87a6759fe1",
+        "29ab81cf29d9433caa8dd5c875ae9007",
+        "c658a882005e4146ac140389a7f0224a",
+        "eca0ebb1021f4c18afee9cf1238ce542",
+        "fe17835b4beb461e96221d96293509ac",
+        "6f62516f3bd04d21bf14c4d2dfd1b865",
+        "e65c9e1be72f484cab54d4ba7fc54040",
+        "74c8b89968b5417eb70961020fecf571",
+        "0cfa9a2c6eda4561aa34134990cdd1ea",
+        "0b6b70023b194e14b4c257ca7fe24144",
+        "6f7af7906e0b44409bcb8dd25c4faf29",
+        "e8e228ecf595438398fdec5035c7a4c9",
+        "58c11f4a091e45da9512214c0e8e8ed7",
+        "ce8d5a790dbe4bea81ec9ca2acdeb58a",
+        "b79d43ce13c24d669ee46540a18c612e",
+        "08fae8aba1934f85bd5a9c43f1dbfdd8"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "d73d7385-f1c6-413d-9cf1-cd24623608c9",
+      "Binding": {
+        "GetPipesFittings_InClassDecl-1_InFunctionScope-1_Instance0_d73d7385-f1c6-413d-9cf1-cd24623608c9": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPmZhbHNlPC9CYXNlLTBfSGFzRGF0YT4NCjxCYXNlLTBfSGFzTmVzdGVkRGF0YT50cnVlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTBfTmVzdGVkRGF0YUNvdW50PjI8L0Jhc2UtMF9OZXN0ZWREYXRhQ291bnQ+DQo8QmFzZS0wLTBfSGFzRGF0YT50cnVlPC9CYXNlLTAtMF9IYXNEYXRhPg0KPEJhc2UtMC0wX0RhdGEgaWQ9InJlZi0zIj5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBUWlhKcFlXeHBlbUZpYkdWSVlXNWtiR1VnYVdROUluSmxaaTB4SWlCNGJXeHVjenBoTVQwaWFIUjBjRG92TDNOamFHVnRZWE11YldsamNtOXpiMlowTG1OdmJTOWpiSEl2Ym5OaGMzTmxiUzlCZFhSdlpHVnpheTVCZFhSdlEwRkVMa1I1Ym1GdGIwRndjQzVUWlhKMmFXTmxjeTlCWTBSNWJtRnRiMU5sY25acFkyVnpKVEpESlRJd1ZtVnljMmx2YmlVelJERXpMakl1TWpFMk1TNHdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrTnpFM05Ud3ZjM1J5YVc1blNVUStEUW84TDJFeE9sTmxjbWxoYkdsNllXSnNaVWhoYm1Sc1pUNE5Dand2VTA5QlVDMUZUbFk2UW05a2VUNE5Dand2VTA5QlVDMUZUbFk2Ulc1MlpXeHZjR1UrRFFvPTwvQmFzZS0wLTBfRGF0YT4NCjxCYXNlLTAtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMF9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0xX0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTFfSGFzRGF0YT4NCjxCYXNlLTAtMV9EYXRhIGlkPSJyZWYtNCI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK056TXhSVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMC0xX0RhdGE+DQo8QmFzZS0wLTFfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTFfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 1.581087310995744,
+      "EyeY": 1.7515502447822358,
+      "EyeZ": -3.8711845056756014,
+      "LookX": -0.75219109659288208,
+      "LookY": -1.9835912336693133,
+      "LookZ": 2.9749512420553117,
+      "UpX": -0.085845462638958162,
+      "UpY": 0.93667218924853612,
+      "UpZ": 0.33952285112040737
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipeNetworks",
+        "Id": "395cbffbe89a4da5af31d037abb10625",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 527.52581614894461,
+        "Y": -458.85760877446455
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "9aed4e8240c54e5099e7d7ceb1a8f3af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -38.512019286504028,
+        "Y": 412.78295692233905
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipeNetwork.GetPipesFittings",
+        "Id": "d73d7385f1c6413d9cf1cd24623608c9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 893.52581614894461,
+        "Y": -538.85760877446455
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GetFittingByName",
+        "Id": "b4c99950b5564845b009118daaea5a64",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 758.1582596953632,
+        "Y": 286.18662159054884
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GetPipeByName",
+        "Id": "eb44b3c917994334a38623847790fc5b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 774.02789689057886,
+        "Y": 456.31996681656096
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "7eef00a79116476fb062994e4b027330",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 489.22707546291565,
+        "Y": 563.74364935462881
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "0af701181e86443a9d76c870218c2d4f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 485.03825043775225,
+        "Y": 415.6625514826768
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipeNetwork.Name",
+        "Id": "16970ab49b8046deb4dfc57ea0b70988",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 893.52581614894461,
+        "Y": -378.85760877446455
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.Solid",
+        "Id": "dc6d15289e31487b9b82d816f448e03b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -460.62893538784994
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Curve",
+        "Id": "d3b5784bb1e44645aa21382e743073af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -3127.5783430607034
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Solid",
+        "Id": "fe4dbf99654a4546ba3326453eb09343",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -3236.9418772934578
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.Material",
+        "Id": "55e853ff51e149a6b4979095e835a9d9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -347.66433555609052
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.PartDescription",
+        "Id": "b758ad3f48ef489a987772aa67ac06ea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -237.09995844009427
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.StartPoint",
+        "Id": "7773d0788c8643f498bc76f55789f9be",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -124.33721901893023
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PressureFitting.EndPoint",
+        "Id": "f9d4f79a7b3e410db81a241846616191",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -11.87687150803572
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "ec978def4a1a4c9dad50d0e9534a7b93",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 501.11754299412587,
+        "Y": 728.18216009601542
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GetAppurtenanceByName",
+        "Id": "94a1830edc1f41d0a4f8891591b2f6b5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 735.11754299412587,
+        "Y": 702.18216009601542
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PressureAppurtenance.EndPoint",
+        "Id": "3901dced738e49c98892cd433253f706",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1870.2649608967076,
+        "Y": 1041.043631479135
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.Material",
+        "Id": "c69ded2949cb45388a3243e9ee3edc84",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1869.2230816567539,
+        "Y": 710.33732120284662
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.Name",
+        "Id": "4cb62daddd0242c5b6d75d95df2eee9a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1869.2230816567539,
+        "Y": 932.92342615553753
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.PipeNetworkName",
+        "Id": "9719b0b3aedd4532a9dac71db0784dff",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1869.2230816567539,
+        "Y": 1150.5095311082282
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.PartDescription",
+        "Id": "97993b1f3eed4392abf8fec7e5e169c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1869.2230816567539,
+        "Y": 1263.0956360609193
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.Solid",
+        "Id": "42f038ab12bf4050b352cb9498c9e3da",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1869.2230816567539,
+        "Y": 597.75121625015572
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.StartPoint",
+        "Id": "cca9600944a847d7b8905ee73b7d249e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1869.2230816567539,
+        "Y": 820.33732120284662
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.Name",
+        "Id": "00acb236d3f34b579c3b6ee3f2aa4280",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": 105.70437009537466
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.PipeNetworkName",
+        "Id": "5aa6f31b16ca4685b360269942548dea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": 216.32656094407537
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.EndElevation",
+        "Id": "75f245dd8f234ff6a0b3593dd6fd094d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -3017.1064201221834
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.EndFitting",
+        "Id": "bb2d44e4ee9341028a8cb08d4ce1a825",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2907.9173968359964
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.EndInvert",
+        "Id": "c842dd5d8ed14b68b2eb4c39ea9e1ca4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2798.72837354981
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.EndObvert",
+        "Id": "1cbceb93a6c24b218058da5513bad31f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2683.7632295860367
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.EndPoint",
+        "Id": "42e69c413b8e40f78b7aa7052a0e6725",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2572.8776833636393
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.InnerDiameter",
+        "Id": "7f7c6aa73c734eeba9022d18cfa8a07c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2459.947700495859
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Length2DCenterToCenter",
+        "Id": "418b1afe5a264a84a046e8633b60e531",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2350.5513509816828
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Length3DCenterToCenter",
+        "Id": "fee76a784f064d3f9245a158c6358ee3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2242.04175874917
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Material",
+        "Id": "f543801ff65e45beacc0ec87a6759fe1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2132.5510403030471
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PressurePipe.MidPoint",
+        "Id": "29ab81cf29d9433caa8dd5c875ae9007",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -2023.0603218569245
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Name",
+        "Id": "c658a882005e4146ac140389a7f0224a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1914.5979140903858
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.OuterDiameter",
+        "Id": "eca0ebb1021f4c18afee9cf1238ce542",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1804.7369191257162
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.PartDescription",
+        "Id": "fe17835b4beb461e96221d96293509ac",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1694.4044937680458
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.PipeNetworkName",
+        "Id": "6f62516f3bd04d21bf14c4d2dfd1b865",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1584.5722541326695
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Radius",
+        "Id": "e65c9e1be72f484cab54d4ba7fc54040",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1475.5732446515742
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.Slope",
+        "Id": "74c8b89968b5417eb70961020fecf571",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1366.5742351704787
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.StartElevation",
+        "Id": "0cfa9a2c6eda4561aa34134990cdd1ea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1257.1563606137279
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.StartFitting",
+        "Id": "0b6b70023b194e14b4c257ca7fe24144",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1146.0439718016924
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.StartInvert",
+        "Id": "6f7af7906e0b44409bcb8dd25c4faf29",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -1035.0815942241616
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.StartObvert",
+        "Id": "e8e228ecf595438398fdec5035c7a4c9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -926.00840608910858
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.StartPoint",
+        "Id": "58c11f4a091e45da9512214c0e8e8ed7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -815.67995647507541
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressurePipe.WallThickness",
+        "Id": "ce8d5a790dbe4bea81ec9ca2acdeb58a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.0040137854512,
+        "Y": -706.80224085847476
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureFitting.Curves",
+        "Id": "b79d43ce13c24d669ee46540a18c612e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1872.3567854415703,
+        "Y": 315.43470818408105
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PressureAppurtenance.Curves",
+        "Id": "08fae8aba1934f85bd5a9c43f1dbfdd8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1863.0906648202163,
+        "Y": 1393.9090814152014
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "fd3677abc43c4eb8965c3ae29e3325d0",
+        "Title": "PressureAppurtenance",
+        "Nodes": [
+          "3901dced738e49c98892cd433253f706",
+          "c69ded2949cb45388a3243e9ee3edc84",
+          "4cb62daddd0242c5b6d75d95df2eee9a",
+          "9719b0b3aedd4532a9dac71db0784dff",
+          "97993b1f3eed4392abf8fec7e5e169c1",
+          "42f038ab12bf4050b352cb9498c9e3da",
+          "cca9600944a847d7b8905ee73b7d249e",
+          "08fae8aba1934f85bd5a9c43f1dbfdd8"
+        ],
+        "Left": 1853.0906648202163,
+        "Top": 544.75121625015572,
+        "Width": 367.76000000000005,
+        "Height": 942.15786516504568,
+        "FontSize": 36.0,
+        "InitialTop": 597.75121625015572,
+        "InitialHeight": 941.15786516504568,
+        "TextblockHeight": 43.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "2944dbb682864bd084dbe4121fc7952e",
+        "Title": "PressureFitting",
+        "Nodes": [
+          "dc6d15289e31487b9b82d816f448e03b",
+          "55e853ff51e149a6b4979095e835a9d9",
+          "b758ad3f48ef489a987772aa67ac06ea",
+          "7773d0788c8643f498bc76f55789f9be",
+          "f9d4f79a7b3e410db81a241846616191",
+          "00acb236d3f34b579c3b6ee3f2aa4280",
+          "5aa6f31b16ca4685b360269942548dea",
+          "b79d43ce13c24d669ee46540a18c612e"
+        ],
+        "Left": 1862.0040137854512,
+        "Top": -513.62893538784988,
+        "Width": 274.3527716561191,
+        "Height": 922.06364357193092,
+        "FontSize": 36.0,
+        "InitialTop": -460.62893538784994,
+        "InitialHeight": 921.06364357193092,
+        "TextblockHeight": 43.0,
+        "Background": "#FFE8F7AD"
+      },
+      {
+        "Id": "a626fb8550454408a3c62d09b07bc42a",
+        "Title": "PressurePipe",
+        "Nodes": [
+          "d3b5784bb1e44645aa21382e743073af",
+          "fe4dbf99654a4546ba3326453eb09343",
+          "75f245dd8f234ff6a0b3593dd6fd094d",
+          "bb2d44e4ee9341028a8cb08d4ce1a825",
+          "c842dd5d8ed14b68b2eb4c39ea9e1ca4",
+          "1cbceb93a6c24b218058da5513bad31f",
+          "42e69c413b8e40f78b7aa7052a0e6725",
+          "7f7c6aa73c734eeba9022d18cfa8a07c",
+          "418b1afe5a264a84a046e8633b60e531",
+          "fee76a784f064d3f9245a158c6358ee3",
+          "f543801ff65e45beacc0ec87a6759fe1",
+          "29ab81cf29d9433caa8dd5c875ae9007",
+          "c658a882005e4146ac140389a7f0224a",
+          "eca0ebb1021f4c18afee9cf1238ce542",
+          "fe17835b4beb461e96221d96293509ac",
+          "6f62516f3bd04d21bf14c4d2dfd1b865",
+          "e65c9e1be72f484cab54d4ba7fc54040",
+          "74c8b89968b5417eb70961020fecf571",
+          "0cfa9a2c6eda4561aa34134990cdd1ea",
+          "0b6b70023b194e14b4c257ca7fe24144",
+          "6f7af7906e0b44409bcb8dd25c4faf29",
+          "e8e228ecf595438398fdec5035c7a4c9",
+          "58c11f4a091e45da9512214c0e8e8ed7",
+          "ce8d5a790dbe4bea81ec9ca2acdeb58a"
+        ],
+        "Left": 1862.0040137854512,
+        "Top": -3289.9418772934578,
+        "Width": 276.0,
+        "Height": 2676.139636434983,
+        "FontSize": 36.0,
+        "InitialTop": -3236.9418772934578,
+        "InitialHeight": 2675.139636434983,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFC999"
+      },
+      {
+        "Id": "c3be026796cd4d919314591ebd4ef467",
+        "Title": "Selection",
+        "Nodes": [
+          "b4c99950b5564845b009118daaea5a64",
+          "eb44b3c917994334a38623847790fc5b",
+          "7eef00a79116476fb062994e4b027330",
+          "0af701181e86443a9d76c870218c2d4f",
+          "ec978def4a1a4c9dad50d0e9534a7b93",
+          "94a1830edc1f41d0a4f8891591b2f6b5"
+        ],
+        "Left": 475.03825043775225,
+        "Top": 233.18662159054884,
+        "Width": 535.07929255637362,
+        "Height": 587.99553850546658,
+        "FontSize": 36.0,
+        "InitialTop": 286.18662159054884,
+        "InitialHeight": 586.99553850546658,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFF7BAC"
+      },
+      {
+        "Id": "d7bc7841988e47bc884dec8ce073bb07",
+        "Title": "PressurePipeNetwork",
+        "Nodes": [
+          "395cbffbe89a4da5af31d037abb10625",
+          "16970ab49b8046deb4dfc57ea0b70988",
+          "d73d7385f1c6413d9cf1cd24623608c9"
+        ],
+        "Left": 517.52581614894461,
+        "Top": -591.85760877446455,
+        "Width": 729.0,
+        "Height": 306.0,
+        "FontSize": 36.0,
+        "InitialTop": -538.85760877446455,
+        "InitialHeight": 305.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFBB87C6"
+      }
+    ],
+    "X": 13.298218355265533,
+    "Y": 597.8707117220323,
+    "Zoom": 0.17127113218826523
+  }
+}

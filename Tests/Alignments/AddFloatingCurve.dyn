@@ -1,0 +1,193 @@
+{
+  "Uuid": "686d8084-0954-4b04-9e68-0a475984629f",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AddFloatingCurve",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.AlignmentEntitiesExtensions.AlignmentEntities.AddFloatingCurve@Autodesk.Civil.DynamoNodes.Alignment,Autodesk.Civil.DynamoNodes.AlignmentSubEntitiesExtensions.AlignmentSubEntity,bool,double,double,bool,int",
+      "Id": "0a496e3c51d547eca23400e82b0d2b0a",
+      "Inputs": [
+        {
+          "Id": "f376c62a09fd4baeb0509a5c741c9c84",
+          "Name": "alignment",
+          "Description": "The Alignment\n\nAlignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6e3bbc726dfc4d7e96919e96bbefbad8",
+          "Name": "subEnt",
+          "Description": "The AlignmentSubEntity\n\nAlignmentSubEntity",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dfb67ba3ce2d49ecb9508c6822e96abc",
+          "Name": "next",
+          "Description": "If true it considers the entity as next otherwise previous\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3b68c1fd71714a4abbd322eccf33960a",
+          "Name": "radius",
+          "Description": "The arc radius\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ce66fc57757a44a0a46a2ce5c209a12a",
+          "Name": "paramValue",
+          "Description": "The parameter value\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "12832c1f31644691a0fe466732b58af8",
+          "Name": "isClockwise",
+          "Description": "If true the arc is clockwise\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0aa60da295934c4981661fc2c210f826",
+          "Name": "paramType",
+          "Description": "Integer, 0 ChordLength, 1 CurveAngle, 2 CurveLength, 3 CurveThroughPoint, 4 DegreeOfCurve, 5 ExternalDist, 6 MiddleOrdinate, 7 Radius, 8 TangentLength\n\nint\nDefault value : 2",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2127802e360f439ca7ce294bfc0e3ede",
+          "Name": "Alignment",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c57fe5e3345744068009d83e92c5d20b",
+          "Name": "SubEntities",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Add a floating arc to the Alignment\n\nAlignmentEntities.AddFloatingCurve (alignment: Alignment, subEnt: AlignmentSubEntity, next: bool, radius: double, paramValue: double, isClockwise: bool, paramType: int = 2): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "2;",
+      "Id": "6f4fa4d90e2f4a358122925af0ce1921",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "062b3f547e874e8eaaa29116c84511d6",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "062b3f547e874e8eaaa29116c84511d6",
+      "End": "0aa60da295934c4981661fc2c210f826",
+      "Id": "b36a548f81f34051ac6d15d6132d2507"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.15",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "0a496e3c51d547eca23400e82b0d2b0a"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "AlignmentEntities.AddFloatingCurve",
+        "Id": "0a496e3c51d547eca23400e82b0d2b0a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 421.85301059284416,
+        "Y": 182.2951588926627
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "6f4fa4d90e2f4a358122925af0ce1921",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 258.99527968659589,
+        "Y": 459.1652945520874
+      }
+    ],
+    "Annotations": [],
+    "X": -165.771205787695,
+    "Y": -97.028601124526347,
+    "Zoom": 1.1047642563030273
+  }
+}

@@ -1,0 +1,1581 @@
+{
+  "Uuid": "36d212ae-325b-4e77-a865-cbfc54af1342",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Table Styles",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Title\", 0..4, 5..9, []];",
+      "Id": "8374edf62a024c95a24ccc8c3e82a906",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7d3210d80f594c32aa4e38517cf19750",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.ByPointData@Autodesk.DesignScript.Geometry.Point,var[][],double,double,double,string,string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "d9c47fcad700443e89787717089987e5",
+      "Inputs": [
+        {
+          "Id": "16daefae6c5f481a993d7c835da2bd37",
+          "Name": "point",
+          "Description": "The inseriton point of the Table\n\nPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8570f9d9d4504ce39cc9eef1e4199f3e",
+          "Name": "data",
+          "Description": "The data in the table\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "27df95d82736454e80e6ce21cfa5011f",
+          "Name": "rowHeight",
+          "Description": "The row height\n\ndouble\nDefault value : 0.05",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "96fffcdd45c64e8e81499059ce2e352c",
+          "Name": "columnWidth",
+          "Description": "The column width\n\ndouble\nDefault value : 0.25",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cbdfd88c899a496bbec1484aed3a81e4",
+          "Name": "textHeight",
+          "Description": "The text height\n\ndouble\nDefault value : 0.04",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3f3f913aaf624bed8965b4bca8c29185",
+          "Name": "cellAlignment",
+          "Description": "The cell alignment\n\nstring\nDefault value : MiddleCenter",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fa77c639e19e409abfe48ba61798281b",
+          "Name": "layer",
+          "Description": "The destination layer\n\nstring\nDefault value : \"0\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "39ed953217434306b4839419e8999fc5",
+          "Name": "block",
+          "Description": "The block of the table, by default is ModelSpace\n\nBlock\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bb44015922be4d35bfc37565a69c865b",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a Table in AutoCAD.\n\nTable.ByPointData (point: Point, data: var[][], rowHeight: double = 0.05, columnWidth: double = 0.25, textHeight: double = 0.04, cellAlignment: string = MiddleCenter, layer: string = \"0\", block: Block = null): Table"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.Origin",
+      "Id": "0e80d57a876e4c718cd22f0a09822b49",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5eead0372c0f4d48b7e2e1d4af0c0bfa",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the Origin point (0,0,0)\n\nPoint.Origin ( ): Point"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.CellAlignmentDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 3,
+      "SelectedString": "Middle Center",
+      "NodeType": "ExtensionNode",
+      "Id": "46cb1cb738124662a9b310a9b27a978f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "506ff3e4a2b8411f9726f2545309a2d7",
+          "Name": "CellAlignment",
+          "Description": "The selected CellAlignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a table alignment"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.CellBorderDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "All",
+      "NodeType": "ExtensionNode",
+      "Id": "6842b93fa182475c9504696de3252aee",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d617a871b8e0497f812ef831bb287a0e",
+          "Name": "Border",
+          "Description": "The selected Border",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a cell border"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.GridLineStyleDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "Single",
+      "NodeType": "ExtensionNode",
+      "Id": "9b6d85ac4afc4eebaa22f8c931509bb7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5c3fa5ac17b644b1bc1a182f6430ad0e",
+          "Name": "GridLineStyle",
+          "Description": "The selected GridLineStyle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a grid line style"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.LineWeightDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 13,
+      "SelectedString": "0.40",
+      "NodeType": "ExtensionNode",
+      "Id": "7f32f56f33a2434d85a3f6a5c882e4b8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "787ad9f2bbbb401f946261fab4ecbfd7",
+          "Name": "LineWeight",
+          "Description": "The selected LineWeight",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a line weight"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.SetBackgroundColorByRowColumn@int,int,DSCore.Color",
+      "Id": "4f62f28436624e0a91b3c20761bf33f3",
+      "Inputs": [
+        {
+          "Id": "d836214c538344039321eea820f8c7ec",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "48f53ebb951b476bbb1b837be2c64942",
+          "Name": "row",
+          "Description": "The index of the row\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "55a4055611354c71a13bb6c5f0e48fbf",
+          "Name": "column",
+          "Description": "The index of hte column\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f261a3ceca424be19dd552bec42e7f1a",
+          "Name": "color",
+          "Description": "The new color\n\nColor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b1cfbf2bfcd34822b4b9b4d571f4b413",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the background color in the Table cell\n\nTable.SetBackgroundColorByRowColumn (row: int, column: int, color: Color): Table"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;",
+      "Id": "02f75f8d856f494cb2fe78fad06550e3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e993abcbef544a7da98e203203a8a187",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 143,
+        "G": 188,
+        "B": 143,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "eaf2dadec2b243638586f379aeb6c5e1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f81e884db34e4625999324757af87e41",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.SetContentColorByRowColumn@int,int,DSCore.Color",
+      "Id": "a0a0f9af51f84146a3bed3253f00b280",
+      "Inputs": [
+        {
+          "Id": "311bd6afab0d4a94b7c331a832a64904",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3edbeaa8db074652acffada0fad9e67a",
+          "Name": "row",
+          "Description": "The index of the row\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1ff3bcddb7974501b27f564eca052d50",
+          "Name": "column",
+          "Description": "The index of hte column\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2f763553f954437e927dfc00ae28ff94",
+          "Name": "color",
+          "Description": "The new color\n\nColor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5586c14316fb414eb454286eb9327b9d",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the content color in the Table cell\n\nTable.SetContentColorByRowColumn (row: int, column: int, color: Color): Table"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
+      "InputValue": {
+        "R": 0,
+        "G": 139,
+        "B": 139,
+        "A": 255
+      },
+      "NodeType": "ColorInputNode",
+      "Id": "ef16bc24873c451cb363f891e87856db",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2a710fa5929d4ef98f50468b0e978d39",
+          "Name": "Color",
+          "Description": "Selected Color.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select a Color from the palette"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.SetValueByRowColumn@int,int,var",
+      "Id": "7314aab7bb7840dfbcb7a946686b1365",
+      "Inputs": [
+        {
+          "Id": "86665de021234b72ac09a31acb2cd1a3",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "93103dc85934401a98c162cedca90cd9",
+          "Name": "row",
+          "Description": "The index of the row\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b32986cd22a14e738d5b8ee7e05e3907",
+          "Name": "column",
+          "Description": "The index of the column\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a9f424ffea384574ab781443947d7131",
+          "Name": "value",
+          "Description": "The new value\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4a983ff20afe4bbcb0841c70ab14c147",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the value in the Table cell\n\nTable.SetValueByRowColumn (row: int, column: int, value: var): Table"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"ADSK Consulting\";",
+      "Id": "393f813b4d8048c8bf35cf9475d39bc0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "dd1c7ef128bf47baa41a6d88f1204b81",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.SetBorderByRowColumn@int,int,string,DSCore.Color,bool,double,double,string,string,string",
+      "Id": "955891f5077142378f6e5ab41be5d319",
+      "Inputs": [
+        {
+          "Id": "a8e05da099394720892a526ccd532e5b",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7120f3a691924f93909675372764c0b1",
+          "Name": "row",
+          "Description": "The cell row index\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9b79d9ba18db485b97805b74af918653",
+          "Name": "column",
+          "Description": "The cell column index\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "aec97d13497f4835b91fda777da0c6a0",
+          "Name": "border",
+          "Description": "The cell border\n\nstring\nDefault value : \"All\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9e8b4d6b5c05431bbd972d61f206d9f4",
+          "Name": "color",
+          "Description": "The border color\n\nColor\nDefault value : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eee513de1c1a4f078d76444d7448ca1b",
+          "Name": "visible",
+          "Description": "Sets the border visible\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "22ca43cc2bc44c8394086575386fa7bf",
+          "Name": "lineSpacing",
+          "Description": "The border line spacing\n\ndouble\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2d33839ab2e548e0a8cc25789fa60660",
+          "Name": "margin",
+          "Description": "The border margin\n\ndouble\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a625f0a471f340dc91d253c3e9b28ad8",
+          "Name": "lineWeight",
+          "Description": "The border lineweight\n\nstring\nDefault value : \"ByBlock\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "90294661be3b4bbe9abe89ced4fd3f1f",
+          "Name": "lineStyle",
+          "Description": "The border line style\n\nstring\nDefault value : \"Single\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b7d4ec2a05c04b0bab3d33e62c73ab70",
+          "Name": "linetype",
+          "Description": "The border line type\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f5615631ea5349a1980053cf589d93c4",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the appearance of cell borders in the Table\n\nTable.SetBorderByRowColumn (row: int, column: int, border: string = \"All\", color: Color = null, visible: bool = true, lineSpacing: double = -1, margin: double = -1, lineWeight: string = \"ByBlock\", lineStyle: string = \"Single\", linetype: string = \"\"): Table"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1;\n4;",
+      "Id": "a7f57e8550c646fc869bb9b7b5938fa9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "edf3ed0dcbfc4c259cf2eee5c1df21c1",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f332bfaeaf684d7189f33e533f1cb444",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.LineTypesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 0,
+      "SelectedString": "ByBlock",
+      "NodeType": "ExtensionNode",
+      "Id": "9e8f4ac064a2414db868b23a1de0b8ea",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "72a15bd7b90349b6b557a4160a44f68a",
+          "Name": "LineType",
+          "Description": "The selected LineType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a line types"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.Data",
+      "Id": "71ee47aadc5f4b1d9b7a831415edfe47",
+      "Inputs": [
+        {
+          "Id": "772395122a3245ef954fc635b6358119",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aff28a4b71ac46d2bdd01365ca2375c3",
+          "Name": "var[][]",
+          "Description": "var[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.Data: var[][]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Object.Type@var",
+      "Id": "fddeb1c3165449999d48bfa39213df7e",
+      "Inputs": [
+        {
+          "Id": "c852c4822237486da6b39bb1069c80c2",
+          "Name": "obj",
+          "Description": "An object.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "74441b93b90a43b681fe8741219a131d",
+          "Name": "string",
+          "Description": "Type of object.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of object represented as string.\n\nObject.Type (obj: var): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.Height",
+      "Id": "8e2038ca806d4499bd0a12e3472f7760",
+      "Inputs": [
+        {
+          "Id": "c0910f8c0c5c44fcb368ccf676da640e",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5c174e328e784ec187858a8c13f8d251",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.Height: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.Position",
+      "Id": "0eeef08a835e43459eac63b843509881",
+      "Inputs": [
+        {
+          "Id": "7ffb0f4e6df241da9091e801c8cdee46",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1d10b3bd83294cacba44d2c99911908d",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.Position: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.Style",
+      "Id": "48985d0ee8f645d7868c1074053dd085",
+      "Inputs": [
+        {
+          "Id": "3211f2a68df945c48f4c42963251e8b3",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2bad1f3f07364b339e15b7b6feaf29f7",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.Style: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.Columns",
+      "Id": "466113422d9642e1a507c1b837cc841c",
+      "Inputs": [
+        {
+          "Id": "953e39a1a73e463ab58daf5ed0721288",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "16126eae815d489ba58fd0adc8a8bda4",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.Columns: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.BreakEnabled",
+      "Id": "5c7d2b0bfc7349fd80e2ac6c4a9a3e99",
+      "Inputs": [
+        {
+          "Id": "fbdce89404c84687a7ec135e32ec8830",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c063abe31fc545aca1e8cdb189b1b25e",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.BreakEnabled: bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.Rows",
+      "Id": "f38e090c27504dbd9e81b6b7b68c552d",
+      "Inputs": [
+        {
+          "Id": "7cbe5dd92dc64e7ba8b65b6fc0296d95",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7e6205942837449f97b3cebe435372b9",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Table.Rows: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.AddColumns@int,double,int",
+      "Id": "bca2515a7bb74530a2022d43509085c7",
+      "Inputs": [
+        {
+          "Id": "e51c142b1699492492727b4dc4f81c5b",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ec231d9c3d194ae1b2a64d6b0249cbb2",
+          "Name": "column",
+          "Description": "The index of the column where to insert new columns\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1bb15320bf164616a6287d537f4890ab",
+          "Name": "width",
+          "Description": "The column width\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0ee7182f647843a0a632e606c8941eb2",
+          "Name": "amount",
+          "Description": "The amount columns to add\n\nint\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b61ec439963c40aeb51905581224dcbf",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Inserts columns in the Table\n\nTable.AddColumns (column: int, width: double, amount: int = 1): Table"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Table.AddRows@int,double,int",
+      "Id": "78165fa5f35c41558ffd606e2710860f",
+      "Inputs": [
+        {
+          "Id": "a771a4feba9e4156980257180dc537c7",
+          "Name": "table",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "997e51f1ae644ec3a8e8eaa2e2036512",
+          "Name": "row",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "98774bd7bbf64dc889b53e7c4f435c3a",
+          "Name": "height",
+          "Description": "The row height\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0c82519c02064afe85f0c40b802595c8",
+          "Name": "amount",
+          "Description": "The amount rows to add\n\nint\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b3c1dbdcbc0f4776a3c825b46534d466",
+          "Name": "Table",
+          "Description": "Table",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Inserts rows in the Table\n\nTable.AddRows (row: int, height: double, amount: int = 1): Table"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "2;\n0.5;",
+      "Id": "7b305a41f7cf4af8958be0c7cfd17073",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "366def67c4404f358a6e304603cfb664",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "285bb343530349c6b6e38c8b4f089a95",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "7d3210d80f594c32aa4e38517cf19750",
+      "End": "8570f9d9d4504ce39cc9eef1e4199f3e",
+      "Id": "c5b4a89f95934260b6c96af64d1cfd7a"
+    },
+    {
+      "Start": "bb44015922be4d35bfc37565a69c865b",
+      "End": "d836214c538344039321eea820f8c7ec",
+      "Id": "9dc92e274198400cae10f138da22e0d2"
+    },
+    {
+      "Start": "bb44015922be4d35bfc37565a69c865b",
+      "End": "c0910f8c0c5c44fcb368ccf676da640e",
+      "Id": "7f16033592e64a69aca3c7040fef9618"
+    },
+    {
+      "Start": "bb44015922be4d35bfc37565a69c865b",
+      "End": "7ffb0f4e6df241da9091e801c8cdee46",
+      "Id": "ff9c0de2c21e4c238ea786327028f98e"
+    },
+    {
+      "Start": "5eead0372c0f4d48b7e2e1d4af0c0bfa",
+      "End": "16daefae6c5f481a993d7c835da2bd37",
+      "Id": "a38cfd579b05481094881f1a0cc0d0f1"
+    },
+    {
+      "Start": "506ff3e4a2b8411f9726f2545309a2d7",
+      "End": "3f3f913aaf624bed8965b4bca8c29185",
+      "Id": "c693397c42f348e0979204d51eea952c"
+    },
+    {
+      "Start": "d617a871b8e0497f812ef831bb287a0e",
+      "End": "aec97d13497f4835b91fda777da0c6a0",
+      "Id": "ead8bae91a69401db3a62d3ace055d92"
+    },
+    {
+      "Start": "5c3fa5ac17b644b1bc1a182f6430ad0e",
+      "End": "90294661be3b4bbe9abe89ced4fd3f1f",
+      "Id": "866de4c3e8ca4a80bcd74d34cb8fb518"
+    },
+    {
+      "Start": "787ad9f2bbbb401f946261fab4ecbfd7",
+      "End": "a625f0a471f340dc91d253c3e9b28ad8",
+      "Id": "66e4c6f0b1f841a7975fd4d3336b71dc"
+    },
+    {
+      "Start": "b1cfbf2bfcd34822b4b9b4d571f4b413",
+      "End": "311bd6afab0d4a94b7c331a832a64904",
+      "Id": "860686aa8c4146f0b49080f09c2502a2"
+    },
+    {
+      "Start": "e993abcbef544a7da98e203203a8a187",
+      "End": "48f53ebb951b476bbb1b837be2c64942",
+      "Id": "3028eea83dfc405a984c145004690966"
+    },
+    {
+      "Start": "e993abcbef544a7da98e203203a8a187",
+      "End": "55a4055611354c71a13bb6c5f0e48fbf",
+      "Id": "9471e5f0e8cb4c71a5b36e638aac44ba"
+    },
+    {
+      "Start": "e993abcbef544a7da98e203203a8a187",
+      "End": "3edbeaa8db074652acffada0fad9e67a",
+      "Id": "0136cdcb00d94f61a2a7f9c00e72609a"
+    },
+    {
+      "Start": "e993abcbef544a7da98e203203a8a187",
+      "End": "1ff3bcddb7974501b27f564eca052d50",
+      "Id": "fd2603e52954446593d413530f3f701c"
+    },
+    {
+      "Start": "e993abcbef544a7da98e203203a8a187",
+      "End": "93103dc85934401a98c162cedca90cd9",
+      "Id": "af3ffb1fcf274fafab6d87a57ba6ee95"
+    },
+    {
+      "Start": "e993abcbef544a7da98e203203a8a187",
+      "End": "b32986cd22a14e738d5b8ee7e05e3907",
+      "Id": "25fac787580c437fb5189c2ab5d68781"
+    },
+    {
+      "Start": "f81e884db34e4625999324757af87e41",
+      "End": "f261a3ceca424be19dd552bec42e7f1a",
+      "Id": "606cf3cbb3b44142ba3bc38d44452493"
+    },
+    {
+      "Start": "5586c14316fb414eb454286eb9327b9d",
+      "End": "86665de021234b72ac09a31acb2cd1a3",
+      "Id": "161ecbd7817145d2b22ccfd85943193e"
+    },
+    {
+      "Start": "2a710fa5929d4ef98f50468b0e978d39",
+      "End": "2f763553f954437e927dfc00ae28ff94",
+      "Id": "3e2d782f5132456da912f9df38ce143e"
+    },
+    {
+      "Start": "4a983ff20afe4bbcb0841c70ab14c147",
+      "End": "a8e05da099394720892a526ccd532e5b",
+      "Id": "27fafb0f669c42f9b0ccb954ccc26aee"
+    },
+    {
+      "Start": "dd1c7ef128bf47baa41a6d88f1204b81",
+      "End": "a9f424ffea384574ab781443947d7131",
+      "Id": "0a1c894f3c0e410c86c1c5cacd4e830a"
+    },
+    {
+      "Start": "f5615631ea5349a1980053cf589d93c4",
+      "End": "e51c142b1699492492727b4dc4f81c5b",
+      "Id": "0023fbedeab84c7b806f04980471f593"
+    },
+    {
+      "Start": "edf3ed0dcbfc4c259cf2eee5c1df21c1",
+      "End": "7120f3a691924f93909675372764c0b1",
+      "Id": "506c7251a05e425ba8b9e551e3618f75"
+    },
+    {
+      "Start": "f332bfaeaf684d7189f33e533f1cb444",
+      "End": "9b79d9ba18db485b97805b74af918653",
+      "Id": "f24a99d2aadb457bb876c149e77bf4c4"
+    },
+    {
+      "Start": "72a15bd7b90349b6b557a4160a44f68a",
+      "End": "b7d4ec2a05c04b0bab3d33e62c73ab70",
+      "Id": "fba04b95b1d64be5bb3b9fb57a33c6fa"
+    },
+    {
+      "Start": "aff28a4b71ac46d2bdd01365ca2375c3",
+      "End": "c852c4822237486da6b39bb1069c80c2",
+      "Id": "4a7d6240b6a942478a91b529bf42974d"
+    },
+    {
+      "Start": "b61ec439963c40aeb51905581224dcbf",
+      "End": "a771a4feba9e4156980257180dc537c7",
+      "Id": "88366fcdaf7a4d0699d660a5abfedb23"
+    },
+    {
+      "Start": "b3c1dbdcbc0f4776a3c825b46534d466",
+      "End": "772395122a3245ef954fc635b6358119",
+      "Id": "6f340be1babc49658b8a0f74864bda60"
+    },
+    {
+      "Start": "b3c1dbdcbc0f4776a3c825b46534d466",
+      "End": "953e39a1a73e463ab58daf5ed0721288",
+      "Id": "e7093bfc9fed4af29b3436877eba9d46"
+    },
+    {
+      "Start": "b3c1dbdcbc0f4776a3c825b46534d466",
+      "End": "fbdce89404c84687a7ec135e32ec8830",
+      "Id": "92847b992df3410c82ab36bc30d8630e"
+    },
+    {
+      "Start": "b3c1dbdcbc0f4776a3c825b46534d466",
+      "End": "7cbe5dd92dc64e7ba8b65b6fc0296d95",
+      "Id": "46b170e01fc9487a874f9d10ff5b6c32"
+    },
+    {
+      "Start": "b3c1dbdcbc0f4776a3c825b46534d466",
+      "End": "3211f2a68df945c48f4c42963251e8b3",
+      "Id": "e2a6058da90143df87c0260e2d583ed8"
+    },
+    {
+      "Start": "366def67c4404f358a6e304603cfb664",
+      "End": "ec231d9c3d194ae1b2a64d6b0249cbb2",
+      "Id": "add71c9530ac44a9abac42f156fa38a5"
+    },
+    {
+      "Start": "366def67c4404f358a6e304603cfb664",
+      "End": "997e51f1ae644ec3a8e8eaa2e2036512",
+      "Id": "220d81843a2444899e922f6983a6106d"
+    },
+    {
+      "Start": "366def67c4404f358a6e304603cfb664",
+      "End": "0ee7182f647843a0a632e606c8941eb2",
+      "Id": "e483e8cd75c4451fb2c47158a9f5f8f7"
+    },
+    {
+      "Start": "366def67c4404f358a6e304603cfb664",
+      "End": "0c82519c02064afe85f0c40b802595c8",
+      "Id": "47772f7f5929403883f1cacd516bd4d3"
+    },
+    {
+      "Start": "285bb343530349c6b6e38c8b4f089a95",
+      "End": "1bb15320bf164616a6287d537f4890ab",
+      "Id": "79824f842ccf4a539235aa2fddcc6817"
+    },
+    {
+      "Start": "285bb343530349c6b6e38c8b4f089a95",
+      "End": "98774bd7bbf64dc889b53e7c4f435c3a",
+      "Id": "fd0087f882a24eeb9c2d687116c5a88f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.10",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d9c47fcad700443e89787717089987e5",
+        "46cb1cb738124662a9b310a9b27a978f",
+        "6842b93fa182475c9504696de3252aee",
+        "9b6d85ac4afc4eebaa22f8c931509bb7",
+        "7f32f56f33a2434d85a3f6a5c882e4b8",
+        "4f62f28436624e0a91b3c20761bf33f3",
+        "a0a0f9af51f84146a3bed3253f00b280",
+        "7314aab7bb7840dfbcb7a946686b1365",
+        "955891f5077142378f6e5ab41be5d319",
+        "9e8f4ac064a2414db868b23a1de0b8ea",
+        "71ee47aadc5f4b1d9b7a831415edfe47",
+        "8e2038ca806d4499bd0a12e3472f7760",
+        "0eeef08a835e43459eac63b843509881",
+        "48985d0ee8f645d7868c1074053dd085",
+        "466113422d9642e1a507c1b837cc841c",
+        "5c7d2b0bfc7349fd80e2ac6c4a9a3e99",
+        "f38e090c27504dbd9e81b6b7b68c552d",
+        "bca2515a7bb74530a2022d43509085c7",
+        "78165fa5f35c41558ffd606e2710860f"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "d9c47fca-d700-443e-8978-7717089987e5",
+      "Binding": {
+        "ByPointData_InClassDecl-1_InFunctionScope-1_Instance0_d9c47fca-d700-443e-8978-7717089987e5": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK05rSTJRVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -20.687630584502308,
+      "EyeY": 22.4115997998775,
+      "EyeZ": 99.990214491761151,
+      "LookX": 20.687630584502308,
+      "LookY": -22.4115997998775,
+      "LookZ": -99.990214491761151,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "8374edf62a024c95a24ccc8c3e82a906",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 40.991726908948237,
+        "Y": 642.10079961059739
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.ByPointData",
+        "Id": "d9c47fcad700443e89787717089987e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 353.84332844059645,
+        "Y": 584.33622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.Origin",
+        "Id": "0e80d57a876e4c718cd22f0a09822b49",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 46.843328440596451,
+        "Y": 529.33622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Cell Alignments",
+        "Id": "46cb1cb738124662a9b310a9b27a978f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 46.843328440596451,
+        "Y": 746.33622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Cell Borders",
+        "Id": "6842b93fa182475c9504696de3252aee",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.8433284405965,
+        "Y": 1126.3362206415377
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Grid Line Styles",
+        "Id": "9b6d85ac4afc4eebaa22f8c931509bb7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.8433284405965,
+        "Y": 1343.3362206415377
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Line Weights",
+        "Id": "7f32f56f33a2434d85a3f6a5c882e4b8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.8433284405965,
+        "Y": 1234.3362206415377
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.SetBackgroundColorByRowColumn",
+        "Id": "4f62f28436624e0a91b3c20761bf33f3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 687.84332844059645,
+        "Y": 769.33622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "02f75f8d856f494cb2fe78fad06550e3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 353.84332844059645,
+        "Y": 874.54955397487106
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "eaf2dadec2b243638586f379aeb6c5e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 353.84332844059645,
+        "Y": 983.33622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.SetContentColorByRowColumn",
+        "Id": "a0a0f9af51f84146a3bed3253f00b280",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1054.8433284405965,
+        "Y": 769.33622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Color Palette",
+        "Id": "ef16bc24873c451cb363f891e87856db",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 687.84332844059645,
+        "Y": 989.83622064153769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.SetValueByRowColumn",
+        "Id": "7314aab7bb7840dfbcb7a946686b1365",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.8433284405965,
+        "Y": 821.33622064153758
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "393f813b4d8048c8bf35cf9475d39bc0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1054.8433284405965,
+        "Y": 955.54955397487083
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.SetBorderByRowColumn",
+        "Id": "955891f5077142378f6e5ab41be5d319",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1693.8433284405965,
+        "Y": 1028.3362206415377
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a7f57e8550c646fc869bb9b7b5938fa9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.8433284405965,
+        "Y": 1007.7628873082044
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Line Types",
+        "Id": "9e8f4ac064a2414db868b23a1de0b8ea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.8433284405965,
+        "Y": 1451.3362206415377
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.Data",
+        "Id": "71ee47aadc5f4b1d9b7a831415edfe47",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2662.2368597473446,
+        "Y": 593.80632261982657
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Type",
+        "Id": "fddeb1c3165449999d48bfa39213df7e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2947.2368597473446,
+        "Y": 593.80632261982657
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.Height",
+        "Id": "8e2038ca806d4499bd0a12e3472f7760",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 652.12175796352687,
+        "Y": 555.36222339039034
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.Position",
+        "Id": "0eeef08a835e43459eac63b843509881",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 644.71518500189836,
+        "Y": 447.32886161039931
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.Style",
+        "Id": "48985d0ee8f645d7868c1074053dd085",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2680.4832815605728,
+        "Y": 172.33602886217054
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.Columns",
+        "Id": "466113422d9642e1a507c1b837cc841c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2676.9024660608397,
+        "Y": 483.9536492285726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.BreakEnabled",
+        "Id": "5c7d2b0bfc7349fd80e2ac6c4a9a3e99",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2675.434177904961,
+        "Y": 393.65392764201181
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.Rows",
+        "Id": "f38e090c27504dbd9e81b6b7b68c552d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2679.1048982946581,
+        "Y": 301.1517738216325
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.AddColumns",
+        "Id": "bca2515a7bb74530a2022d43509085c7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1988.6350988952247,
+        "Y": 734.16458647199033
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Table.AddRows",
+        "Id": "78165fa5f35c41558ffd606e2710860f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2363.9301110441061,
+        "Y": 589.06352645117636
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "7b305a41f7cf4af8958be0c7cfd17073",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1756.0,
+        "Y": 774.0
+      }
+    ],
+    "Annotations": [],
+    "X": -1243.0614049321487,
+    "Y": 53.325091420453077,
+    "Zoom": 0.77163305010286543
+  }
+}

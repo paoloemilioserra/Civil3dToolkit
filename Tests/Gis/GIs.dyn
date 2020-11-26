@@ -1,0 +1,345 @@
+{
+  "Uuid": "01e01001-4760-48ce-83ba-bfb9e52b794f",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "GIs",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.Map.Current",
+      "Id": "67633b6390fd4eca90b67e5315ec70de",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "063cf5faaf85460ea85c52642de2079c",
+          "Name": "Map",
+          "Description": "Map",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the current Map\n\nMap.Current ( ): Map"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.Map.Layers",
+      "Id": "075a5126dc2547809f8a4ff2bf2ed9a0",
+      "Inputs": [
+        {
+          "Id": "addf059cab37416ab57d2d3324816c9c",
+          "Name": "map",
+          "Description": "Autodesk.Civil.DynamoNodes.GIS.Map",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "111d9f07ad9b493688da27d387fac309",
+          "Name": "MapLayer[]",
+          "Description": "MapLayer[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Layers in the Map\n\nMap.Layers: MapLayer[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[5];",
+      "Id": "20c80e8bc1624e1097cba6e632ce136f",
+      "Inputs": [
+        {
+          "Id": "528a79a29a1d4bb5acd3b17ec0784bc5",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0899479cfb19421bb669cfb4522052cd",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.MapLayer.Features",
+      "Id": "f905df9af1f2483e937585c2209cd3c5",
+      "Inputs": [
+        {
+          "Id": "bd1482a1f77044d59c7fd5c6bbf09ecd",
+          "Name": "mapLayer",
+          "Description": "Autodesk.Civil.DynamoNodes.GIS.MapLayer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2de72839cdf34e01982fde04a6fd086a",
+          "Name": "MapFeature[]",
+          "Description": "MapFeature[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the features on the layer\n\nMapLayer.Features: MapFeature[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0..10];",
+      "Id": "6bcde8e11f0149999581308c4eb427ea",
+      "Inputs": [
+        {
+          "Id": "e696218cb4d94731816c4fde93efdd38",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "36d562d893ff4e289025c439c8f6d039",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.MapFeature.Geometry",
+      "Id": "b9a8807858c4489cbb4468419bda958b",
+      "Inputs": [
+        {
+          "Id": "ca062cd678b247bd85d2a2c37947dc06",
+          "Name": "mapFeature",
+          "Description": "Autodesk.Civil.DynamoNodes.GIS.MapFeature",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6e0a082cce794a80a7878b2e16ea7e9c",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The geometry associated to the feature\n\nMapFeature.Geometry: var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.MapFeature.Properties",
+      "Id": "632216e6296f4ce0b7d380ca2089ad93",
+      "Inputs": [
+        {
+          "Id": "9ad95269c9b647ccbf7fdec2c29de3f3",
+          "Name": "mapFeature",
+          "Description": "Autodesk.Civil.DynamoNodes.GIS.MapFeature",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "913fd0aa2b0d42e8838e8ed5acb989b3",
+          "Name": "MapProperty[]",
+          "Description": "MapProperty[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The feature properties\n\nMapFeature.Properties: MapProperty[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "063cf5faaf85460ea85c52642de2079c",
+      "End": "addf059cab37416ab57d2d3324816c9c",
+      "Id": "8b1e492773f24202bf2368d57c8fadb3"
+    },
+    {
+      "Start": "111d9f07ad9b493688da27d387fac309",
+      "End": "528a79a29a1d4bb5acd3b17ec0784bc5",
+      "Id": "631172b288294bc4b5e4fac6d6721131"
+    },
+    {
+      "Start": "0899479cfb19421bb669cfb4522052cd",
+      "End": "bd1482a1f77044d59c7fd5c6bbf09ecd",
+      "Id": "5138346869914495863a2070fc226b7a"
+    },
+    {
+      "Start": "2de72839cdf34e01982fde04a6fd086a",
+      "End": "e696218cb4d94731816c4fde93efdd38",
+      "Id": "f94831a2a05a4beeb79c71c9ecb2b559"
+    },
+    {
+      "Start": "36d562d893ff4e289025c439c8f6d039",
+      "End": "ca062cd678b247bd85d2a2c37947dc06",
+      "Id": "deceea02c44b4633b2dbb2f18ad9e5ff"
+    },
+    {
+      "Start": "36d562d893ff4e289025c439c8f6d039",
+      "End": "9ad95269c9b647ccbf7fdec2c29de3f3",
+      "Id": "1d338b025ed048f482b7eb36e8245aa5"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.1.1.7865",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -0.37601987757651445,
+      "EyeY": 117.31679540541055,
+      "EyeZ": 113.76864000957087,
+      "LookX": 0.37601987757651445,
+      "LookY": -117.31679540541055,
+      "LookZ": -113.76864000957087,
+      "UpX": 0.0018242122264352113,
+      "UpY": 0.83388582206716921,
+      "UpZ": -0.551933970693159
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Map.Current",
+        "Id": "67633b6390fd4eca90b67e5315ec70de",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 252.0,
+        "Y": 225.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Map.Layers",
+        "Id": "075a5126dc2547809f8a4ff2bf2ed9a0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 385.0,
+        "Y": 225.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "20c80e8bc1624e1097cba6e632ce136f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 639.305798526179,
+        "Y": 225.72154439619919
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapLayer.Features",
+        "Id": "f905df9af1f2483e937585c2209cd3c5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 755.198531093848,
+        "Y": 222.80077591267275
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "6bcde8e11f0149999581308c4eb427ea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1068.2398955562453,
+        "Y": 224.99174242236637
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapFeature.Geometry",
+        "Id": "b9a8807858c4489cbb4468419bda958b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1297.2801362036441,
+        "Y": 223.65442555843634
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MapFeature.Properties",
+        "Id": "632216e6296f4ce0b7d380ca2089ad93",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1292.7680151170539,
+        "Y": 27.146908940671949
+      }
+    ],
+    "Annotations": [],
+    "X": -914.42174301996079,
+    "Y": 76.637257685162069,
+    "Zoom": 0.99448870041955684
+  }
+}

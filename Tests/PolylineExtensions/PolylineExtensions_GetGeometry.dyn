@@ -1,0 +1,264 @@
+{
+  "Uuid": "609c943b-a73a-4bb5-9246-395fc4558a1a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PolylineExtensions_GetGeometry",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "0b43c409dcf846c9abcd08bc8f7a00d2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5445a50f7b70419cb0b2f0a433577055",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.AcObjectsOfType, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "2268393eae664ef1b5bec6864478d2d8",
+      "Inputs": [
+        {
+          "Id": "43c9878546c2477fb31525be120e7a50",
+          "Name": "type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "29322e8aa8c34a69b10c155fe3937625",
+          "Name": "block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "615faed4e0114f9f9e43282a3253ac28",
+          "Name": "Object[]",
+          "Description": "Object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all objects of the type."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.AcObjectTypes, AutoCADNodesUI",
+      "SelectedIndex": 9,
+      "SelectedString": "Polyline3D",
+      "NodeType": "ExtensionNode",
+      "Id": "131830ba1ecc4a39829852dbbd5a0888",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "06c8f9b41c3c4f5b8c587c2f6407c6e4",
+          "Name": "Object Type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select object type."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.ModelSpace",
+      "Id": "868d8240686b49bfae996d82e75d0b83",
+      "Inputs": [
+        {
+          "Id": "3760353c005d4bfe8d47f87230ded6bf",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "581c870c72c04d099febeba2d89be950",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the model space block table record.\n\nDocument.ModelSpace: Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.PolylineExtensions.GetGeometry@Autodesk.AutoCAD.DynamoNodes.Object",
+      "Id": "03caff173f19402f8e6546558f7d8764",
+      "Inputs": [
+        {
+          "Id": "aea9409cadc74775836950d0053aa042",
+          "Name": "polyline",
+          "Description": "The Polyline\n\nObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dfb22e581782467c82afb8d2d8239832",
+          "Name": "Curve",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extracts the polyline geometry\n\nPolylineExtensions.GetGeometry (polyline: Object): Curve"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5445a50f7b70419cb0b2f0a433577055",
+      "End": "3760353c005d4bfe8d47f87230ded6bf",
+      "Id": "11e5ae249bbf4081a210c1cbedf89151"
+    },
+    {
+      "Start": "615faed4e0114f9f9e43282a3253ac28",
+      "End": "aea9409cadc74775836950d0053aa042",
+      "Id": "73da4d0dca024f02b5a246be13e2091f"
+    },
+    {
+      "Start": "06c8f9b41c3c4f5b8c587c2f6407c6e4",
+      "End": "43c9878546c2477fb31525be120e7a50",
+      "Id": "697a79d2a67d4192ad6d5777da57b357"
+    },
+    {
+      "Start": "581c870c72c04d099febeba2d89be950",
+      "End": "29322e8aa8c34a69b10c155fe3937625",
+      "Id": "a5521a53f5634403899ff5b7b36b8647"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.11",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "03caff173f19402f8e6546558f7d8764"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 1840673.5874355428,
+      "EyeY": -8006.1873066849421,
+      "EyeZ": -5160105.5924686249,
+      "LookX": -224.36163903935812,
+      "LookY": -1030.7868873841198,
+      "LookZ": -792.31607681605965,
+      "UpX": -0.17146386286649798,
+      "UpY": 0.77714596145697457,
+      "UpZ": -0.60551160048509456
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "0b43c409dcf846c9abcd08bc8f7a00d2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 183.0,
+        "Y": 509.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Objects of Type",
+        "Id": "2268393eae664ef1b5bec6864478d2d8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 725.0,
+        "Y": 442.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Objects Types",
+        "Id": "131830ba1ecc4a39829852dbbd5a0888",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 412.09882405572,
+        "Y": 401.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.ModelSpace",
+        "Id": "868d8240686b49bfae996d82e75d0b83",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 411.0,
+        "Y": 509.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PolylineExtensions.GetGeometry",
+        "Id": "03caff173f19402f8e6546558f7d8764",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 969.0,
+        "Y": 442.0
+      }
+    ],
+    "Annotations": [],
+    "X": -213.2870293727924,
+    "Y": -254.87942926141591,
+    "Zoom": 0.91006380393143926
+  }
+}

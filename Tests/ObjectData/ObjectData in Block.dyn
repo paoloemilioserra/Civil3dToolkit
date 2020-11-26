@@ -1,0 +1,495 @@
+{
+  "Uuid": "f1029484-6ccf-4678-adeb-5669510a0205",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "ObjectData in Block",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectSelection, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "73DE"
+      ],
+      "Id": "e7464837a13544c1ba241613244d35ad",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "68aac5f887f2476182a34484e7666af9",
+          "Name": "Object",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdTable.AddTable@string,Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdField[],string,bool",
+      "Id": "b99bd67dd102412bad82021629010da3",
+      "Inputs": [
+        {
+          "Id": "775a66a7edea4d50903284e187bf22f9",
+          "Name": "name",
+          "Description": "The table name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7bd08ea7baa6409cb36268b3debd88ea",
+          "Name": "fields",
+          "Description": "The list of fields\n\nOdField[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d3d6d32e124a40a2bc617c134c252def",
+          "Name": "description",
+          "Description": "The table description\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "738ed82aec824f96aaada1a3a1ba5f9f",
+          "Name": "isXDataRecords",
+          "Description": "True to set the table as XData Records\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2ffa2d35c9994e8893954842fb396455",
+          "Name": "OdTable",
+          "Description": "OdTable",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adds a new table to the active project\n\nOdTable.AddTable (name: string, fields: OdField[], description: string, isXDataRecords: bool): OdTable"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdField.Create@string,string,string",
+      "Id": "94cd9db3eff54711b161ea02bdeb3749",
+      "Inputs": [
+        {
+          "Id": "1a8fe4247dcd49cca20d9b71392d87a9",
+          "Name": "name",
+          "Description": "The OdField name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9af02983eaee42b7941a90cc1d3ac3c0",
+          "Name": "dataType",
+          "Description": "The data type: Integer, Real, Character, Point\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f44b4d44fef44f1e9b4485d9f6b63741",
+          "Name": "description",
+          "Description": "The OdField description\n\nstring\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "07087240050147039b12f73108b71a38",
+          "Name": "OdField",
+          "Description": "OdField",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates an OdField\n\nOdField.Create (name: string, dataType: string, description: string = \"\"): OdField"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.GISUI.OdDataTypeDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 2,
+      "SelectedString": "Character",
+      "NodeType": "ExtensionNode",
+      "Id": "741cc37360e84d91b6091c62614f33b1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7bff16165c154cf4b85a6c3b09ecdbcb",
+          "Name": "DataType",
+          "Description": "The selected DataType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns a data type for OdFields"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Name\";\n\"Table\";\n\"MyTable\";\nfalse;",
+      "Id": "512abc384c584201a3b0ea7b24094bae",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5f3756c7b53a49e7b4e0e30689f40d19",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9c0bd344e38549f78b83e301fbae08e4",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "356e84ab1c914de7a4847a132c87509d",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0f2dbe975f5d4d1db291371a2cd7b19a",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdRecord.Create@Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdTable,Autodesk.AutoCAD.DynamoNodes.Object",
+      "Id": "8dc7d85d5e91412094cf20c05b4d3087",
+      "Inputs": [
+        {
+          "Id": "48a12b9868d040d9aaa2df8508be0abc",
+          "Name": "table",
+          "Description": "The table\n\nOdTable",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "43c5da396f8e43e386643e6cdc4104be",
+          "Name": "obj",
+          "Description": "The object\n\nObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4e3c043b3a3649769a21c44d072287e9",
+          "Name": "OdRecord",
+          "Description": "OdRecord",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Adds a record of the drawing object to the table\n\nOdRecord.Create (table: OdTable, obj: Object): OdRecord"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdRecord.SetValueByName@string,var",
+      "Id": "27d1eb6f67d1439090887369dc78be48",
+      "Inputs": [
+        {
+          "Id": "a4dbb2213f3246bda2b9fe219068739d",
+          "Name": "odRecord",
+          "Description": "Autodesk.Civil.DynamoNodes.GIS.ObjectData.OdRecord",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "631d22963d24491a95b456a49ff0d38a",
+          "Name": "name",
+          "Description": "The field name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4b1f3f5b03594f15bab64096d6072255",
+          "Name": "value",
+          "Description": "The new value\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "04be0cb12ebf48c4b862ac6161baa20e",
+          "Name": "OdRecord",
+          "Description": "OdRecord",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sets the object record value by name\n\nOdRecord.SetValueByName (name: string, value: var): OdRecord"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"ADSK Consulting\";",
+      "Id": "30581b74af4c4761951f015d85ce8a1a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0fcb4c53a1864b1aa71c965b666ab4a5",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "68aac5f887f2476182a34484e7666af9",
+      "End": "43c5da396f8e43e386643e6cdc4104be",
+      "Id": "c2f8befdb8dc4ec3a3b5e4f7e1022fb7"
+    },
+    {
+      "Start": "2ffa2d35c9994e8893954842fb396455",
+      "End": "48a12b9868d040d9aaa2df8508be0abc",
+      "Id": "e33dec7275a845398fd499a2eac3f75e"
+    },
+    {
+      "Start": "07087240050147039b12f73108b71a38",
+      "End": "7bd08ea7baa6409cb36268b3debd88ea",
+      "Id": "caaab7624fe64f889a8e91f5f931fafb"
+    },
+    {
+      "Start": "7bff16165c154cf4b85a6c3b09ecdbcb",
+      "End": "9af02983eaee42b7941a90cc1d3ac3c0",
+      "Id": "06c11057af3d49a5be1b77597f3c0961"
+    },
+    {
+      "Start": "5f3756c7b53a49e7b4e0e30689f40d19",
+      "End": "1a8fe4247dcd49cca20d9b71392d87a9",
+      "Id": "85c8942ce52a473c978d22ec6c569538"
+    },
+    {
+      "Start": "5f3756c7b53a49e7b4e0e30689f40d19",
+      "End": "631d22963d24491a95b456a49ff0d38a",
+      "Id": "03b643066b424718a129530d0dcd804f"
+    },
+    {
+      "Start": "9c0bd344e38549f78b83e301fbae08e4",
+      "End": "775a66a7edea4d50903284e187bf22f9",
+      "Id": "30eeb517175b4867a26410da8dd1f8eb"
+    },
+    {
+      "Start": "356e84ab1c914de7a4847a132c87509d",
+      "End": "d3d6d32e124a40a2bc617c134c252def",
+      "Id": "a618a3440cac40f28a2a028f0bf97da0"
+    },
+    {
+      "Start": "0f2dbe975f5d4d1db291371a2cd7b19a",
+      "End": "738ed82aec824f96aaada1a3a1ba5f9f",
+      "Id": "908d1ef79cf448cab37e547801686890"
+    },
+    {
+      "Start": "4e3c043b3a3649769a21c44d072287e9",
+      "End": "a4dbb2213f3246bda2b9fe219068739d",
+      "Id": "29a989eacc5b4afcbeaa9556c26ea427"
+    },
+    {
+      "Start": "0fcb4c53a1864b1aa71c965b666ab4a5",
+      "End": "4b1f3f5b03594f15bab64096d6072255",
+      "Id": "65505444abb64355bdaaa5ec4cc09fab"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.11",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "b99bd67dd102412bad82021629010da3",
+        "94cd9db3eff54711b161ea02bdeb3749",
+        "741cc37360e84d91b6091c62614f33b1",
+        "8dc7d85d5e91412094cf20c05b4d3087",
+        "27d1eb6f67d1439090887369dc78be48"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Select Object",
+        "Id": "e7464837a13544c1ba241613244d35ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 655.5,
+        "Y": 502.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OdTable.AddTable",
+        "Id": "b99bd67dd102412bad82021629010da3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 549.5,
+        "Y": 315.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OdField.Create",
+        "Id": "94cd9db3eff54711b161ea02bdeb3749",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 332.5,
+        "Y": 29.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OdField Data Types",
+        "Id": "741cc37360e84d91b6091c62614f33b1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 20.5,
+        "Y": 161.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "512abc384c584201a3b0ea7b24094bae",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 97.0,
+        "Y": 59.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OdRecord.Create",
+        "Id": "8dc7d85d5e91412094cf20c05b4d3087",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 879.5,
+        "Y": 488.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OdRecord.SetValueByName",
+        "Id": "27d1eb6f67d1439090887369dc78be48",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1160.5,
+        "Y": 592.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "30581b74af4c4761951f015d85ce8a1a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 890.0,
+        "Y": 687.0
+      }
+    ],
+    "Annotations": [],
+    "X": -1043.7090876084744,
+    "Y": -550.80438365994462,
+    "Zoom": 1.2484436539722306
+  }
+}

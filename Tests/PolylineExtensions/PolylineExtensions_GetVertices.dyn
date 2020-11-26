@@ -1,0 +1,712 @@
+{
+  "Uuid": "7b8f7032-d6f6-4f5c-8bb0-42de870d21aa",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PolylineExtensions_GetVertices",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "a06d746b1e4b4cc59e2157ec8ae681a3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "db05616fd492465794de67802d13d0b0",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.AcObjectTypes, AutoCADNodesUI",
+      "SelectedIndex": 8,
+      "SelectedString": "Polyline",
+      "NodeType": "ExtensionNode",
+      "Id": "2f8fecf9600a48ce9dcc9b35bec05312",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "61d9b863208c48618545ffa23600a8af",
+          "Name": "Object Type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select object type."
+    },
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.AcObjectsOfType, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "0a8cf3f9f68342a0b49733fe04b0197c",
+      "Inputs": [
+        {
+          "Id": "0fb78dc56cb34aec886aa00109c77951",
+          "Name": "type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f2a868ee7c68406c84f717f05d317109",
+          "Name": "block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f817d2fb472f4ce1a3ff3da7b10187ae",
+          "Name": "Object[]",
+          "Description": "Object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all objects of the type."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.ModelSpace",
+      "Id": "de494027ce35474eb165f4d09490e479",
+      "Inputs": [
+        {
+          "Id": "13548a70a2f54716bfc9c3343226a494",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e4987be55ad34adf9a8332f700bc065d",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the model space block table record.\n\nDocument.ModelSpace: Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "a2b5d4eeaa294706806b0bf26f3205d5",
+      "Inputs": [
+        {
+          "Id": "323556f8af9a4f669523d92baa78fa52",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d5696b864b2f405794a0948c05b78571",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "272e67c7c6054c25b3b0a17e2458d52f",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CogoPoint.ByGeometry@Autodesk.DesignScript.Geometry.Point,string,Autodesk.AutoCAD.DynamoNodes.Document,string,string",
+      "Id": "0aa913f8058d4dcf8d4ce3ca4e605943",
+      "Inputs": [
+        {
+          "Id": "f36aab7e0afe47bb81eb9e070a1e6a1e",
+          "Name": "geometry",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a32b77128f7546cd8cd546f16adae280",
+          "Name": "layer",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e49bd6d33f79433080e94c924c37830c",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a1515208cfe549a38a69d0a2db2e46ea",
+          "Name": "name",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "551c328522a6415f8d45151deddd086b",
+          "Name": "rawDescription",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "05b53938f4aa49ddaa1ad3298edc01a8",
+          "Name": "CogoPoint",
+          "Description": "CogoPoint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create Cogo point from Dynamo point.\n\nCogoPoint.ByGeometry (geometry: Point, layer: string, document: Document, name: string = \"\", rawDescription: string = \"\"): CogoPoint"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"a\";\n\"ADSK\";\n\"Consulting\";",
+      "Id": "f4288fa4e995474c9fae4b2f164073d4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "989b170a50aa4a30ac94b280bc7e703d",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "01b0c4d5b06a4fdaa1c9efbcd39671cd",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "42c2a64dfe5648a0b97ddbc2db76ace7",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CogoPointGroup.ByCogoPoints@Autodesk.Civil.DynamoNodes.CogoPoint[],string,Autodesk.AutoCAD.DynamoNodes.Document,string",
+      "Id": "8d26761c796b478dbe0060cad6a01d03",
+      "Inputs": [
+        {
+          "Id": "e1069dbd2f8e4e1294320a233cba5090",
+          "Name": "cogoPoints",
+          "Description": "CogoPoint[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "166c308d151c4c57a6722f3b707cf5e4",
+          "Name": "cogoPointGroupName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4661378fe31544c28dcdfa7a168267b7",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "04b21468fc7b4c01a863df14a8a82be4",
+          "Name": "description",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dd7eb479e1c940d7abbb53914beacc61",
+          "Name": "CogoPointGroup",
+          "Description": "CogoPointGroup",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a point group by COGO points.\n\nCogoPointGroup.ByCogoPoints (cogoPoints: CogoPoint[], cogoPointGroupName: string, document: Document, description: string = \"\"): CogoPointGroup"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a?b:b;",
+      "Id": "bce8e6687cba4bb0a75736ebb939ec2c",
+      "Inputs": [
+        {
+          "Id": "eb3cf75afc174cca9dbe259958e2cc92",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ba749cc8950248fbba769c61e80e2d0a",
+          "Name": "b",
+          "Description": "b",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "55cfb99ea25c431986316ed7de858c2e",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.TinSurface.ByCogoPointGroup@string,string,string,Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "984425c6e0dd48258fe3b1f76316f142",
+      "Inputs": [
+        {
+          "Id": "c480c3fc476d43a3b055a925e0c2f2e4",
+          "Name": "cogoPointGroupName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cae9832e59884ce7827f9e737541dfab",
+          "Name": "surfaceName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6ff1e7d713874d85a653df9100100c8d",
+          "Name": "layer",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "58bc723d9f8d47458f8eed3b87d5f0f0",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a4705b5182f54289939baa12c3611713",
+          "Name": "TinSurface",
+          "Description": "TinSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create Tin surface by COGO point group.\n\nTinSurface.ByCogoPointGroup (cogoPointGroupName: string, surfaceName: string, layer: string, document: Document): TinSurface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.PolylineExtensions.GetVertices@Autodesk.AutoCAD.DynamoNodes.Object",
+      "Id": "8b7a3801d11d416fb7ba1f605eac3494",
+      "Inputs": [
+        {
+          "Id": "1ac7a58ad43342919c1fda43f367a2ca",
+          "Name": "obj",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "610da6eb4f634ba9974049969572e821",
+          "Name": "Points",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "160674d74b2044cbb042a35bd0972036",
+          "Name": "Latitude",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "67c0f5b4d26a4de9bf7dd7ba47091f3f",
+          "Name": "Longitude",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "49c218b8e3af484c973b9f4f19244678",
+          "Name": "Elevation",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Extracts the polyline vertices and their Latitude, Longitude and Elevation\n\nPolylineExtensions.GetVertices (obj: Object): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "db05616fd492465794de67802d13d0b0",
+      "End": "13548a70a2f54716bfc9c3343226a494",
+      "Id": "428426fa48524aae9e24112a598e3df5"
+    },
+    {
+      "Start": "db05616fd492465794de67802d13d0b0",
+      "End": "e49bd6d33f79433080e94c924c37830c",
+      "Id": "84b64983d34444aa8ab4228e2a6131b4"
+    },
+    {
+      "Start": "db05616fd492465794de67802d13d0b0",
+      "End": "4661378fe31544c28dcdfa7a168267b7",
+      "Id": "b722bb55ec0c4ac7867d13d81c177ecc"
+    },
+    {
+      "Start": "db05616fd492465794de67802d13d0b0",
+      "End": "58bc723d9f8d47458f8eed3b87d5f0f0",
+      "Id": "e25c47480673494fa3409c39c4fd6a2c"
+    },
+    {
+      "Start": "61d9b863208c48618545ffa23600a8af",
+      "End": "0fb78dc56cb34aec886aa00109c77951",
+      "Id": "016149bf64464177a34842ef3d9b1e62"
+    },
+    {
+      "Start": "f817d2fb472f4ce1a3ff3da7b10187ae",
+      "End": "1ac7a58ad43342919c1fda43f367a2ca",
+      "Id": "bda05a8798c246db9148b95047f81fb0"
+    },
+    {
+      "Start": "e4987be55ad34adf9a8332f700bc065d",
+      "End": "f2a868ee7c68406c84f717f05d317109",
+      "Id": "1b78a69334aa45e58a80f4ad7ba953fa"
+    },
+    {
+      "Start": "272e67c7c6054c25b3b0a17e2458d52f",
+      "End": "f36aab7e0afe47bb81eb9e070a1e6a1e",
+      "Id": "fa4f406bd81f4fd4a9f2460e2a53bf27"
+    },
+    {
+      "Start": "05b53938f4aa49ddaa1ad3298edc01a8",
+      "End": "e1069dbd2f8e4e1294320a233cba5090",
+      "Id": "6110669f6ad84a41afa69b5eb5442a06"
+    },
+    {
+      "Start": "989b170a50aa4a30ac94b280bc7e703d",
+      "End": "a32b77128f7546cd8cd546f16adae280",
+      "Id": "4b5221c5237b4ae8a64ced5511ee8cf6"
+    },
+    {
+      "Start": "989b170a50aa4a30ac94b280bc7e703d",
+      "End": "6ff1e7d713874d85a653df9100100c8d",
+      "Id": "46e7b996e83d4ffca7320375e2a967ee"
+    },
+    {
+      "Start": "01b0c4d5b06a4fdaa1c9efbcd39671cd",
+      "End": "166c308d151c4c57a6722f3b707cf5e4",
+      "Id": "43f60903d7eb4f6695ac82e0322a2430"
+    },
+    {
+      "Start": "01b0c4d5b06a4fdaa1c9efbcd39671cd",
+      "End": "ba749cc8950248fbba769c61e80e2d0a",
+      "Id": "e0ed4da58172462892d1269a9ada0f15"
+    },
+    {
+      "Start": "42c2a64dfe5648a0b97ddbc2db76ace7",
+      "End": "cae9832e59884ce7827f9e737541dfab",
+      "Id": "d2abffc324cc4c8aada2f03fdb58a434"
+    },
+    {
+      "Start": "dd7eb479e1c940d7abbb53914beacc61",
+      "End": "eb3cf75afc174cca9dbe259958e2cc92",
+      "Id": "4aca4ebb6a0747bca2dc61ce361e7bcf"
+    },
+    {
+      "Start": "55cfb99ea25c431986316ed7de858c2e",
+      "End": "c480c3fc476d43a3b055a925e0c2f2e4",
+      "Id": "a9e7783e94c94acb9d1b45195aff62c4"
+    },
+    {
+      "Start": "610da6eb4f634ba9974049969572e821",
+      "End": "323556f8af9a4f669523d92baa78fa52",
+      "Id": "a1ed79ef9cf84f7cb9089531d51d42cd"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.11",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "8b7a3801d11d416fb7ba1f605eac3494"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 656190.05774128356,
+      "EyeY": 843.047213073037,
+      "EyeZ": -988270.99216111843,
+      "LookX": -3.7467323651071638,
+      "LookY": -929.85491266295048,
+      "LookZ": -691.07709613954648,
+      "UpX": -0.00355682670737563,
+      "UpY": 0.7547095802227739,
+      "UpZ": -0.65604938724439121
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "a06d746b1e4b4cc59e2157ec8ae681a3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -6.6887686962454609,
+        "Y": 555.37937454250891
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Objects Types",
+        "Id": "2f8fecf9600a48ce9dcc9b35bec05312",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 171.2954281084892,
+        "Y": 242.79252227840334
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Objects of Type",
+        "Id": "0a8cf3f9f68342a0b49733fe04b0197c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 392.5,
+        "Y": 241.5
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.ModelSpace",
+        "Id": "de494027ce35474eb165f4d09490e479",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 171.42516665207779,
+        "Y": 369.25379078511963
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "a2b5d4eeaa294706806b0bf26f3205d5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 850.101618157993,
+        "Y": 246.42472179068778
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CogoPoint.ByGeometry",
+        "Id": "0aa913f8058d4dcf8d4ce3ca4e605943",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1133.1347875128736,
+        "Y": 356.37495048744591
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f4288fa4e995474c9fae4b2f164073d4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 862.0,
+        "Y": 354.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CogoPointGroup.ByCogoPoints",
+        "Id": "8d26761c796b478dbe0060cad6a01d03",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1482.8474503999821,
+        "Y": 434.40414504643553
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "bce8e6687cba4bb0a75736ebb939ec2c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1917.0245515401434,
+        "Y": 480.349701026762
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TinSurface.ByCogoPointGroup",
+        "Id": "984425c6e0dd48258fe3b1f76316f142",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1720.4818156478138,
+        "Y": 607.487085704558
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PolylineExtensions.GetVertices",
+        "Id": "8b7a3801d11d416fb7ba1f605eac3494",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 588.279989445023,
+        "Y": 239.752744994559
+      }
+    ],
+    "Annotations": [],
+    "X": 33.1756057956419,
+    "Y": -228.3103308166244,
+    "Zoom": 1.3540878150105238
+  }
+}

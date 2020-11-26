@@ -1,0 +1,590 @@
+{
+  "Uuid": "f7bc82d4-fefd-4d13-98b5-ed78c5116917",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Object By Handle",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.AutoCAD.DynamoNodes.ObjectSelection, AutoCADNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "6B65"
+      ],
+      "Id": "1899bdaa5a7e40a08fa690223e73fd83",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3cf1046fa816428898296deaf6a0423e",
+          "Name": "Object",
+          "Description": "Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "95d437a669ce4b838b0c3d918029e1cb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "327261824f8c4c1fb902e531114587c8",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.ObjectByHandle@Autodesk.AutoCAD.DynamoNodes.Document,string",
+      "Id": "ed0ab18ffae24404a7a6d1334f128e1d",
+      "Inputs": [
+        {
+          "Id": "d5d9d18bb27f4abfb16079a1faae7f4a",
+          "Name": "document",
+          "Description": "The AutoCAD Document\n\nDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0a250a4d68ba406ba7eca0cd2f07059b",
+          "Name": "handle",
+          "Description": "The handle\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "375f30e1a0404cb3954725b20cd139f2",
+          "Name": "Object",
+          "Description": "The Object in Dynamo",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Select an Object in the Document by its handle\n\nDocumentExtensions.ObjectByHandle (document: Document, handle: string): Object"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"6B65\";",
+      "Id": "f65ee0e2944f4bd692144272708bd6e1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cffa0ee42119407d8be4d40ebfb2210e",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"\r\nCopyright 2019 Autodesk, Inc. All rights reserved.\r\n\r\nThis file is part of the Civil 3D Python Module.\r\n\r\n\"\"\"\r\n__author__ = 'Paolo Emilio Serra - paolo.serra@autodesk.com'\r\n__copyright__ = '2019'\r\n__version__ = '1.0.0'\r\n\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil 3D APIs\r\nclr.AddReference('acmgd')\r\nclr.AddReference('acdbmgd')\r\nclr.AddReference('accoremgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('AeccPressurePipesMgd')\r\nclr.AddReference('acdbmgdbrep')\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('AutoCADNodes')\r\n\r\n# Add standard Python references\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\nimport os\r\nimport math\r\n\r\n# Add references to manage arrays, collections and interact with the user\r\nfrom System import *\r\nfrom System.IO import *\r\nfrom System.Collections.Specialized import *\r\nfrom System.Windows.Forms import MessageBox\r\n\r\n# Create an alias to the Autodesk.AutoCAD.ApplicationServices.Application class\r\nimport Autodesk.AutoCAD.ApplicationServices.Application as acapp\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references for PropertySets\r\nfrom Autodesk.Aec.PropertyData import *\r\nfrom Autodesk.Aec.PropertyData.DatabaseServices import *\r\n\r\n# Import references for Civil 3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\nfrom Autodesk.AutoCAD.DynamoNodes import *\r\n\r\nadoc = acapp.DocumentManager.MdiActiveDocument\r\ned = adoc.Editor\r\n\r\n# Example function\r\ndef my_function(handle):\r\n\t\"\"\"\r\n\tDescription....\r\n\t:param first_param: ....\r\n\t:returns: ....\r\n\t\"\"\"\r\n\t\t\r\n\tglobal adoc\r\n\t\r\n\toutput = None\r\n\r\n\twith adoc.LockDocument():\r\n\t\twith adoc.Database as db:\r\n\t\t\twith db.TransactionManager.StartTransaction() as t:\r\n\t\t\t\tbt = t.GetObject(db.BlockTableId, OpenMode.ForWrite)\r\n\t\t\t\tbtr = t.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite)\r\n\t\t\t\t\r\n\t\t\t\toid = db.GetObjectId(False, Handle(int(handle, 16)), 0)\r\n\t\t\t\t\r\n\t\t\t\tdbo = t.GetObject(oid, OpenMode.ForWrite)\r\n\t\t\t\t\r\n\t\t\t\toutput = str(oid)[1:-1] #Object.InternalMakeObject(dbo, False))\r\n\r\n\t\t\t\tt.Commit()\r\n\treturn output\r\n\t\r\n\t\r\nOUT = my_function(IN[0])",
+      "VariableInputPorts": true,
+      "Id": "8091c95bec904bdf9a311a0268266c90",
+      "Inputs": [
+        {
+          "Id": "63bc6748af424f1da8a1e45e4d2065f4",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ef34234b9b494f3fa9a8c2ca32a7ac63",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.ObjectHandle@Autodesk.AutoCAD.DynamoNodes.Object",
+      "Id": "05abc1c8783946ba9179375f8019e6c0",
+      "Inputs": [
+        {
+          "Id": "3d23f3ad78e942b1bddcc5e0c1339061",
+          "Name": "item",
+          "Description": "The handle\n\nObject",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3022f276eaed4eabaa40281921ed5bee",
+          "Name": "string",
+          "Description": "The Object Handle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The Object handle\n\nDocumentExtensions.ObjectHandle (item: Object): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "19e151599c0d4f798f153614d9a19c6d",
+      "Inputs": [
+        {
+          "Id": "963571f140ec431f900685effcaa9f96",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "afc71466c44646e48aa6b58aad087785",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.ObjectByObjectId@Autodesk.AutoCAD.DynamoNodes.Document,int",
+      "Id": "2cfaa29703a848d3a9849d5f0e23ed73",
+      "Inputs": [
+        {
+          "Id": "f5d7f6c7c19c4706b69958778761e2b9",
+          "Name": "document",
+          "Description": "The AutoCAD Document\n\nDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1cfd63724520495099f50842ab60b7d2",
+          "Name": "objectId",
+          "Description": "The ObjectId\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9fcece285d584a1e9dbc21b069b8914e",
+          "Name": "Object",
+          "Description": "The Object in Dynamo",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Select an Object in the Document by its Object Id\n\nDocumentExtensions.ObjectByObjectId (document: Document, objectId: int): Object"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Object.Type@var",
+      "Id": "768c2ceb18ba497ab3bd3643980d16c6",
+      "Inputs": [
+        {
+          "Id": "b5b1049ffd3b46f2986201bc0177701d",
+          "Name": "obj",
+          "Description": "An object.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ae09206475b34533ac97b8713a8e088d",
+          "Name": "string",
+          "Description": "Type of object.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of object represented as string.\n\nObject.Type (obj: var): string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Object.Geometry",
+      "Id": "3004cf823a41415aa5aa85edfd297245",
+      "Inputs": [
+        {
+          "Id": "8ce8eefb18a5438db53aabe30a8e2627",
+          "Name": "object",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d1355c9c13604c6697ea50d24b4083cc",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Dynamo representation of this object.\n\nObject.Geometry: Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.String.ToNumber@string",
+      "Id": "8b86c4bbb0534840a4c9cafab10f9930",
+      "Inputs": [
+        {
+          "Id": "bcd9285b11a846be811a99ce047dd863",
+          "Name": "str",
+          "Description": "String to be converted.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "40ebe49396444dc3bad8745e88d1b933",
+          "Name": "number",
+          "Description": "Integer or double-type number.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Converts a string to an integer or a double.\n\nString.ToNumber (str: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.Object.Type@var",
+      "Id": "ef1acb5da10b4c71a8a3da976500aa0f",
+      "Inputs": [
+        {
+          "Id": "0e48ccbac8074f59bec5a5eebe380b66",
+          "Name": "obj",
+          "Description": "An object.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d62561bd48ae4bc0bd9b46229e435d53",
+          "Name": "string",
+          "Description": "Type of object.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the type of object represented as string.\n\nObject.Type (obj: var): string"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "3cf1046fa816428898296deaf6a0423e",
+      "End": "3d23f3ad78e942b1bddcc5e0c1339061",
+      "Id": "286625e6353546009dfda0e08f162dfc"
+    },
+    {
+      "Start": "3cf1046fa816428898296deaf6a0423e",
+      "End": "8ce8eefb18a5438db53aabe30a8e2627",
+      "Id": "eeb2f7abd028445e9947574b81930f08"
+    },
+    {
+      "Start": "327261824f8c4c1fb902e531114587c8",
+      "End": "d5d9d18bb27f4abfb16079a1faae7f4a",
+      "Id": "05cc75061cc94a3ab6f747e5e18c41fa"
+    },
+    {
+      "Start": "327261824f8c4c1fb902e531114587c8",
+      "End": "f5d7f6c7c19c4706b69958778761e2b9",
+      "Id": "78d924fa2f68425eb64866b8870fcc21"
+    },
+    {
+      "Start": "cffa0ee42119407d8be4d40ebfb2210e",
+      "End": "0a250a4d68ba406ba7eca0cd2f07059b",
+      "Id": "16edb5aa54724d90802d37619410ebad"
+    },
+    {
+      "Start": "cffa0ee42119407d8be4d40ebfb2210e",
+      "End": "63bc6748af424f1da8a1e45e4d2065f4",
+      "Id": "fd0247c693bc4517b46a5df5a69863a0"
+    },
+    {
+      "Start": "ef34234b9b494f3fa9a8c2ca32a7ac63",
+      "End": "b5b1049ffd3b46f2986201bc0177701d",
+      "Id": "79d96203aae34bf5a8b169277c425de6"
+    },
+    {
+      "Start": "ef34234b9b494f3fa9a8c2ca32a7ac63",
+      "End": "bcd9285b11a846be811a99ce047dd863",
+      "Id": "d724c4c872364d38b1f33e1f1a322c8e"
+    },
+    {
+      "Start": "40ebe49396444dc3bad8745e88d1b933",
+      "End": "0e48ccbac8074f59bec5a5eebe380b66",
+      "Id": "6a7a59bfb9b6443cab5f6aae94f0f598"
+    },
+    {
+      "Start": "40ebe49396444dc3bad8745e88d1b933",
+      "End": "1cfd63724520495099f50842ab60b7d2",
+      "Id": "0cb967007ec04f93942c0f967703c198"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "ed0ab18ffae24404a7a6d1334f128e1d",
+        "05abc1c8783946ba9179375f8019e6c0",
+        "2cfaa29703a848d3a9849d5f0e23ed73"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "ed0ab18f-fae2-4404-a7a6-d1334f128e1d",
+      "Binding": {
+        "ObjectByHandle_InClassDecl-1_InFunctionScope-1_Instance0_ed0ab18f-fae2-4404-a7a6-d1334f128e1d": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzMjYlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1UUXhOeTR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK05rSTJOVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    },
+    {
+      "NodeId": "2cfaa297-03a8-48d3-a984-9d5f0e23ed73",
+      "Binding": {
+        "ObjectByObjectId_InClassDecl-1_InFunctionScope-1_Instance0_2cfaa297-03a8-48d3-a984-9d5f0e23ed73": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzMjYlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1UUXhOeTR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK05rSTJOVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6326",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 5022.4206016277194,
+      "EyeY": 330.52820200294832,
+      "EyeZ": -3799.8505972687913,
+      "LookX": -463.15082623709441,
+      "LookY": -330.52820200294832,
+      "LookZ": -732.33128749683374,
+      "UpX": -0.079005486032830349,
+      "UpY": 0.98901586336191694,
+      "UpZ": -0.12492299706298433
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Select Object",
+        "Id": "1899bdaa5a7e40a08fa690223e73fd83",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 52.15392876439563,
+        "Y": 416.81756434942861
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "95d437a669ce4b838b0c3d918029e1cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 292.15055581414754,
+        "Y": 244.68990658853266
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DocumentExtensions.ObjectByHandle",
+        "Id": "ed0ab18ffae24404a7a6d1334f128e1d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 795.62798595646314,
+        "Y": 245.46902695053396
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f65ee0e2944f4bd692144272708bd6e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 331.0,
+        "Y": 360.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "8091c95bec904bdf9a311a0268266c90",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 617.55821679869564,
+        "Y": 649.53756833964007
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DocumentExtensions.ObjectHandle",
+        "Id": "05abc1c8783946ba9179375f8019e6c0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 486.221392083983,
+        "Y": 413.39845411614283
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Geometry",
+        "Id": "19e151599c0d4f798f153614d9a19c6d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 559.401144151897,
+        "Y": 91.9155179389414
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DocumentExtensions.ObjectByObjectId",
+        "Id": "2cfaa29703a848d3a9849d5f0e23ed73",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1050.4680295596077,
+        "Y": 466.40124028373157
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Type",
+        "Id": "768c2ceb18ba497ab3bd3643980d16c6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 784.85658898921372,
+        "Y": 560.370669191963
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Geometry",
+        "Id": "3004cf823a41415aa5aa85edfd297245",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 264.28604531751671,
+        "Y": 570.49527867719485
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String.ToNumber",
+        "Id": "8b86c4bbb0534840a4c9cafab10f9930",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 779.41382521456808,
+        "Y": 768.89440526136332
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Object.Type",
+        "Id": "ef1acb5da10b4c71a8a3da976500aa0f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1065.8345652242735,
+        "Y": 768.99280850821515
+      }
+    ],
+    "Annotations": [],
+    "X": -533.70580080966852,
+    "Y": -383.09618668203655,
+    "Zoom": 1.1994243414922054
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "Uuid": "d1b524d8-70d2-4b10-a13d-5e42865e6764",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "BlockReferenceByGeometry",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@double,double",
+      "Id": "4324db268a2344a9995a06eb44af5eeb",
+      "Inputs": [
+        {
+          "Id": "4d5ead87a00f4969b064ddca3bcfd982",
+          "Name": "width",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "27fb04a55d544b33b6b46c17947c9334",
+          "Name": "length",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "65ef5f8abd57469eae04388c2141d2b4",
+          "Name": "Rectangle",
+          "Description": "Rectangle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a Rectangle centered at the WCS origin in the WCS XY Plane, with specified width (X Axis length), and length (Y Axis length).\n\nRectangle.ByWidthLength (width: double = 1, length: double = 1): Rectangle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.BlockReferenceExtensions.ByGeometry@Autodesk.DesignScript.Geometry.Geometry[],Autodesk.DesignScript.Geometry.CoordinateSystem,string,string,Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "66637bd985ed49b9816ab3e7fe938999",
+      "Inputs": [
+        {
+          "Id": "469921b75ba440deaaad671c64159da8",
+          "Name": "geometry",
+          "Description": "The list of Dynamo Geometries in the absolute origin\n\nGeometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1516ea92d4374ee1bda42ef3fa5f8a45",
+          "Name": "location",
+          "Description": "The CoordinateSystem of the BlockReference that will be used to transform te Dynamo geometries\n\nCoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "abeac9a142e74b059fe29808c9e11085",
+          "Name": "name",
+          "Description": "The name of the Block\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "450dea3700a349a7af7f6a8a5a447981",
+          "Name": "layer",
+          "Description": "The layer of the Block entities and the BlockReference\n\nstring\nDefault value : \"0\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3b21aca8912648ac804f4bc66e929649",
+          "Name": "block",
+          "Description": "The block of the BlockReference\n\nBlock",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "35c69557cda14a4faaab47f5c1e351ce",
+          "Name": "BlockReference",
+          "Description": "BlockReference",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a BlockReference from a list of geometries. If the name is not unique it creates a BlockReference based on the existing block.\n\nBlockReferenceExtensions.ByGeometry (geometry: Geometry[], location: CoordinateSystem, name: string, layer: string = \"0\", block: Block): BlockReference"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin@Autodesk.DesignScript.Geometry.Point",
+      "Id": "471d93ca5b5a45ff952fe8c7f7a0cabc",
+      "Inputs": [
+        {
+          "Id": "85ff144cc7b04e53836828957d5d5bb5",
+          "Name": "origin",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2c64b11be9384d62aff3fd69f5e4ec7b",
+          "Name": "CoordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a CoordinateSystem with origin at input Point, with X and Y Axes set as WCS X and Y Axes.\n\nCoordinateSystem.ByOrigin (origin: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)): CoordinateSystem"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Consulting\";\nnull;",
+      "Id": "2d03249ee085479c8b33489de0c10c82",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "df596760943944f89945f01f44e9ad23",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "472ccdebded241d7bbe29177aec3b0ed",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "2;",
+      "Id": "701163df817d46699feef4725defd13b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a9d4e365de32407796e4b2371a4e69cd",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@double,double",
+      "Id": "895d1ca5c8514952a32de1813ee20934",
+      "Inputs": [
+        {
+          "Id": "14f9f12f90604ba8b6196d201b2e8b16",
+          "Name": "width",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c31d6e0713de45db97dbb2638cadbef6",
+          "Name": "length",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b7284baba7064e9a8196dea909a17b2c",
+          "Name": "Rectangle",
+          "Description": "Rectangle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a Rectangle centered at the WCS origin in the WCS XY Plane, with specified width (X Axis length), and length (Y Axis length).\n\nRectangle.ByWidthLength (width: double = 1, length: double = 1): Rectangle"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "2fa9c54ef77e49dfae6a5e0d839ef955",
+      "Inputs": [
+        {
+          "Id": "ec5938f0251d4edc83a81bc438740e7e",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9bd862f8b3094ae4b648d4e0dbad8bd2",
+          "Name": "item1",
+          "Description": "Item Index #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f22ce9cd30464e149b4b3f14eacf804c",
+          "Name": "list",
+          "Description": "A list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "65ef5f8abd57469eae04388c2141d2b4",
+      "End": "ec5938f0251d4edc83a81bc438740e7e",
+      "Id": "1b8cb578312041eab5b859d4b4576397"
+    },
+    {
+      "Start": "2c64b11be9384d62aff3fd69f5e4ec7b",
+      "End": "1516ea92d4374ee1bda42ef3fa5f8a45",
+      "Id": "3aecfa740723461e8b3844411377cc80"
+    },
+    {
+      "Start": "df596760943944f89945f01f44e9ad23",
+      "End": "abeac9a142e74b059fe29808c9e11085",
+      "Id": "3ef7bd250794470d8f8146c123c62795"
+    },
+    {
+      "Start": "472ccdebded241d7bbe29177aec3b0ed",
+      "End": "3b21aca8912648ac804f4bc66e929649",
+      "Id": "7881148ea0b440d79afc7cb7051ee8b0"
+    },
+    {
+      "Start": "a9d4e365de32407796e4b2371a4e69cd",
+      "End": "27fb04a55d544b33b6b46c17947c9334",
+      "Id": "119bfb1e77d847f4accd32fbf22c8e85"
+    },
+    {
+      "Start": "a9d4e365de32407796e4b2371a4e69cd",
+      "End": "14f9f12f90604ba8b6196d201b2e8b16",
+      "Id": "c03de80c95734dfa9b9f62134d1cb83c"
+    },
+    {
+      "Start": "b7284baba7064e9a8196dea909a17b2c",
+      "End": "9bd862f8b3094ae4b648d4e0dbad8bd2",
+      "Id": "2911b78a21474a669c36d176d9b47af6"
+    },
+    {
+      "Start": "f22ce9cd30464e149b4b3f14eacf804c",
+      "End": "469921b75ba440deaaad671c64159da8",
+      "Id": "563765875a6b4c2d83600b31e2d16959"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.7",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "66637bd985ed49b9816ab3e7fe938999"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "66637bd9-85ed-49b9-816a-b3e7fe938999",
+      "Binding": {
+        "ByGeometry_InClassDecl-1_InFunctionScope-1_Instance0_66637bd9-85ed-49b9-816a-b3e7fe938999": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK01UazFNRHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -2.0499663450948362,
+      "EyeY": 7.9426621416108993,
+      "EyeZ": 4.9221494456475625,
+      "LookX": 1.086745797276458,
+      "LookY": -3.9748887322790152,
+      "LookZ": -4.4616079105529964,
+      "UpX": 0.11292337965195226,
+      "UpY": 0.87881711266196594,
+      "UpZ": -0.46360413373962372
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Rectangle.ByWidthLength",
+        "Id": "4324db268a2344a9995a06eb44af5eeb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 457.13268743942012,
+        "Y": -188.8029402014927
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "BlockReferenceExtensions.ByGeometry",
+        "Id": "66637bd985ed49b9816ab3e7fe938999",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 900.824992388908,
+        "Y": 78.893976786370047
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CoordinateSystem.ByOrigin",
+        "Id": "471d93ca5b5a45ff952fe8c7f7a0cabc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 281.64884740206242,
+        "Y": 106.72936189546226
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "2d03249ee085479c8b33489de0c10c82",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 537.39883848789759,
+        "Y": 229.32064345303669
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "701163df817d46699feef4725defd13b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 276.55884134043038,
+        "Y": -156.22883771967474
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rectangle.ByWidthLength",
+        "Id": "895d1ca5c8514952a32de1813ee20934",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.97346514550304,
+        "Y": -53.125251925745715
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "2fa9c54ef77e49dfae6a5e0d839ef955",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 701.694568743843,
+        "Y": -118.94010622478623
+      }
+    ],
+    "Annotations": [],
+    "X": -87.185828055702359,
+    "Y": 201.55037042708889,
+    "Zoom": 0.90501669885670766
+  }
+}

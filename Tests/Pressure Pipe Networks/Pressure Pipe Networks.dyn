@@ -1,0 +1,86 @@
+{
+  "Uuid": "bcf5b5c4-88e8-49a7-93b5-eb58f88fd618",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Pressure Pipe Networks",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"\r\nCopyright 2020 Autodesk, Inc. All rights reserved.\r\n\r\nThis file is part of the Civil 3D Python Module.\r\n\r\n\"\"\"\r\n__author__ = 'Paolo Emilio Serra - paolo.serra@autodesk.com'\r\n__copyright__ = '2020'\r\n__version__ = '1.0.0'\r\n\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil 3D APIs\r\nclr.AddReference('acmgd')\r\nclr.AddReference('acdbmgd')\r\nclr.AddReference('accoremgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('AeccPressurePipesMgd')\r\nclr.AddReference('acdbmgdbrep')\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('AutoCADNodes')\r\nclr.AddReference('Civil3DNodes')\r\nclr.AddReference('Autodesk.Civil3DToolkit')\r\nclr.AddReference('ProtoGeometry')\r\n\r\n# Add standard Python references\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\nimport os\r\nimport math\r\n\r\nimport logging\r\nimport tempfile\r\n\r\nFORMAT = '[%(asctime)-15s] %(levelname)s: %(module)s.%(funcName)s %(message)s'\r\nlogging.basicConfig(filename=os.path.join(tempfile.gettempdir(), 'D4C3D.log'), level=logging.DEBUG,\r\n                    format=FORMAT, datefmt='%Y/%m/%d %I:%M:%S')\r\n\r\n# Add references to manage arrays, collections and interact with the user\r\nfrom System import *\r\nfrom System.IO import *\r\nfrom System.Collections.Specialized import *\r\nfrom System.Windows.Forms import MessageBox\r\n\r\n# Create an alias to the Autodesk.AutoCAD.ApplicationServices.Application class\r\nimport Autodesk.AutoCAD.ApplicationServices.Application as acapp\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references for PropertySets\r\nfrom Autodesk.Aec.PropertyData import *\r\nfrom Autodesk.Aec.PropertyData.DatabaseServices import *\r\n\r\n# Import references for Civil 3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\n# Import AutoCAD and Civil 3D Dynamo Nodes\r\nimport Autodesk.AutoCAD.DynamoNodes as DA\r\nimport Autodesk.Civil.DynamoNodes as DC\r\n\r\nfrom Autodesk.Civil.DatabaseServices.Styles import *\r\nimport Autodesk.AutoCAD.DynamoNodes.GeometryConversion.AutoCADToDynamo as A2D\r\nimport Autodesk.DesignScript.Geometry as DG\r\n\r\n\r\nadoc = acapp.DocumentManager.MdiActiveDocument\r\ned = adoc.Editor\r\ncdoc = CivilApplication.ActiveDocument\r\n\r\n# Example function\r\ndef my_function():\r\n\t\"\"\"\r\n\tDescription....\r\n\t:param first_param: ....\r\n\t:returns: ....\r\n\t\"\"\"\r\n\t\t\r\n\tglobal adoc\r\n\tglobal cdoc\r\n\t\r\n\toutput = []\r\n\ttypes = []\r\n\r\n\twith adoc.LockDocument():\r\n\t\twith adoc.Database as db:\r\n\t\t\twith db.TransactionManager.StartTransaction() as t:\r\n\t\t\t\tbt = t.GetObject(db.BlockTableId, OpenMode.ForWrite)\r\n\t\t\t\tbtr = t.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite)\r\n\t\t\t\t\r\n\t\t\t\tppnids = CivilDocumentPressurePipesExtension.GetPressurePipeNetworkIds(cdoc)\r\n\t\t\t\tstyleid = StylesRootPressurePipesExtension.GetPressurePipeStyles(cdoc.Styles)[0]\r\n\t\t\t\tstyle = t.GetObject(styleid, OpenMode.ForWrite)\r\n\t\t\t\t# style.GetDisplayStyleModel().Visible = True\r\n\t\t\t\tstyle.GetDisplayStylePlan(PressurePipeDisplayStylePlanType.Solid).Visible = True\r\n\t\t\t\t\r\n\t\t\t\tfstid = StylesRootPressurePipesExtension.GetPressureFittingStyles(cdoc.Styles)[0]\r\n\t\t\t\tfst = t.GetObject(fstid, OpenMode.ForWrite)\r\n\t\t\t\tfst.PlanOption.ViewOptions = PressureFittingPlanViewType.ModelBlock\r\n\t\t\t\t\r\n\t\t\t\tfor ppnid in ppnids:\r\n\t\t\t\t\tppn = t.GetObject(ppnid, OpenMode.ForWrite)\r\n\t\t\t\t\tfor ppid in ppn.GetPipeIds():\r\n\t\t\t\t\t\tpp = t.GetObject(ppid, OpenMode.ForWrite)\r\n\t\t\t\t\t\ttypes.append(str(type(pp)))\r\n\t\t\t\t\t\tpp.StyleId = style.Id\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t# if False:\r\n\t\t\t\t\t\toids = DBObjectCollection()\r\n\t\t\t\t\t\tpp.Explode(oids)\r\n\t\t\t\t\t\tfor obj in oids:\r\n\t\t\t\t\t\t\t# obj = t.GetObject(oid, OpenMode.ForRead)\r\n\t\t\t\t\t\t\ttemp = []\r\n\t\t\t\t\t\t\tb = t.GetObject(obj.BlockTableRecord, OpenMode.ForRead)\r\n\t\t\t\t\t\t\tfor oid in b:\r\n\t\t\t\t\t\t\t\titem = t.GetObject(oid, OpenMode.ForRead)\r\n\t\t\t\t\t\t\t\tif isinstance(item, Solid3d):\r\n\t\t\t\t\t\t\t\t\ttemp.append(A2D.ToSolid(item))\r\n\t\t\t\t\t\t\toutput.append(temp)\r\n\t\t\t\t\tfor ppid in ppn.GetFittingIds():\r\n\t\t\t\t\t\t# try:\r\n\t\t\t\t\t\tpp = t.GetObject(ppid, OpenMode.ForWrite)\r\n\t\t\t\t\t\ttypes.append(str(type(pp)))\r\n\t\t\t\t\t\t# pp.StyleId = fst.Id\r\n\t\t\t\t\t\t# curve = pp.BaseCurve\r\n\t\t\t\t\t\t# fd = curve.GetFirstDerivative(pp.StartPoint)\r\n\t\t\t\t\t\t# sd = curve.GetFirstDerivative(pp.EndPoint)\r\n\t\t\t\t\t\t# cs = DG.CoordinateSystem.ByOriginVectors(A2D.ToPoint(pp.Position))\r\n\t\t\t\t\t\t#cs = A2D.ToCoordinateSystem(pp.CompoundObjectTransform)\r\n\t\t\t\t\t\t# if False:\r\n\t\t\t\t\t\toids = DBObjectCollection()\r\n\t\t\t\t\t\tpp.Explode(oids)\r\n\t\t\t\t\t\tfor obj in oids:\r\n\t\t\t\t\t\t\t# obj = t.GetObject(oid, OpenMode.ForRead)\r\n\t\t\t\t\t\t\ttemp = []\r\n\t\t\t\t\t\t\tb = t.GetObject(obj.BlockTableRecord, OpenMode.ForRead)\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\tfor oid in b:\r\n\t\t\t\t\t\t\t\titem = t.GetObject(oid, OpenMode.ForRead)\r\n\t\t\t\t\t\t\t\tcs = A2D.ToCoordinateSystem(item.BlockTransform)\r\n\t\t\t\t\t\t\t\tif isinstance(item, BlockReference):\r\n\t\t\t\t\t\t\t\t\tm = t.GetObject(item.BlockTableRecord, OpenMode.ForRead)\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\tfor moid in m:\r\n\t\t\t\t\t\t\t\t\t\tg = t.GetObject(moid, OpenMode.ForRead)\r\n\t\t\t\t\t\t\t\t\t\tif isinstance(g, Solid3d):\r\n\t\t\t\t\t\t\t\t\t\t\ttry:\r\n\t\t\t\t\t\t\t\t\t\t\t\ttemp.append(A2D.ToSolid(g).Transform(cs).Translate(A2D.ToPoint(pp.Location).AsVector()))\r\n\t\t\t\t\t\t\t\t\t\t\texcept:\r\n\t\t\t\t\t\t\t\t\t\t\t\tpass\r\n\t\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\t# if isinstance(g, Solid3d):\r\n\t\t\t\t\t\t\t\t\t\t#\ttemp.append(g)\r\n\t\t\t\t\t\t\toutput.append(temp) \r\n\t\t\t\t\t\t# cs.Dispose() \r\n\t\t\t\t\t\t# except Exception as ex:\r\n\t\t\t\t\t\t# \toutput.append(ex.message, ex.ex_info)\r\n\r\n\t\t\t\t# t.Commit()\r\n\treturn output  # , types\r\n\t\r\n\t\r\nOUT = my_function()   ",
+      "VariableInputPorts": true,
+      "Id": "bdb30973e1474ac38db1232378d6a077",
+      "Inputs": [
+        {
+          "Id": "2f185fac31ff40cab064047eef364f88",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ea5e63d394354dd286d2fb9408a3b3d1",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 3059.8303022365085,
+      "EyeY": 1.2017449928234925,
+      "EyeZ": -2343.4256351192153,
+      "LookX": 58.986872008500541,
+      "LookY": -54.063004192683792,
+      "LookZ": 20.529131105750821,
+      "UpX": 0.45064656597210589,
+      "UpY": 0.87881711266205342,
+      "UpZ": 0.15683798988149514
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "bdb30973e1474ac38db1232378d6a077",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -812.57182900231339,
+        "Y": 172.77836710166235
+      }
+    ],
+    "Annotations": [],
+    "X": 929.23411189663739,
+    "Y": -150.54874570416212,
+    "Zoom": 1.0606077223602068
+  }
+}

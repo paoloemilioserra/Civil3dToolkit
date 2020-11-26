@@ -1,0 +1,1545 @@
+{
+  "Uuid": "3b34472e-41ed-403d-85bd-44035a61dae4",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "TKCorridorFeatureLines",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Autodesk.Civil.DynamoNodes.Corridors, Civil3DNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "5c11678fbac2422984afc1dfcb7fe25e",
+      "Inputs": [
+        {
+          "Id": "4a6760af8baa49188face72ef28dd1e1",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "897a201da654461eb0b167adcafaa9a4",
+          "Name": "Corridor[]",
+          "Description": "Corridor[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select all corridors in the drawing."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "c9e94eebef4b40028603fc0775c38f36",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c807a47092e446c39cb87ed1883d01eb",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Corridor.Baselines",
+      "Id": "4782b5a01026430db39e0d75ac1a802a",
+      "Inputs": [
+        {
+          "Id": "dec8083d07014a09b008e18efe1c730c",
+          "Name": "corridor",
+          "Description": "Autodesk.Civil.DynamoNodes.Corridor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7b5b7d7fb1cf41f8a17b7e5b1cfe824f",
+          "Name": "Baseline[]",
+          "Description": "Baseline[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all baselines from the corridor.\n\nCorridor.Baselines: Baseline[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Baseline.Codes",
+      "Id": "abb8e7428e594985b398e3285331f410",
+      "Inputs": [
+        {
+          "Id": "7bf9a93ed42441a985892fcf28bc158a",
+          "Name": "baseline",
+          "Description": "Autodesk.Civil.DynamoNodes.Baseline",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "83a6e126fc4d41e5b1516c20b8f017d5",
+          "Name": "Point Codes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3d48c0c22c9b4aecb90616372f6dda9f",
+          "Name": "Link Codes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7c6d53c3cc0d4cb7b4758a1c46410566",
+          "Name": "Shape Codes",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the codes of the baseline.\n\nBaseline.Codes ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.CorridorExtensions.GetTkFeatureLinesByCode@Autodesk.Civil.DynamoNodes.Baseline,string",
+      "Id": "bec19f1247ed4934acf4bb074c53db83",
+      "Inputs": [
+        {
+          "Id": "963b160cdf3a4c1f8c8df1d19e28fd9d",
+          "Name": "baseline",
+          "Description": "Baseline",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6140dff3ed40409e8f2f8b0b7a4dca43",
+          "Name": "code",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6a817f082f5c428689fdac1466c5fc40",
+          "Name": "TkCorridorFeatureLine[]",
+          "Description": "TkCorridorFeatureLine[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns a list of Toolkit Corridor Feauture Lines for the given code\n\nCorridorExtensions.GetTkFeatureLinesByCode (baseline: Baseline, code: string): TkCorridorFeatureLine[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "(s + e) / 2;",
+      "Id": "7afb15b1c0f54ee9a8c9f341ff1076d7",
+      "Inputs": [
+        {
+          "Id": "ffa006b80acc4b5eaa6077d104730c37",
+          "Name": "s",
+          "Description": "s",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4911c788072e4384a7750943d714b61b",
+          "Name": "e",
+          "Description": "e",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "867d805e0a4342b59d6723d3446ad3cf",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"FL\";",
+      "Id": "c77ed46c078848ffb884f8a5c8def81a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1422cbf1108f47de8c8351d72c0c2f2f",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.LayerByName@string",
+      "Id": "6159d921f39349bd8956fa1ef7f6e643",
+      "Inputs": [
+        {
+          "Id": "68fbb5f6e3014d298ee217ddb306f8d3",
+          "Name": "document",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7c2a7413d5bc4b4ca106d039df6cff2d",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "42e4f84ef2934d50bfa59c8e2da77ed2",
+          "Name": "Layer",
+          "Description": "Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get a layer by a specified name.\n\nDocument.LayerByName (name: string): Layer"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "7ba1f0c630144616b1903dc0ef4b27dc",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "196a529049b740179de547fc19518afe",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"0\";",
+      "Id": "a585179cccd0487f82f1e24413c632f0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8f088e8735954882810333a7ac349301",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Autodesk.Civil3D.DynamoNodes.AlignmentTypesDropDown, Autodesk.Civil3DToolkitUI",
+      "SelectedIndex": 1,
+      "SelectedString": "Offset",
+      "NodeType": "ExtensionNode",
+      "Id": "b731d23994e04686b5eb35c8a5881d90",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "256221773a97492581cc0c7be035fd82",
+          "Name": "AlignmentType",
+          "Description": "The selected AlignmentType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Returns an alignment type"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.LandDevelopment.Site.GetSites@Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "15a674e268e34c6e962f2f70b5565c78",
+      "Inputs": [
+        {
+          "Id": "70ca090b4c784a758340d21ffbe52159",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "051e60443da046449d093efecaf035c2",
+          "Name": "Site[]",
+          "Description": "Site[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Site.GetSites (document: Document): Site[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0];",
+      "Id": "9e19f2bb81504de69ecc0c605d45ea7d",
+      "Inputs": [
+        {
+          "Id": "ad814e7a63344cfeb39a2e9ee3966b6e",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f2bbb1337224487bae316284a5cff63d",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.Points",
+      "Id": "566c8b50a14049c0b9bba031309b53d7",
+      "Inputs": [
+        {
+          "Id": "67fdfef8df0c4634a8dd77c747ab512c",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0fd2226b9dd749f78c26b41959d9d502",
+          "Name": "Point[]",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "TkCorridorFeatureLine.Points: Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.StartStation",
+      "Id": "b2204e3801b645f282179f49ad7b4d8d",
+      "Inputs": [
+        {
+          "Id": "9a76128037a548a99c0d89edd2b05fab",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fb313fdfe3b64ec9b4a3708a1207cb4d",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the start station of the feature line.\n\nTkCorridorFeatureLine.StartStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.EndStation",
+      "Id": "f31704d3cac84002a6f83cac728e5140",
+      "Inputs": [
+        {
+          "Id": "7e7a58a8c7624d6c8426745c6f9c9ff7",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "16e317d9344a4dad856da889968e11a4",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the end station of the feature line.\n\nTkCorridorFeatureLine.EndStation: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.ExportAsPolylines",
+      "Id": "993163dea1db4cd89f7e1afad0f9e0d1",
+      "Inputs": [
+        {
+          "Id": "423ae8001e6348aaa55bd976ab2efab1",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c0e0674a8bf54534900c21ff7ed1dbca",
+          "Name": "Object[]",
+          "Description": "Object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Export the corridor feature line to a collection of AutoCAD polylines\n\nTkCorridorFeatureLine.ExportAsPolylines ( ): Object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.PolyCurve",
+      "Id": "11f89fb20b534fdaa4e1c77953955178",
+      "Inputs": [
+        {
+          "Id": "937c590a0de84ce88f11885d2ce8e578",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2f6a96fa159e45adacdb2fc3a68bb0b8",
+          "Name": "PolyCurve",
+          "Description": "PolyCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "TkCorridorFeatureLine.PolyCurve: PolyCurve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.CoordinateSystemByStation@double,bool",
+      "Id": "fbcf26df3a994d5f82f4cba263a3ceaa",
+      "Inputs": [
+        {
+          "Id": "76fc68876c5d4d83ab0eef2988a82252",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4f0b66e9d6a9404298827251bd667da7",
+          "Name": "station",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1e4f406d3b804052b061ec0460b67c29",
+          "Name": "vertical",
+          "Description": "bool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1ada4ddca3b5401daad7b93864155122",
+          "Name": "CoordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the coordinate system at a specified station.\n\nTkCorridorFeatureLine.CoordinateSystemByStation (station: double, vertical: bool = true): CoordinateSystem"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.OffsetElevationByStation@double",
+      "Id": "f42a46eb3ac74158aec2ff6f761b14f2",
+      "Inputs": [
+        {
+          "Id": "cebba4cee0a04343b8e4a86d671416e2",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "84bf9ca6b0334eb28f3ec060b3a46bdd",
+          "Name": "station",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a1b137dbaa6c4fbd8a6d87bc87a6211b",
+          "Name": "Offset",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "460b181b12754cdfb9ff59217492b4ad",
+          "Name": "Elevation",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the offset and elevation at a specified station.\n\nTkCorridorFeatureLine.OffsetElevationByStation (station: double): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.ExportAsGradingFeatureLine@string,Autodesk.AutoCAD.DynamoNodes.Layer,Autodesk.Civil.DynamoNodes.LandDevelopment.Site,bool,string,bool,double,double,double",
+      "Id": "9d4e8f936c2d4ad1962c72256b7f7a89",
+      "Inputs": [
+        {
+          "Id": "4c830015bd174d25849c24d8037f8a69",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "71dbc613ad1845a79539363e73736bf4",
+          "Name": "featurelineName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5c021f10069b434a8c7b2914308a1b3f",
+          "Name": "layer",
+          "Description": "Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3b2125c3a2d04247af8d2c9e6d9bd0d7",
+          "Name": "site",
+          "Description": "Site",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f5c93ecb577a433b9e4f86bb0abe4883",
+          "Name": "isDynamic",
+          "Description": "bool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e368ef4721cc4d26a7d8eb2eaaea5b8b",
+          "Name": "style",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "79676bebfcbe401a89093e0165da1409",
+          "Name": "isSmooth",
+          "Description": "bool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b946c7875b8543b494168f2f253421f0",
+          "Name": "arcInclusionDistance",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "94c5473b0f234aeab8fd1c363d2d7b83",
+          "Name": "weedingDistance",
+          "Description": "double\nDefault value : 0.1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fcb48a50ecbb4f898928b26150844e22",
+          "Name": "horizDeviation",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "de5109affd824a98a925c42367114935",
+          "Name": "FeatureLine",
+          "Description": "FeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Export the corridor feature line to a grading feature line\n\nTkCorridorFeatureLine.ExportAsGradingFeatureLine (featurelineName: string, layer: Layer, site: Site, isDynamic: bool = false, style: string = \"\", isSmooth: bool = false, arcInclusionDistance: double = 1, weedingDistance: double = 0.1, horizDeviation: double = 1): FeatureLine"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.ExportAsAlignment@string,Autodesk.AutoCAD.DynamoNodes.Layer,Autodesk.Civil.DynamoNodes.LandDevelopment.Site,string,string,int",
+      "Id": "d915a4d5d2b1426caea0e475306ef739",
+      "Inputs": [
+        {
+          "Id": "123e9f4509cb4af5b4006d9a4e31f825",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "61319e55c5f84d78beb10efeda8aabce",
+          "Name": "alignmentName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "71eff46291ce483ab8d0002a1e9b94f4",
+          "Name": "layer",
+          "Description": "Layer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "939193e79b4942e488ab6e10139ed925",
+          "Name": "site",
+          "Description": "Site",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5ad7b04dd7514edab8c780b6c1c89fdc",
+          "Name": "style",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eb82fdb738274d64b29674f372b9e8a9",
+          "Name": "labelSet",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "671664bdcd174a86b4b86dd9bdf5039f",
+          "Name": "alignmentType",
+          "Description": "int\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "155a72bac5d647239aee7e581178efad",
+          "Name": "Alignment",
+          "Description": "Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Export the corridor feature line to an alignment\n\nTkCorridorFeatureLine.ExportAsAlignment (alignmentName: string, layer: Layer, site: Site, style: string = \"\", labelSet: string = \"\", alignmentType: int = 1): Alignment"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"AL\";\n\"PR\";",
+      "Id": "f1f9ca4fa1254a9e868e52c1dce6d29e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6fbb160310fe44f189afe55b36a052ad",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "95878709a21b494daa725a8d091311eb",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine.ExportAsProfile@string,Autodesk.Civil.DynamoNodes.Alignment,Autodesk.AutoCAD.DynamoNodes.Layer,string,string",
+      "Id": "64d918a9e140450693c55adcb8fdec2b",
+      "Inputs": [
+        {
+          "Id": "adbbff0e3f6d413c86d9b714f728be01",
+          "Name": "tkCorridorFeatureLine",
+          "Description": "Autodesk.Civil.DynamoNodes.CorridorExtensions.TkCorridorFeatureLine",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c7ed895f1e4c4566968aaeee7b6d7eca",
+          "Name": "profileName",
+          "Description": "The profile name\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "53ac44bc371a40c6937fd54bed422a48",
+          "Name": "alignment",
+          "Description": "The alignment used to calculate the profile\n\nAlignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d0322554930a465895a458d0282e1473",
+          "Name": "layer",
+          "Description": "The layer\n\nLayer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6675da64a0bc4ef1b374d31a8636d810",
+          "Name": "style",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "72de658f669b48528c29f30962e1b499",
+          "Name": "lableSet",
+          "Description": "string\nDefault value : \"\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2c59757ff2ad47c5a980701412a9b1ac",
+          "Name": "Profile",
+          "Description": "Profile",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Export the corridor feature line to a profile associated to an alignment\n\nTkCorridorFeatureLine.ExportAsProfile (profileName: string, alignment: Alignment, layer: Layer, style: string = \"\", lableSet: string = \"\"): Profile"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Civil.DynamoNodes.Selection.AlignmentByName@string,Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "ecc529c20a3940a4a75894e28f681313",
+      "Inputs": [
+        {
+          "Id": "897029b85b5f4ef7a8b4b387c898d19e",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be4517eeb4e841b1ac89d3784420f55b",
+          "Name": "document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6ecaf882e8c644358eea146dd51821b9",
+          "Name": "Alignment",
+          "Description": "Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Select an alignment by a specified alignment name.\n\nSelection.AlignmentByName (name: string, document: Document): Alignment"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "",
+      "Id": "b1bac9582d95486696f0a52d09a7f790",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0][0][0];",
+      "Id": "9f87a61f8bdd4b16bc56a6a1d7260e88",
+      "Inputs": [
+        {
+          "Id": "a44c6949263f490cbdc14d3b7ed20486",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "599d21b4698c4a439efed745718a91c9",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "897a201da654461eb0b167adcafaa9a4",
+      "End": "dec8083d07014a09b008e18efe1c730c",
+      "Id": "609eae9c02cd47b7848f56cde3b7e9b7"
+    },
+    {
+      "Start": "c807a47092e446c39cb87ed1883d01eb",
+      "End": "4a6760af8baa49188face72ef28dd1e1",
+      "Id": "b50410a0756948d4a062471f45d7ca98"
+    },
+    {
+      "Start": "7b5b7d7fb1cf41f8a17b7e5b1cfe824f",
+      "End": "7bf9a93ed42441a985892fcf28bc158a",
+      "Id": "d0687e51893d436c92b5a626378b980c"
+    },
+    {
+      "Start": "7b5b7d7fb1cf41f8a17b7e5b1cfe824f",
+      "End": "963b160cdf3a4c1f8c8df1d19e28fd9d",
+      "Id": "b43b3bb322f0417abf8ee154c0699ca9"
+    },
+    {
+      "Start": "83a6e126fc4d41e5b1516c20b8f017d5",
+      "End": "6140dff3ed40409e8f2f8b0b7a4dca43",
+      "Id": "d424446a9bec4cb483224a0181183f06"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "67fdfef8df0c4634a8dd77c747ab512c",
+      "Id": "1f7db8e8d84b471f8b9b049f8334cdb1"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "9a76128037a548a99c0d89edd2b05fab",
+      "Id": "92919c8e1236401e9d1353ccd5c0857b"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "7e7a58a8c7624d6c8426745c6f9c9ff7",
+      "Id": "911611f54572417e810c8f2a3da9e8af"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "423ae8001e6348aaa55bd976ab2efab1",
+      "Id": "069fa9e981124fb4a85c196d1f9f18f8"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "937c590a0de84ce88f11885d2ce8e578",
+      "Id": "9925c805bebb4f8eae408a67a33d14b8"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "76fc68876c5d4d83ab0eef2988a82252",
+      "Id": "ea01bf8b12d94ad2bbccfdf430d590de"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "cebba4cee0a04343b8e4a86d671416e2",
+      "Id": "f6ff4c31834648db9356929ae53d11e3"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "4c830015bd174d25849c24d8037f8a69",
+      "Id": "f246ea484a90481f9d7226f52625549d"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "123e9f4509cb4af5b4006d9a4e31f825",
+      "Id": "003cdca3436e4d2e95d649e8d9151464"
+    },
+    {
+      "Start": "6a817f082f5c428689fdac1466c5fc40",
+      "End": "a44c6949263f490cbdc14d3b7ed20486",
+      "Id": "056550238de84922aa2cf6a8964eaaaf"
+    },
+    {
+      "Start": "867d805e0a4342b59d6723d3446ad3cf",
+      "End": "4f0b66e9d6a9404298827251bd667da7",
+      "Id": "cf27e2b8b2194d4e820e10311b2ca4dc"
+    },
+    {
+      "Start": "867d805e0a4342b59d6723d3446ad3cf",
+      "End": "84bf9ca6b0334eb28f3ec060b3a46bdd",
+      "Id": "a161cb0a9dee4174b35ab112eed3a345"
+    },
+    {
+      "Start": "1422cbf1108f47de8c8351d72c0c2f2f",
+      "End": "71dbc613ad1845a79539363e73736bf4",
+      "Id": "ece37c297635482c8d9d7152be98586c"
+    },
+    {
+      "Start": "42e4f84ef2934d50bfa59c8e2da77ed2",
+      "End": "5c021f10069b434a8c7b2914308a1b3f",
+      "Id": "b9ab706e351b4b2abee12398ae9bd75f"
+    },
+    {
+      "Start": "42e4f84ef2934d50bfa59c8e2da77ed2",
+      "End": "71eff46291ce483ab8d0002a1e9b94f4",
+      "Id": "d6ea274a17804454ba6fb15c7cb0bb38"
+    },
+    {
+      "Start": "42e4f84ef2934d50bfa59c8e2da77ed2",
+      "End": "d0322554930a465895a458d0282e1473",
+      "Id": "da87bee630444f9c89cb5e38cadee601"
+    },
+    {
+      "Start": "196a529049b740179de547fc19518afe",
+      "End": "68fbb5f6e3014d298ee217ddb306f8d3",
+      "Id": "bb5640429b7a4d8b846be6b067880266"
+    },
+    {
+      "Start": "196a529049b740179de547fc19518afe",
+      "End": "70ca090b4c784a758340d21ffbe52159",
+      "Id": "208adea198f2464ebedd317b6c11d3ad"
+    },
+    {
+      "Start": "196a529049b740179de547fc19518afe",
+      "End": "be4517eeb4e841b1ac89d3784420f55b",
+      "Id": "289eb5de739345488e64f0bc43f8aefb"
+    },
+    {
+      "Start": "8f088e8735954882810333a7ac349301",
+      "End": "7c2a7413d5bc4b4ca106d039df6cff2d",
+      "Id": "2f98d8e3c5df408790c4fc5ab9ae7f00"
+    },
+    {
+      "Start": "256221773a97492581cc0c7be035fd82",
+      "End": "671664bdcd174a86b4b86dd9bdf5039f",
+      "Id": "b6d37d0caa6546c49a26314dad1dec43"
+    },
+    {
+      "Start": "051e60443da046449d093efecaf035c2",
+      "End": "ad814e7a63344cfeb39a2e9ee3966b6e",
+      "Id": "c5d798c6fa2d45dab32918c6d71869c6"
+    },
+    {
+      "Start": "f2bbb1337224487bae316284a5cff63d",
+      "End": "3b2125c3a2d04247af8d2c9e6d9bd0d7",
+      "Id": "11d39fbbb46e4cd9ae1e5b3ba6e472e9"
+    },
+    {
+      "Start": "f2bbb1337224487bae316284a5cff63d",
+      "End": "939193e79b4942e488ab6e10139ed925",
+      "Id": "34ece8461d1f41b6a94ea8bee66ce13f"
+    },
+    {
+      "Start": "fb313fdfe3b64ec9b4a3708a1207cb4d",
+      "End": "ffa006b80acc4b5eaa6077d104730c37",
+      "Id": "42a91f6fda2448ddb4e3c36fbafc3847"
+    },
+    {
+      "Start": "16e317d9344a4dad856da889968e11a4",
+      "End": "4911c788072e4384a7750943d714b61b",
+      "Id": "81818204598b45338a8f0943efed824f"
+    },
+    {
+      "Start": "6fbb160310fe44f189afe55b36a052ad",
+      "End": "61319e55c5f84d78beb10efeda8aabce",
+      "Id": "710fa08f02e54d5b8a74efbb802cbead"
+    },
+    {
+      "Start": "6fbb160310fe44f189afe55b36a052ad",
+      "End": "897029b85b5f4ef7a8b4b387c898d19e",
+      "Id": "140c20f1dd5046a6a76de28c78f7a872"
+    },
+    {
+      "Start": "95878709a21b494daa725a8d091311eb",
+      "End": "c7ed895f1e4c4566968aaeee7b6d7eca",
+      "Id": "d1477c33736442a9bd613424232ece86"
+    },
+    {
+      "Start": "6ecaf882e8c644358eea146dd51821b9",
+      "End": "53ac44bc371a40c6937fd54bed422a48",
+      "Id": "ce1b845c4e084a0dba063b1f639e51c5"
+    },
+    {
+      "Start": "599d21b4698c4a439efed745718a91c9",
+      "End": "adbbff0e3f6d413c86d9b714f728be01",
+      "Id": "061ffd135deb4c10a8806f3231dd4e35"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.7",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "bec19f1247ed4934acf4bb074c53db83",
+        "b731d23994e04686b5eb35c8a5881d90",
+        "15a674e268e34c6e962f2f70b5565c78",
+        "566c8b50a14049c0b9bba031309b53d7",
+        "b2204e3801b645f282179f49ad7b4d8d",
+        "f31704d3cac84002a6f83cac728e5140",
+        "993163dea1db4cd89f7e1afad0f9e0d1",
+        "11f89fb20b534fdaa4e1c77953955178",
+        "fbcf26df3a994d5f82f4cba263a3ceaa",
+        "f42a46eb3ac74158aec2ff6f761b14f2",
+        "9d4e8f936c2d4ad1962c72256b7f7a89",
+        "d915a4d5d2b1426caea0e475306ef739",
+        "64d918a9e140450693c55adcb8fdec2b"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "bec19f12-47ed-4934-acf4-bb074c53db83",
+      "Binding": {
+        "GetTkFeatureLinesByCode_InClassDecl-1_InFunctionScope-1_Instance0_bec19f12-47ed-4934-acf4-bb074c53db83": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPmZhbHNlPC9CYXNlLTBfSGFzRGF0YT4NCjxCYXNlLTBfSGFzTmVzdGVkRGF0YT50cnVlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTBfTmVzdGVkRGF0YUNvdW50PjE8L0Jhc2UtMF9OZXN0ZWREYXRhQ291bnQ+DQo8QmFzZS0wLTBfSGFzRGF0YT5mYWxzZTwvQmFzZS0wLTBfSGFzRGF0YT4NCjxCYXNlLTAtMF9IYXNOZXN0ZWREYXRhPnRydWU8L0Jhc2UtMC0wX0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTBfTmVzdGVkRGF0YUNvdW50PjE8L0Jhc2UtMC0wX05lc3RlZERhdGFDb3VudD4NCjxCYXNlLTAtMC0wX0hhc0RhdGE+ZmFsc2U8L0Jhc2UtMC0wLTBfSGFzRGF0YT4NCjxCYXNlLTAtMC0wX0hhc05lc3RlZERhdGE+dHJ1ZTwvQmFzZS0wLTAtMF9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0wLTBfTmVzdGVkRGF0YUNvdW50PjE0PC9CYXNlLTAtMC0wX05lc3RlZERhdGFDb3VudD4NCjxCYXNlLTAtMC0wLTBfSGFzRGF0YT50cnVlPC9CYXNlLTAtMC0wLTBfSGFzRGF0YT4NCjxCYXNlLTAtMC0wLTBfRGF0YSBpZD0icmVmLTMiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcFRaWEpwWVd4cGVtRmliR1ZJWVc1a2JHVWdhV1E5SW5KbFppMHhJaUI0Yld4dWN6cGhNVDBpYUhSMGNEb3ZMM05qYUdWdFlYTXViV2xqY205emIyWjBMbU52YlM5amJISXZibk5oYzNObGJTOUJkWFJ2WkdWemF5NUJkWFJ2UTBGRUxrUjVibUZ0YjBGd2NDNVRaWEoyYVdObGN5OUJZMFI1Ym1GdGIxTmxjblpwWTJWekpUSkRKVEl3Vm1WeWMybHZiaVV6UkRFekxqSXVNakUyTVM0d0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStRVGMyUmp3dmMzUnlhVzVuU1VRK0RRbzhMMkV4T2xObGNtbGhiR2w2WVdKc1pVaGhibVJzWlQ0TkNqd3ZVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqd3ZVMDlCVUMxRlRsWTZSVzUyWld4dmNHVStEUW89PC9CYXNlLTAtMC0wLTBfRGF0YT4NCjxCYXNlLTAtMC0wLTBfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTAtMC0wX0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTAtMC0xX0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTAtMC0xX0hhc0RhdGE+DQo8QmFzZS0wLTAtMC0xX0RhdGEgaWQ9InJlZi00Ij5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBUWlhKcFlXeHBlbUZpYkdWSVlXNWtiR1VnYVdROUluSmxaaTB4SWlCNGJXeHVjenBoTVQwaWFIUjBjRG92TDNOamFHVnRZWE11YldsamNtOXpiMlowTG1OdmJTOWpiSEl2Ym5OaGMzTmxiUzlCZFhSdlpHVnpheTVCZFhSdlEwRkVMa1I1Ym1GdGIwRndjQzVUWlhKMmFXTmxjeTlCWTBSNWJtRnRiMU5sY25acFkyVnpKVEpESlRJd1ZtVnljMmx2YmlVelJERXpMakl1TWpFMk1TNHdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrUVRjMlJqd3ZjM1J5YVc1blNVUStEUW84TDJFeE9sTmxjbWxoYkdsNllXSnNaVWhoYm1Sc1pUNE5Dand2VTA5QlVDMUZUbFk2UW05a2VUNE5Dand2VTA5QlVDMUZUbFk2Ulc1MlpXeHZjR1UrRFFvPTwvQmFzZS0wLTAtMC0xX0RhdGE+DQo8QmFzZS0wLTAtMC0xX0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0wLTAtMV9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0wLTAtMl9IYXNEYXRhPnRydWU8L0Jhc2UtMC0wLTAtMl9IYXNEYXRhPg0KPEJhc2UtMC0wLTAtMl9EYXRhIGlkPSJyZWYtNSI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1FUYzJSand2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMC0wLTAtMl9EYXRhPg0KPEJhc2UtMC0wLTAtMl9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMC0wLTJfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTAtMC0wLTNfSGFzRGF0YT50cnVlPC9CYXNlLTAtMC0wLTNfSGFzRGF0YT4NCjxCYXNlLTAtMC0wLTNfRGF0YSBpZD0icmVmLTYiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcFRaWEpwWVd4cGVtRmliR1ZJWVc1a2JHVWdhV1E5SW5KbFppMHhJaUI0Yld4dWN6cGhNVDBpYUhSMGNEb3ZMM05qYUdWdFlYTXViV2xqY205emIyWjBMbU52YlM5amJISXZibk5oYzNObGJTOUJkWFJ2WkdWemF5NUJkWFJ2UTBGRUxrUjVibUZ0YjBGd2NDNVRaWEoyYVdObGN5OUJZMFI1Ym1GdGIxTmxjblpwWTJWekpUSkRKVEl3Vm1WeWMybHZiaVV6UkRFekxqSXVNakUyTVM0d0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStRVGMyUmp3dmMzUnlhVzVuU1VRK0RRbzhMMkV4T2xObGNtbGhiR2w2WVdKc1pVaGhibVJzWlQ0TkNqd3ZVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqd3ZVMDlCVUMxRlRsWTZSVzUyWld4dmNHVStEUW89PC9CYXNlLTAtMC0wLTNfRGF0YT4NCjxCYXNlLTAtMC0wLTNfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTAtMC0zX0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTAtMC00X0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTAtMC00X0hhc0RhdGE+DQo8QmFzZS0wLTAtMC00X0RhdGEgaWQ9InJlZi03Ij5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBUWlhKcFlXeHBlbUZpYkdWSVlXNWtiR1VnYVdROUluSmxaaTB4SWlCNGJXeHVjenBoTVQwaWFIUjBjRG92TDNOamFHVnRZWE11YldsamNtOXpiMlowTG1OdmJTOWpiSEl2Ym5OaGMzTmxiUzlCZFhSdlpHVnpheTVCZFhSdlEwRkVMa1I1Ym1GdGIwRndjQzVUWlhKMmFXTmxjeTlCWTBSNWJtRnRiMU5sY25acFkyVnpKVEpESlRJd1ZtVnljMmx2YmlVelJERXpMakl1TWpFMk1TNHdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrUVRjMlJqd3ZjM1J5YVc1blNVUStEUW84TDJFeE9sTmxjbWxoYkdsNllXSnNaVWhoYm1Sc1pUNE5Dand2VTA5QlVDMUZUbFk2UW05a2VUNE5Dand2VTA5QlVDMUZUbFk2Ulc1MlpXeHZjR1UrRFFvPTwvQmFzZS0wLTAtMC00X0RhdGE+DQo8QmFzZS0wLTAtMC00X0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0wLTAtNF9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0wLTAtNV9IYXNEYXRhPnRydWU8L0Jhc2UtMC0wLTAtNV9IYXNEYXRhPg0KPEJhc2UtMC0wLTAtNV9EYXRhIGlkPSJyZWYtOCI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1FUYzJSand2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMC0wLTAtNV9EYXRhPg0KPEJhc2UtMC0wLTAtNV9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMC0wLTVfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTAtMC0wLTZfSGFzRGF0YT50cnVlPC9CYXNlLTAtMC0wLTZfSGFzRGF0YT4NCjxCYXNlLTAtMC0wLTZfRGF0YSBpZD0icmVmLTkiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcFRaWEpwWVd4cGVtRmliR1ZJWVc1a2JHVWdhV1E5SW5KbFppMHhJaUI0Yld4dWN6cGhNVDBpYUhSMGNEb3ZMM05qYUdWdFlYTXViV2xqY205emIyWjBMbU52YlM5amJISXZibk5oYzNObGJTOUJkWFJ2WkdWemF5NUJkWFJ2UTBGRUxrUjVibUZ0YjBGd2NDNVRaWEoyYVdObGN5OUJZMFI1Ym1GdGIxTmxjblpwWTJWekpUSkRKVEl3Vm1WeWMybHZiaVV6UkRFekxqSXVNakUyTVM0d0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStRVGMyUmp3dmMzUnlhVzVuU1VRK0RRbzhMMkV4T2xObGNtbGhiR2w2WVdKc1pVaGhibVJzWlQ0TkNqd3ZVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqd3ZVMDlCVUMxRlRsWTZSVzUyWld4dmNHVStEUW89PC9CYXNlLTAtMC0wLTZfRGF0YT4NCjxCYXNlLTAtMC0wLTZfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTAtMC02X0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTAtMC03X0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTAtMC03X0hhc0RhdGE+DQo8QmFzZS0wLTAtMC03X0RhdGEgaWQ9InJlZi0xMCI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1FUYzJSand2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMC0wLTAtN19EYXRhPg0KPEJhc2UtMC0wLTAtN19IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMC0wLTdfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTAtMC0wLThfSGFzRGF0YT50cnVlPC9CYXNlLTAtMC0wLThfSGFzRGF0YT4NCjxCYXNlLTAtMC0wLThfRGF0YSBpZD0icmVmLTExIj5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBUWlhKcFlXeHBlbUZpYkdWSVlXNWtiR1VnYVdROUluSmxaaTB4SWlCNGJXeHVjenBoTVQwaWFIUjBjRG92TDNOamFHVnRZWE11YldsamNtOXpiMlowTG1OdmJTOWpiSEl2Ym5OaGMzTmxiUzlCZFhSdlpHVnpheTVCZFhSdlEwRkVMa1I1Ym1GdGIwRndjQzVUWlhKMmFXTmxjeTlCWTBSNWJtRnRiMU5sY25acFkyVnpKVEpESlRJd1ZtVnljMmx2YmlVelJERXpMakl1TWpFMk1TNHdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrUVRjMlJqd3ZjM1J5YVc1blNVUStEUW84TDJFeE9sTmxjbWxoYkdsNllXSnNaVWhoYm1Sc1pUNE5Dand2VTA5QlVDMUZUbFk2UW05a2VUNE5Dand2VTA5QlVDMUZUbFk2Ulc1MlpXeHZjR1UrRFFvPTwvQmFzZS0wLTAtMC04X0RhdGE+DQo8QmFzZS0wLTAtMC04X0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0wLTAtOF9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0wLTAtOV9IYXNEYXRhPnRydWU8L0Jhc2UtMC0wLTAtOV9IYXNEYXRhPg0KPEJhc2UtMC0wLTAtOV9EYXRhIGlkPSJyZWYtMTIiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcFRaWEpwWVd4cGVtRmliR1ZJWVc1a2JHVWdhV1E5SW5KbFppMHhJaUI0Yld4dWN6cGhNVDBpYUhSMGNEb3ZMM05qYUdWdFlYTXViV2xqY205emIyWjBMbU52YlM5amJISXZibk5oYzNObGJTOUJkWFJ2WkdWemF5NUJkWFJ2UTBGRUxrUjVibUZ0YjBGd2NDNVRaWEoyYVdObGN5OUJZMFI1Ym1GdGIxTmxjblpwWTJWekpUSkRKVEl3Vm1WeWMybHZiaVV6UkRFekxqSXVNakUyTVM0d0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStRVGMyUmp3dmMzUnlhVzVuU1VRK0RRbzhMMkV4T2xObGNtbGhiR2w2WVdKc1pVaGhibVJzWlQ0TkNqd3ZVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqd3ZVMDlCVUMxRlRsWTZSVzUyWld4dmNHVStEUW89PC9CYXNlLTAtMC0wLTlfRGF0YT4NCjxCYXNlLTAtMC0wLTlfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTAtMC05X0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTAtMC0xMF9IYXNEYXRhPnRydWU8L0Jhc2UtMC0wLTAtMTBfSGFzRGF0YT4NCjxCYXNlLTAtMC0wLTEwX0RhdGEgaWQ9InJlZi0xMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1FUYzJSand2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMC0wLTAtMTBfRGF0YT4NCjxCYXNlLTAtMC0wLTEwX0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0wLTAtMTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTAtMC0wLTExX0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTAtMC0xMV9IYXNEYXRhPg0KPEJhc2UtMC0wLTAtMTFfRGF0YSBpZD0icmVmLTE0Ij5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBUWlhKcFlXeHBlbUZpYkdWSVlXNWtiR1VnYVdROUluSmxaaTB4SWlCNGJXeHVjenBoTVQwaWFIUjBjRG92TDNOamFHVnRZWE11YldsamNtOXpiMlowTG1OdmJTOWpiSEl2Ym5OaGMzTmxiUzlCZFhSdlpHVnpheTVCZFhSdlEwRkVMa1I1Ym1GdGIwRndjQzVUWlhKMmFXTmxjeTlCWTBSNWJtRnRiMU5sY25acFkyVnpKVEpESlRJd1ZtVnljMmx2YmlVelJERXpMakl1TWpFMk1TNHdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrUVRjMlJqd3ZjM1J5YVc1blNVUStEUW84TDJFeE9sTmxjbWxoYkdsNllXSnNaVWhoYm1Sc1pUNE5Dand2VTA5QlVDMUZUbFk2UW05a2VUNE5Dand2VTA5QlVDMUZUbFk2Ulc1MlpXeHZjR1UrRFFvPTwvQmFzZS0wLTAtMC0xMV9EYXRhPg0KPEJhc2UtMC0wLTAtMTFfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTAtMC0xMV9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0wLTAtMTJfSGFzRGF0YT50cnVlPC9CYXNlLTAtMC0wLTEyX0hhc0RhdGE+DQo8QmFzZS0wLTAtMC0xMl9EYXRhIGlkPSJyZWYtMTUiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcFRaWEpwWVd4cGVtRmliR1ZJWVc1a2JHVWdhV1E5SW5KbFppMHhJaUI0Yld4dWN6cGhNVDBpYUhSMGNEb3ZMM05qYUdWdFlYTXViV2xqY205emIyWjBMbU52YlM5amJISXZibk5oYzNObGJTOUJkWFJ2WkdWemF5NUJkWFJ2UTBGRUxrUjVibUZ0YjBGd2NDNVRaWEoyYVdObGN5OUJZMFI1Ym1GdGIxTmxjblpwWTJWekpUSkRKVEl3Vm1WeWMybHZiaVV6UkRFekxqSXVNakUyTVM0d0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStRVGMyUmp3dmMzUnlhVzVuU1VRK0RRbzhMMkV4T2xObGNtbGhiR2w2WVdKc1pVaGhibVJzWlQ0TkNqd3ZVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqd3ZVMDlCVUMxRlRsWTZSVzUyWld4dmNHVStEUW89PC9CYXNlLTAtMC0wLTEyX0RhdGE+DQo8QmFzZS0wLTAtMC0xMl9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMC0wLTEyX0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTAtMC0xM19IYXNEYXRhPnRydWU8L0Jhc2UtMC0wLTAtMTNfSGFzRGF0YT4NCjxCYXNlLTAtMC0wLTEzX0RhdGEgaWQ9InJlZi0xNiI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1FUYzJSand2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMC0wLTAtMTNfRGF0YT4NCjxCYXNlLTAtMC0wLTEzX0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0wLTAtMTNfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    },
+    {
+      "NodeId": "15a674e2-68e3-4c6e-962f-2f70b5565c78",
+      "Binding": {
+        "GetSites_InClassDecl-1_InFunctionScope-1_Instance0_15a674e2-68e3-4c6e-962f-2f70b5565c78": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1FUbENPVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    },
+    {
+      "NodeId": "ecc529c2-0a39-40a4-a758-94e28f681313",
+      "Binding": {
+        "AlignmentByName_InClassDecl-1_InFunctionScope-1_Instance0_ecc529c2-0a39-40a4-a758-94e28f681313": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1JUTkJRVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 5292.403581258648,
+      "EyeY": 369.97274109260854,
+      "EyeZ": -4101.6334070219355,
+      "LookX": 110.87409091643076,
+      "LookY": -760.03592393605823,
+      "LookZ": 263.62210769577632,
+      "UpX": 0.32514136191895127,
+      "UpY": 0.5446390350150313,
+      "UpZ": 0.7730791785499046
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Corridors",
+        "Id": "5c11678fbac2422984afc1dfcb7fe25e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 468.67102308024209,
+        "Y": 466.09920503119451
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "c9e94eebef4b40028603fc0775c38f36",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 240.67102308024209,
+        "Y": 466.09920503119451
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Corridor.Baselines",
+        "Id": "4782b5a01026430db39e0d75ac1a802a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 754.67102308024209,
+        "Y": 466.09920503119451
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Baseline.Codes",
+        "Id": "abb8e7428e594985b398e3285331f410",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1059.3541304721782,
+        "Y": 535.27171904153045
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CorridorExtensions.GetTkFeatureLinesByCode",
+        "Id": "bec19f1247ed4934acf4bb074c53db83",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1422.7188370706938,
+        "Y": 421.69302905110112
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "7afb15b1c0f54ee9a8c9f341ff1076d7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2216.4570392278106,
+        "Y": 896.04458907597575
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "c77ed46c078848ffb884f8a5c8def81a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1800.5104146760007,
+        "Y": 1398.4278476219083
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.LayerByName",
+        "Id": "6159d921f39349bd8956fa1ef7f6e643",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1663.0010446376116,
+        "Y": 1497.0381693599725
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "7ba1f0c630144616b1903dc0ef4b27dc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1400.686306126916,
+        "Y": 1355.7135621778536
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a585179cccd0487f82f1e24413c632f0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1404.0,
+        "Y": 1642.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignment Types",
+        "Id": "b731d23994e04686b5eb35c8a5881d90",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1652.199071156,
+        "Y": 2157.0736002641938
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Site.GetSites",
+        "Id": "15a674e268e34c6e962f2f70b5565c78",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1589.0512448251452,
+        "Y": 1642.0107431178294
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "9e19f2bb81504de69ecc0c605d45ea7d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1851.6076770528216,
+        "Y": 1648.0685518763332
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.Points",
+        "Id": "566c8b50a14049c0b9bba031309b53d7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 1834.7564563679871,
+        "Y": 735.34184651111855
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.StartStation",
+        "Id": "b2204e3801b645f282179f49ad7b4d8d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1834.7564563679871,
+        "Y": 824.68089067914457
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.EndStation",
+        "Id": "f31704d3cac84002a6f83cac728e5140",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1828.8005200901184,
+        "Y": 957.69680088487235
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.ExportAsPolylines",
+        "Id": "993163dea1db4cd89f7e1afad0f9e0d1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2296.96576673444,
+        "Y": 1097.0588136641716
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.PolyCurve",
+        "Id": "11f89fb20b534fdaa4e1c77953955178",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 1963.4964150412811,
+        "Y": 339.5587758617624
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.CoordinateSystemByStation",
+        "Id": "fbcf26df3a994d5f82f4cba263a3ceaa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2423.7956763253428,
+        "Y": 479.27981078590449
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.OffsetElevationByStation",
+        "Id": "f42a46eb3ac74158aec2ff6f761b14f2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2448.7965220006845,
+        "Y": 673.39359752662108
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.ExportAsGradingFeatureLine",
+        "Id": "9d4e8f936c2d4ad1962c72256b7f7a89",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2267.4606773538935,
+        "Y": 1284.5852221680764
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.ExportAsAlignment",
+        "Id": "d915a4d5d2b1426caea0e475306ef739",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2153.3333789508247,
+        "Y": 1950.5883080385177
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f1f9ca4fa1254a9e868e52c1dce6d29e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1794.3595912951851,
+        "Y": 1853.5184575360745
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "TkCorridorFeatureLine.ExportAsProfile",
+        "Id": "64d918a9e140450693c55adcb8fdec2b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2960.4676783282016,
+        "Y": 2180.4547775791775
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Selection.AlignmentByName",
+        "Id": "ecc529c20a3940a4a75894e28f681313",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2225.2940528538807,
+        "Y": 2265.9503053612902
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "b1bac9582d95486696f0a52d09a7f790",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2604.8669306468537,
+        "Y": 1795.8336633085669
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "9f87a61f8bdd4b16bc56a6a1d7260e88",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2602.93653937768,
+        "Y": 1894.3550722803668
+      }
+    ],
+    "Annotations": [],
+    "X": -1650.1037852664829,
+    "Y": -1388.3516372656529,
+    "Zoom": 0.88098955216881314
+  }
+}

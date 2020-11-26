@@ -1,0 +1,95 @@
+{
+  "Uuid": "3c4328ff-2652-4b3b-89d2-698b9a8dcf9b",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "COM API",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "\"\"\"\r\nCopyright 2020 Autodesk, Inc. All rights reserved.\r\n\r\nThis file is part of the Civil 3D Python Module.\r\n\r\n\"\"\"\r\n__author__ = 'Paolo Emilio Serra - paolo.serra@autodesk.com'\r\n__copyright__ = '2020'\r\n__version__ = '1.0.0'\r\n\r\nimport clr\r\n\r\n# Add Assemblies for AutoCAD and Civil 3D APIs\r\nclr.AddReference('acmgd')\r\nclr.AddReference('acdbmgd')\r\nclr.AddReference('accoremgd')\r\nclr.AddReference('AecBaseMgd')\r\nclr.AddReference('AecPropDataMgd')\r\nclr.AddReference('AeccDbMgd')\r\nclr.AddReference('AeccPressurePipesMgd')\r\nclr.AddReference('acdbmgdbrep')\r\nclr.AddReference('System.Windows.Forms')\r\nclr.AddReference('AutoCADNodes')\r\nclr.AddReference('Civil3DNodes')\r\nclr.AddReference('Autodesk.AECC.Interop.Land')\r\n\r\n# Add standard Python references\r\nimport sys\r\nsys.path.append('C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\nimport os\r\nimport math\r\n\r\nimport logging\r\nimport tempfile\r\n\r\nFORMAT = '[%(asctime)-15s] %(levelname)s: %(module)s.%(funcName)s %(message)s'\r\nlogging.basicConfig(filename=os.path.join(tempfile.gettempdir(), 'D4C3D.log'), level=logging.DEBUG,\r\n                    format=FORMAT, datefmt='%Y/%m/%d %I:%M:%S')\r\n\r\n# Add references to manage arrays, collections and interact with the user\r\nfrom System import *\r\nfrom System.IO import *\r\nfrom System.Collections.Specialized import *\r\nfrom System.Windows.Forms import MessageBox\r\n\r\n# Create an alias to the Autodesk.AutoCAD.ApplicationServices.Application class\r\nimport Autodesk.AutoCAD.ApplicationServices.Application as acapp\r\n\r\n# Import references from AutoCAD\r\nfrom Autodesk.AutoCAD.Runtime import *\r\nfrom Autodesk.AutoCAD.ApplicationServices import *\r\nfrom Autodesk.AutoCAD.EditorInput import *\r\nfrom Autodesk.AutoCAD.DatabaseServices import *\r\nfrom Autodesk.AutoCAD.Geometry import *\r\n\r\n# Import references for PropertySets\r\nfrom Autodesk.Aec.PropertyData import *\r\nfrom Autodesk.Aec.PropertyData.DatabaseServices import *\r\n\r\n# Import references for Civil 3D\r\nfrom Autodesk.Civil.ApplicationServices import *\r\nfrom Autodesk.Civil.DatabaseServices import *\r\n\r\n# Import AutoCAD and Civil 3D Dynamo Nodes\r\nimport Autodesk.AutoCAD.DynamoNodes as DA\r\nimport Autodesk.Civil.DynamoNodes as DC\r\n\r\nfrom Autodesk.AECC.Interop.Land import *\r\nfrom System.Reflection import *\r\n\r\nadoc = acapp.DocumentManager.MdiActiveDocument\r\ned = adoc.Editor\r\n\r\n# Example function\r\ndef my_function():\r\n\t\"\"\"\r\n\tDescription....\r\n\t:param first_param: ....\r\n\t:returns: ....\r\n\t\"\"\"\r\n\t\t\r\n\tglobal adoc\r\n\t\r\n\toutput = []\r\n\tret = []\r\n\r\n\twith adoc.LockDocument():\r\n\t\twith adoc.Database as db:\r\n\t\t\twith db.TransactionManager.StartTransaction() as t:\r\n\t\t\t\tbt = t.GetObject(db.BlockTableId, OpenMode.ForWrite)\r\n\t\t\t\tbtr = t.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite)\r\n\t\t\t\t\r\n\t\t\t\tudps = []\r\n\t\t\t\tparcels = []\r\n\t\t\t\tdone = False\r\n\t\t\t\tfor oid in btr:\r\n\t\t\t\t\tobj = t.GetObject(oid, OpenMode.ForRead)\r\n\t\t\t\t\tif isinstance(obj, Parcel):\r\n\t\t\t\t\t\tparcel = obj.AcadObject\r\n\t\t\t\t\t\tparcels.append(parcel)\r\n\t\t\t\t\t\tif not done:\r\n\t\t\t\t\t\t\tcomdb = parcel.Database\r\n\t\t\t\t\t\t\tudpcs = comdb.ParcelUserDefinedPropertyClassifications\r\n\t\t\t\t\t\t\tfor udpc in udpcs:\r\n\t\t\t\t\t\t\t\tfor udp in udpc.UserDefinedProperties:\r\n\t\t\t\t\t\t\t\t\tudps.append(udp)\r\n\t\t\t\t\t\t\tdone = True\r\n\t\t\t\t\t\t\ta = clr.Reference[AeccUDPClassificationApplyWay]()\r\n\t\t\t\t\t\t\tprops = obj.AcadObject.Parent.Parcels.Properties\r\n\t\t\t\t\t\t\tb = props.GetUserDefinedPropertyClassification(a)\r\n\t\t\t\t\t\t\tprops.SetUserDefinedPropertyClassification(AeccUDPClassificationApplyWay.aeccUDPClassificationApplyAll, '')\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t# return a.Value\r\n\t\t\t\t\r\n\t\t\t\tattr = []\r\n\t\t\t\tfor parcel in parcels:\r\n\t\t\t\t\ttemp = {'_'.join([udp.Classification.Name, udp.Name]): parcel.GetUserDefinedPropertyValue(udp.Name) for udp in udps}\r\n\t\t\t\t\ttemp['Name'] = parcel.Name\r\n\t\t\t\t\ttemp['Number'] = parcel.Number\r\n\t\t\t\t\ttemp['Area'] = parcel.Statistics.Area\r\n\t\t\t\t\ttemp['Perimeter'] = parcel.Statistics.Perimeter\r\n\t\t\t\t\tattr.append(temp)\r\n\t\t\t\t\ttry:\r\n\t\t\t\t\t\tpass\r\n\t\t\t\t\t\t# [parcel.SetUserDefinedPropertyValue(udp, '1') for udp in udps if udp.Name == 'Test']\r\n\t\t\t\t\t\t\r\n\t\t\t\t\texcept:\r\n\t\t\t\t\t\tpass\r\n\t\t\t\t\t\t\r\n\t\t\t\treturn attr\r\n\r\n\t\t\t\tt.Commit()\r\n\treturn output\r\n\t\r\n\t\r\nOUT = my_function()",
+      "VariableInputPorts": true,
+      "Id": "7120a280bf214ef989ab7eb20194a9af",
+      "Inputs": [
+        {
+          "Id": "8bf405c4dba8480484696c44652a96cb",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1e90fd73c8ae49b2b429390b92a706e0",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8bfe09eb02aa4f70822dc415fadb46b2",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    }
+  ],
+  "Connectors": [],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "7120a280bf214ef989ab7eb20194a9af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 434.76562182081415,
+        "Y": 26.43282195715534
+      }
+    ],
+    "Annotations": [],
+    "X": -337.64943507256521,
+    "Y": 16.709809775476685,
+    "Zoom": 1.060241099295625
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "Uuid": "6f5db138-2c13-4076-9687-66a790149c45",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "BlockExtensions_Overkill",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.Document.Current",
+      "Id": "501ef3e356964700a4a33c320b73924e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "839b6468aaea4ba9a0dfeb298b464aa7",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current AutoCAD document.\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.DocumentExtensions.GetXRefs@Autodesk.AutoCAD.DynamoNodes.Document",
+      "Id": "153a78f8340c4e35954cf82a1967d65b",
+      "Inputs": [
+        {
+          "Id": "861460626b8647bf9b7e223eaa54be26",
+          "Name": "document",
+          "Description": "The AutoCAD Document\n\nDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7f99b66f863449df9360bf38c32aa183",
+          "Name": "BlockReference[]",
+          "Description": "The list of External References in the Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the External References in the Document\n\nDocumentExtensions.GetXRefs (document: Document): BlockReference[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.BlockReference.Block",
+      "Id": "7ab6340cc0f24002ba5f2b5513d55b27",
+      "Inputs": [
+        {
+          "Id": "4d595689106745af9e298764ee8b1527",
+          "Name": "blockReference",
+          "Description": "Autodesk.AutoCAD.DynamoNodes.BlockReference",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ce44ff90ce4546b3b63d4ca12eeb0f39",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the block used by this block reference.\n\nBlockReference.Block: Block"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.AutoCAD.DynamoNodes.BlockExtensions.Overkill@Autodesk.AutoCAD.DynamoNodes.Block",
+      "Id": "3f6728d3120740848aa4067b512e0981",
+      "Inputs": [
+        {
+          "Id": "4604d538464a480ab9759e1a3eb66b93",
+          "Name": "block",
+          "Description": "The Block\n\nBlock",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "03f78958aadb41ae9306a9632b0ef5ed",
+          "Name": "Block",
+          "Description": "Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Runs the Overkill command on the Block\n\nBlockExtensions.Overkill (block: Block): Block"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "839b6468aaea4ba9a0dfeb298b464aa7",
+      "End": "861460626b8647bf9b7e223eaa54be26",
+      "Id": "f93a1f0449034b77ad5450ec3a3ce173"
+    },
+    {
+      "Start": "7f99b66f863449df9360bf38c32aa183",
+      "End": "4d595689106745af9e298764ee8b1527",
+      "Id": "d9c6439e0049465f83936dde5b38ac3b"
+    },
+    {
+      "Start": "ce44ff90ce4546b3b63d4ca12eeb0f39",
+      "End": "4604d538464a480ab9759e1a3eb66b93",
+      "Id": "2060f56c2d764c4081f0b6ec63da588f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.13",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "153a78f8340c4e35954cf82a1967d65b",
+        "3f6728d3120740848aa4067b512e0981"
+      ]
+    }
+  ],
+  "Bindings": [
+    {
+      "NodeId": "153a78f8-340c-4e35-954c-f82a1967d65b",
+      "Binding": {
+        "GetXRefs_InClassDecl-1_InFunctionScope-1_Instance0_153a78f8-340c-4e35-954c-f82a1967d65b": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNC4xLjYzOTQlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPnRydWU8L0Jhc2UtMF9IYXNEYXRhPg0KPEJhc2UtMF9EYXRhIGlkPSJyZWYtMyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwVFpYSnBZV3hwZW1GaWJHVklZVzVrYkdVZ2FXUTlJbkpsWmkweElpQjRiV3h1Y3pwaE1UMGlhSFIwY0RvdkwzTmphR1Z0WVhNdWJXbGpjbTl6YjJaMExtTnZiUzlqYkhJdmJuTmhjM05sYlM5QmRYUnZaR1Z6YXk1QmRYUnZRMEZFTGtSNWJtRnRiMEZ3Y0M1VFpYSjJhV05sY3k5QlkwUjVibUZ0YjFObGNuWnBZMlZ6SlRKREpUSXdWbVZ5YzJsdmJpVXpSREV6TGpJdU1qRTJNUzR3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK05rSkJPVHd2YzNSeWFXNW5TVVErRFFvOEwyRXhPbE5sY21saGJHbDZZV0pzWlVoaGJtUnNaVDROQ2p3dlUwOUJVQzFGVGxZNlFtOWtlVDROQ2p3dlUwOUJVQzFGVGxZNlJXNTJaV3h2Y0dVK0RRbz08L0Jhc2UtMF9EYXRhPg0KPEJhc2UtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    }
+  ],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "501ef3e356964700a4a33c320b73924e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.Current",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 343.5,
+        "Y": 256.0
+      },
+      {
+        "Id": "153a78f8340c4e35954cf82a1967d65b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "DocumentExtensions.GetXRefs",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 540.5,
+        "Y": 261.0
+      },
+      {
+        "Id": "7ab6340cc0f24002ba5f2b5513d55b27",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "BlockReference.Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 869.5,
+        "Y": 263.0
+      },
+      {
+        "Id": "3f6728d3120740848aa4067b512e0981",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "BlockExtensions.Overkill",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 1185.5,
+        "Y": 254.0
+      }
+    ],
+    "Annotations": [],
+    "X": -384.97967335188673,
+    "Y": -50.027887517063277,
+    "Zoom": 1.3775833525586676
+  }
+}
